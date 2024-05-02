@@ -2,14 +2,6 @@
 {{- $requiredMsg := include "common-helm-library.check-required-value" . -}}
 name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
 image: {{ (required (printf $requiredMsg "image.registry") .Values.image.registry | quote) }}/{{ required (printf $requiredMsg "image.repository") .Values.image.repository }}:{{ required (printf $requiredMsg "image.tag") .Values.image.tag | quote }}
-{{- if .Values.container.command }}
-command:
-  {{- toYaml .Values.container.command | nindent 12 }}
-{{- end }}
-{{- if .Values.container.args }}
-args:
-  {{- toYaml .Values.container.args | nindent 12 }}
-{{- end }}
 imagePullPolicy: {{ .Values.container.imagePullPolicy | default "Always" | quote }}
 securityContext:
   readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default true }}
