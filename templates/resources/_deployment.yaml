@@ -31,5 +31,5 @@ spec:
       - name: temp-dir
         emptyDir: {}
       containers:
-      {{- include "common-helm-library.functions.container" . | nindent 8 }}
+      {{- include "common-helm-library.functions.container" . | indent 6 }}
 {{- end }}
