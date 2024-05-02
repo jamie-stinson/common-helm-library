@@ -1,3 +1,13 @@
 apiVersion: v1
-entries: {}
-generated: "2024-05-02T16:57:57.109030992+01:00"
+entries:
+  common-helm-library:
+  - apiVersion: v2
+    created: "2024-05-02T16:58:36.925804234+01:00"
+    description: A Helm library chart
+    digest: 5b6b2334c47f4eef8ca796147084537fdbf6cac1c2282074e7460cfc0fcc7f53
+    name: common-helm-library
+    type: library
+    urls:
+    - https://jamie-stinson.github.io/common-helm-library/common-helm-library-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-05-02T16:58:36.923136352+01:00"
