@@ -8,6 +8,6 @@ entries:
     name: common-helm-library
     type: library
     urls:
-    - https://jamie-stinson.github.io/common-helm-library-1.0.0.tgz
+    - https://jamie-stinson.github.io/common-helm-library/common-helm-library-1.0.0.tgz
     version: 1.0.0
 generated: "2024-05-02T12:00:16.145255626+01:00"
