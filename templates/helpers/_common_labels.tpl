@@ -11,7 +11,7 @@ helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 {{- end -}}
 
 {{/*
-Selector labels
+Common Selector labels
 */}}
 {{- define "common-helm-library.selector-labels" -}}
 {{- $requiredMsg := include "common-helm-library.check-required-value" . -}}
