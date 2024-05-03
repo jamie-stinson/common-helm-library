@@ -30,7 +30,7 @@ spec:
       volumes:
       - name: temp-dir
         emptyDir: {}
-      {{- include "common.podSpec.selectorsTolerationsAffinity" . | nindent 6 }}
+      {{- include "common-help-library.selectorsTolerationsAffinity" . | nindent 6 }}
       containers:
 {{ include "common-helm-library.functions.container" . | indent 6 }}
 {{- end }}
