@@ -14,6 +14,23 @@
   securityContext:
     readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default true }}
     allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
+  
+  # Probes
+  {{- if .Values.probe.startupProbe.enabled }}
+  startupProbe:
+    {{- include "common-helm-library.probes" .Values.probe.startupProbe }}
+  {{- end }}
+
+  {{- if .Values.probe.livenessProbe.enabled }}
+  livenessProbe:
+    {{- include "common-helm-library.probes" .Values.probe.livenessProbe }}
+  {{- end }}
+
+  {{- if .Values.probe.readinessProbe.enabled }}
+  readinessProbe:
+    {{- include "common-helm-library.probes" .Values.probe.readinessProbe }}
+  {{- end }}
+
   volumeMounts:
   - mountPath: /tmp
     name: temp-dir
