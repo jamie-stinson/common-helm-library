@@ -24,9 +24,9 @@ spec:
       - name: {{ required (printf $requiredMsg "deployment.imagePullSecret") .Values.deployment.imagePullSecret| quote }}
       {{- end }}
       securityContext:
-        fsGroup: {{ .Values.deployment.runAsUser | default 1000 }}
-        runAsUser: {{ .Values.deployment.runAsUser | default 1000 }}
-        runAsNonRoot: {{ .Values.deployment.runAsNonRoot | default true }}
+        fsGroup: {{ .Values.deployment.runAsUser | default 0 }}
+        runAsUser: {{ .Values.deployment.runAsUser | default 0 }}
+        runAsNonRoot: {{ .Values.deployment.runAsNonRoot | default false }}
       volumes:
       - name: temp-dir
         emptyDir: {}

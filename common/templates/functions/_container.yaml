@@ -16,19 +16,19 @@
     allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
   
   # Probes
-  {{- if .Values.probe.startupProbe.enabled }}
+  {{- if .Values.probes.startupProbe.enabled }}
   startupProbe:
-    {{- include "common-helm-library.probes" .Values.probe.startupProbe }}
+    {{- include "common-helm-library.probes" .Values.probes.startupProbe }}
   {{- end }}
 
-  {{- if .Values.probe.livenessProbe.enabled }}
+  {{- if .Values.probes.livenessProbe.enabled }}
   livenessProbe:
-    {{- include "common-helm-library.probes" .Values.probe.livenessProbe }}
+    {{- include "common-helm-library.probes" .Values.probes.livenessProbe }}
   {{- end }}
 
-  {{- if .Values.probe.readinessProbe.enabled }}
+  {{- if .Values.probes.readinessProbe.enabled }}
   readinessProbe:
-    {{- include "common-helm-library.probes" .Values.probe.readinessProbe }}
+    {{- include "common-helm-library.probes" .Values.probes.readinessProbe }}
   {{- end }}
 
   volumeMounts:
