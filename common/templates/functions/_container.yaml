@@ -14,9 +14,7 @@
   securityContext:
     readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default false }}
     allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
-  
-    {{- include "common-helm-library.probes" . | nindent 4 }}
-
+  {{- include "common-helm-library.probes" . | nindent 2 }}
   volumeMounts:
   - mountPath: /tmp
     name: temp-dir
