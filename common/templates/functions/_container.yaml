@@ -12,7 +12,7 @@
   {{- end }}
   imagePullPolicy: {{ .Values.container.imagePullPolicy | default "Always" | quote }}
   securityContext:
-    readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default true }}
+    readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default false }}
     allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
   
   # Probes
