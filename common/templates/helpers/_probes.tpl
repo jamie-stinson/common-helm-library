@@ -1,7 +1,3 @@
-{{/*
-Probes
-*/}}
-
 {{ define "common-helm-library.probes" }}
 {{- if .Values.probes.startupProbe.enabled }}
 startupProbe:
@@ -18,10 +14,6 @@ readinessProbe:
 {{- include "common-helm-library.probeSettings" .Values.probes.readinessProbe }}
 {{- end }}
 {{- end }}
-
-{{/*
-Settings for readiness, liveness and startup probes
-*/}}
 
 {{ define "common-helm-library.probeSettings" }}
   {{- $probeType := .type -}}
