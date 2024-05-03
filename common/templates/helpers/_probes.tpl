@@ -1,8 +1,25 @@
+{{ define "common-helm-library.probes" }}
+  {{- if .Values.probes.startupProbe.enabled }}
+  startupProbe:
+  {{- include "common-helm-library.probeSettings" .Values.probes.startupProbe }}
+  {{- end }}
+
+  {{- if .Values.probes.livenessProbe.enabled }}
+  livenessProbe:
+  {{- include "common-helm-library.probeSettings" .Values.probes.livenessProbe }}
+  {{- end }}
+
+  {{- if .Values.probes.readinessProbe.enabled }}
+  readinessProbe:
+  {{- include "common-helm-library.probeSettings" .Values.probes.readinessProbe }}
+  {{- end }}
+{{ -end }}
+
 {{/*
 Settings for readiness, liveness and startup probes
 */}}
 
-{{ define "common-helm-library.probes" }}
+{{ define "common-helm-library.probeSettings" }}
   {{- $probeType := .type -}}
   {{- $valid := list "httpGet" "tcpSocket" "exec" }}
   {{- if not (has $probeType $valid) }}

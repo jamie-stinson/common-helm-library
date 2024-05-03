@@ -15,21 +15,7 @@
     readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default false }}
     allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
   
-  # Probes
-  {{- if .Values.probes.startupProbe.enabled }}
-  startupProbe:
-    {{- include "common-helm-library.probes" .Values.probes.startupProbe }}
-  {{- end }}
-
-  {{- if .Values.probes.livenessProbe.enabled }}
-  livenessProbe:
-    {{- include "common-helm-library.probes" .Values.probes.livenessProbe }}
-  {{- end }}
-
-  {{- if .Values.probes.readinessProbe.enabled }}
-  readinessProbe:
-    {{- include "common-helm-library.probes" .Values.probes.readinessProbe }}
-  {{- end }}
+    {{- include "common-helm-library.probes" . | nindent 4 }}
 
   volumeMounts:
   - mountPath: /tmp
