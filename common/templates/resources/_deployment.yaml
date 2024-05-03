@@ -32,5 +32,5 @@ spec:
         emptyDir: {}
       {{- include "common-help-library.selectorsTolerationsAffinity" . | nindent 6 }}
       containers:
-      {{ include "common-helm-library.functions.container" . | indent 6 }}
+      {{ include "common-helm-library.functions.container" . | nindent 6 }}
 {{- end }}
