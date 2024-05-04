@@ -1,7 +1,8 @@
 {{/*
 Common labels
 */}}
-{{- define "common-helm-library.labels" -}}
+
+{{- define "common-helm-library.helpers.labels" -}}
 {{- $requiredMsg := include "common-helm-library.check-required-value" . -}}
 app.kubernetes.io/name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
 app.kubernetes.io/instance: {{ .Release.Name }}
@@ -13,7 +14,8 @@ helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 {{/*
 Common Selector labels
 */}}
-{{- define "common-helm-library.selector-labels" -}}
+
+{{- define "common-helm-library.helpers.selector-labels" -}}
 {{- $requiredMsg := include "common-helm-library.check-required-value" . -}}
 app.kubernetes.io/name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
 app.kubernetes.io/instance: {{ .Release.Name }}

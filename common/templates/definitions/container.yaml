@@ -1,5 +1,5 @@
-{{- define "common-helm-library.functions.container" -}}
-{{- $requiredMsg := include "common-helm-library.check-required-value" . -}}
+{{- define "common-helm-library.definitions.container" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.check-required-value" . -}}
 - name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
   {{- if .Values.container.command }}  
@@ -14,7 +14,20 @@
   securityContext:
     readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default false }}
     allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
-  {{- include "common-helm-library.probes" . | nindent 2 }}
+  {{- if .Values.probes.startupProbe.enabled }}
+  startupProbe:
+  {{- include "common-helm-library.helpers.probeSettings" .Values.probes.startupProbe }}
+  {{- end }}
+
+  {{- if .Values.probes.livenessProbe.enabled }}
+  livenessProbe:
+  {{- include "common-helm-library.helpers.probeSettings" .Values.probes.livenessProbe }}
+  {{- end }}
+
+  {{- if .Values.probes.readinessProbe.enabled }}
+  readinessProbe:
+  {{- include "common-helm-library.helpers.probeSettings" .Values.probes.readinessProbe }}
+  {{- end }}
   volumeMounts:
   - mountPath: /tmp
     name: temp-dir

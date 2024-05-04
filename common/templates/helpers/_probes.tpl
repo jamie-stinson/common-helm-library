@@ -1,21 +1,4 @@
-{{ define "common-helm-library.probes" }}
-{{- if .Values.probes.startupProbe.enabled }}
-startupProbe:
-{{- include "common-helm-library.probeSettings" .Values.probes.startupProbe }}
-{{- end }}
-
-{{- if .Values.probes.livenessProbe.enabled }}
-livenessProbe:
-{{- include "common-helm-library.probeSettings" .Values.probes.livenessProbe }}
-{{- end }}
-
-{{- if .Values.probes.readinessProbe.enabled }}
-readinessProbe:
-{{- include "common-helm-library.probeSettings" .Values.probes.readinessProbe }}
-{{- end }}
-{{- end }}
-
-{{ define "common-helm-library.probeSettings" }}
+{{ define "common-helm-library.helpers.probeSettings" }}
   {{- $probeType := .type -}}
   {{- $valid := list "httpGet" "tcpSocket" "exec" }}
   {{- if not (has $probeType $valid) }}
