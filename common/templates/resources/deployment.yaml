@@ -1,3 +1,4 @@
+{{- define "common-helm-library.resources.deployment" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.check-required-value" . -}}
 apiVersion: apps/v1
 kind: Deployment
@@ -32,3 +33,4 @@ spec:
       {{- include "common-help-library.definitions.selectorsTolerationsAffinity" . | nindent 6 }}
       containers:
       {{ include "common-helm-library.definitions.container" . | nindent 6 }}
+{{- end }}
