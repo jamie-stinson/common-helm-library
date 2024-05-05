@@ -1,11 +1,19 @@
 {{/*
 Secondary entrypoint and primary loader for the common chart
 */}}
-
-{{- define "common-helm-library.loader.generate" -}}
+{{- define "bjw-s.common.loader.generate" -}}
+  {{- /* Run global chart validations */ -}}
+  {{- include "bjw-s.common.lib.chart.validate" . -}}
 
   {{- /* Build the templates */ -}}
-  {{- include "common-helm-library.resources.deployment" . | nindent 0 -}}
-  {{- include "common-helm-library.resources.serviceaccount" . | nindent 0 -}}
-
+  {{- include "bjw-s.common.render.pvcs" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.serviceAccount" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.controllers" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.services" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.ingresses" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.serviceMonitors" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.routes" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.configMaps" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.secrets" . | nindent 0 -}}
+  {{- include "bjw-s.common.render.networkpolicies" . | nindent 0 -}}
 {{- end -}}
