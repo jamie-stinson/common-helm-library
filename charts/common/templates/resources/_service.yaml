@@ -1,0 +1,26 @@
+{{- define "common-helm-library.resources.service" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ required (printf $requiredMsg "name") .Values.name | quote}}
+  labels:
+    {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+spec:
+  type: {{ required (printf $requiredMsg "service.type") .Values.service.type | quote }}
+  {{- if .Values.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.service.publishNotReadyAddresses }}
+  publishNotReadyAddresses: {{ .Values.service.publishNotReadyAddresses }}
+  {{- end }}
+  {{- if .Values.service.headless }}
+  clusterIP: None
+  {{- end }}
+  ports:
+  {{- range .Values.service.services }}
+  - name: {{ .name }}
+    protocol: {{ .protocol }}
+    port: {{ .port }}
+  {{- end }}
+{{- end -}}
