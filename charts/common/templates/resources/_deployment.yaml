@@ -1,0 +1,35 @@
+{{- define "common-helm-library.resources.deployment" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+  labels:
+    {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replicas | default 1 }}
+  minReadySeconds: {{ .Values.deployment.minReadySeconds | default 0 }}
+  strategy: {}
+  selector:
+    matchLabels:
+      {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "common-helm-library.helpers.metdata.labels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name | quote }}
+      {{- if .Values.deployment.imagePullSecret }}
+      imagePullSecrets:
+      - name: {{ required (printf $requiredMsg "deployment.imagePullSecret") .Values.deployment.imagePullSecret| quote }}
+      {{- end }}
+      securityContext:
+        fsGroup: {{ .Values.deployment.runAsUser | default 0 }}
+        runAsUser: {{ .Values.deployment.runAsUser | default 0 }}
+        runAsNonRoot: {{ .Values.deployment.runAsNonRoot | default false }}
+      volumes:
+      - name: temp-dir
+        emptyDir: {}
+      containers:
+      {{ include "common-helm-library.container.main" . | nindent 6 }}
+{{- end }}

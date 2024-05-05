@@ -1,5 +1,5 @@
 {{/*
-Common labels
+Labels
 */}}
 {{- define "common-helm-library.helpers.metadata.labels" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}

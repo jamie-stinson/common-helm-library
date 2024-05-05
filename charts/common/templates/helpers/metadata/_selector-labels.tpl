@@ -1,5 +1,5 @@
 {{/*
-Common Selector labels
+Selector labels
 */}}
 {{- define "common-helm-library.helpers.metadata.selector-labels" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
