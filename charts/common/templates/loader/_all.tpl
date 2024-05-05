@@ -3,5 +3,6 @@ Main entrypoint for the common library chart. It will render all underlying temp
 */}}
 {{- define "common-helm-library.loader.all" -}}
   {{- /* Build the templates */ -}}
+  {{- include "common-helm-library.resources.deployment" . | nindent 0 -}}
   {{- include "common-helm-library.resources.serviceaccount" . | nindent 0 -}}
 {{- end -}}
