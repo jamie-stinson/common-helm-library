@@ -30,4 +30,3 @@
   volumeMounts:
   - mountPath: /tmp
     name: temp-dir
-{{- end }}
