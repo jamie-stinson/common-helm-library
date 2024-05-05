@@ -31,5 +31,5 @@ spec:
       - name: temp-dir
         emptyDir: {}
       containers:
-      {{ include "common-helm-library.container.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.container.main" . | nindent 6 }}
 {{- end }}
