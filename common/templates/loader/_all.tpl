@@ -1,8 +1,8 @@
-{{/* Main entrypoint for the library */}}
+{{/*
+Main entrypoint for the common library chart. It will render all underlying templates based on the provided values.
+*/}}
+
 {{- define "common-helm-library.loader.all" -}}
-
-{{- include "common-helm-library.resources.deployment" . }}
-
-{{- include "common-helm-library.resources.serviceaccount" . }}
-
-{{- end }}
+  {{- /* Generate remaining objects */ -}}
+  {{- include "common-helm-library.loader.generate" . -}}
+{{- end -}}
