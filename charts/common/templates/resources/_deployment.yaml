@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "common-helm-library.helpers.metdata.labels" . | nindent 8 }}
+        {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name | quote }}
       {{- if .Values.deployment.imagePullSecret }}
