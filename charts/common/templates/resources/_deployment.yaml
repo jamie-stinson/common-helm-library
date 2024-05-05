@@ -32,4 +32,5 @@ spec:
         emptyDir: {}
       containers:
       {{ include "common-helm-library.helpers.container.main" . | nindent 6 }}
+---
 {{- end }}
