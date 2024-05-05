@@ -8,6 +8,8 @@ metadata:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
   type: {{ required (printf $requiredMsg "service.type") .Values.service.type | quote }}
+  selector:
+  {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 4 }}
   {{- if .Values.service.loadBalancerIP }}
   loadBalancerIP: {{ .Values.service.loadBalancerIP }}
   {{- end }}
@@ -18,7 +20,7 @@ spec:
   clusterIP: None
   {{- end }}
   ports:
-  {{- range .Values.service.services }}
+  {{- range .Values.service.ports }}
   - name: {{ .name }}
     protocol: {{ .protocol }}
     port: {{ .port }}
