@@ -1,3 +1,4 @@
+{{- define "common-helm-library.helpers.container.main" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 - name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -30,3 +31,4 @@
   volumeMounts:
   - mountPath: /tmp
     name: temp-dir
+{{- end }}
