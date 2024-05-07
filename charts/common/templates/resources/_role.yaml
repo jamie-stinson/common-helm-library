@@ -8,4 +8,5 @@ metadata:
 rules:
 {{ toYaml .Values.rbac.rules | indent 2 }}
 {{- end }}
+---
 {{- end}}

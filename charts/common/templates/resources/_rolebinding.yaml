@@ -14,4 +14,5 @@ subjects:
   name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 {{- end }}
+---
 {{- end }}
