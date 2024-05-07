@@ -1,0 +1,17 @@
+{{- define "common-helm-library.resources.persistentvolumeclaim" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+{{- range .Values.storage.volumes }}
+{{- if eq .type "pvc" }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ $.Release.Name }}-{{ .name }}
+spec:
+  storageClassName: {{ .storageClass }}
+  accessModes: {{ .accessModes | toYaml | nindent 10 }}
+  resources:
+    requests:
+      storage: {{ .size | default "1Gi" }}
+{{- end }}
+{{- end }}
+{{- end}}

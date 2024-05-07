@@ -14,6 +14,10 @@
   securityContext:
     readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default false }}
     allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
+    capabilities:
+    privileged:
+    procMount:
+    
   {{- if .Values.probes.startupProbe.enabled }}
   startupProbe:
   {{- include "common-helm-library.helpers.container.probe-settings" .Values.probes.startupProbe }}

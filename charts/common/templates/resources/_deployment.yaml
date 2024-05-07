@@ -7,8 +7,8 @@ metadata:
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.deployment.replicas | default 1 }}
-  minReadySeconds: {{ .Values.deployment.minReadySeconds | default 0 }}
+  replicas: {{ .Values.deployment.replicas }}
+  minReadySeconds: {{ .Values.deployment.minReadySeconds }}
   strategy: {}
   selector:
     matchLabels:
@@ -24,13 +24,61 @@ spec:
       - name: {{ required (printf $requiredMsg "deployment.imagePullSecret") .Values.deployment.imagePullSecret| quote }}
       {{- end }}
       securityContext:
-        fsGroup: {{ .Values.deployment.runAsUser | default 0 }}
-        runAsUser: {{ .Values.deployment.runAsUser | default 0 }}
-        runAsNonRoot: {{ .Values.deployment.runAsNonRoot | default false }}
-      volumes:
-      - name: temp-dir
-        emptyDir: {}
+        fsGroup: {{ .Values.deployment.runAsUser }}
+        runAsUser: {{ .Values.deployment.runAsUser }}
+        runAsGroup: 
+        runAsNonRoot: {{ .Values.deployment.runAsNonRoot }}
+        fsGroupChangePolicy:
+        seLinuxOptions:
+        seccompProfile:
+        supplementalGroups:
+        sysctls: 
+        appArmorProfile:
       containers:
       {{ include "common-helm-library.helpers.container.main" . | nindent 6 }}
+          {{- if .Values.storage.enabled }}
+          volumeMounts:
+            {{- range .Values.storage.volumes }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              readOnly: {{ .readOnly }}
+            {{- end }}
+
+      volumes:
+        {{- range .Values.storage.volumes }}
+        {{- if eq .type "configMap" }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ .configMapName }}
+            items:
+              {{- range .items }}
+              - key: {{ .key }}
+                path: {{ .path }}
+              {{- end }}
+        {{- else if eq .type "emptyDir" }}
+        - name: {{ .name }}
+          emptyDir:
+            {{- if .ramDisk }}
+            medium: "Memory"
+            {{- end }}
+            {{- if .sizeLimit }}
+            sizeLimit: {{ .sizeLimit }}
+            {{- end }}
+        {{- else if eq .type "downwardAPI" }}
+        - name: {{ .name }}
+          downwardAPI:
+            items:
+              {{- range .items }}
+              - path: {{ .path }}
+                fieldRef:
+                  fieldPath: {{ .fieldRef.fieldPath }}
+              {{- end }}
+        {{- else if eq .type "pvc" }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ $.Release.Name }}-{{ .name }}
+        {{- end }}
+        {{- end }}
+        {{- end }}
 ---
 {{- end }}
