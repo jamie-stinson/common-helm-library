@@ -1,23 +1,52 @@
-# storage:
-#   enabled: true
-#   volumes:
-#     - name: "config"
-#       type: "pvc"
-#       mountPath: "/app/config"
-#       accessModes:
-#       - ReadWriteOnce
-#       storageClass: "local-path"
-#       size: 1Gi
-#       readOnly: false
+name: example
+
+deployment:
+  replicas: 1
+  minReadySeconds: 0
+
+container:
+  command: {}
+  requestMemory: 100Mi
+  limitMemory: 100Mi
+  requestCpu: 10M
+  limitCpu: 10m
+
+image:
+  registry: docker.io
+  repository: nginx
+  tag: latest
+
+serviceAccount:
+  name: example
+
+probes:
+  startupProbe:
+    enabled: false
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
+
+service:
+  type: ClusterIP
+  ports:
+    - name: example
+      protocol: TCP
+      port: 80
 
 storage:
   enabled: false
-  volumes: []
-#     - name: "config"
-#       type: "pvc"
-#       mountPath: "/app/config"
-#       accessModes:
-#       - ReadWriteOnce
-#       storageClass: "local-path"
-#       size: 1Gi
-#       readOnly: false
+
+rbac:
+  enabled: false
+
+securityContext:
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: true
+  capabilities: []
+  privileged: true
+  fsGroup: 0
+  runAsUser: 0
+  runAsGroup: 0
+  runAsNonRoot: false
+  fsGroupChangePolicy: Always
