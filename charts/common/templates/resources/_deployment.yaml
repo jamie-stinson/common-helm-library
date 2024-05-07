@@ -36,14 +36,7 @@ spec:
         appArmorProfile:
       containers:
       {{ include "common-helm-library.helpers.container.main" . | nindent 6 }}
-          {{- if .Values.storage.enabled }}
-          volumeMounts:
-            {{- range .Values.storage.volumes }}
-            - name: {{ .name }}
-              mountPath: {{ .mountPath }}
-              readOnly: {{ .readOnly }}
-            {{- end }}
-
+      {{- if .Values.storage.enabled }}
       volumes:
         {{- range .Values.storage.volumes }}
         {{- if eq .type "configMap" }}

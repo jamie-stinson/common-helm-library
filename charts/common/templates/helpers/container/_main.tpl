@@ -32,7 +32,12 @@
   readinessProbe:
   {{- include "common-helm-library.helpers.container.probe-settings" .Values.probes.readinessProbe }}
   {{- end }}
+  {{- if .Values.storage.enabled }}
   volumeMounts:
-  - mountPath: /tmp
-    name: temp-dir
+  {{- range .Values.storage.volumes }}
+  - name: {{ .name }}
+    mountPath: {{ .mountPath }}
+    readOnly: {{ .readOnly }}
+  {{- end }}
+  {{- end }}
 {{- end }}
