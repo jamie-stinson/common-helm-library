@@ -1,13 +1,17 @@
 {{- define "common-helm-library.resources.deployment" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
+  podManagementPolicy: OrderedReady
   replicas: {{ .Values.deployment.replicas }}
+  {{- if .Values.service }}
+  serviceName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+  {{- end }}
   minReadySeconds: {{ .Values.deployment.minReadySeconds }}
   strategy: {}
   selector:

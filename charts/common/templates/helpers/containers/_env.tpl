@@ -1,4 +1,4 @@
-{{- define "common-helm-library.helpers.env.main" -}}
+{{- define "common-helm-library.helpers.containers.main" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 env:
   {{- if .Values.containerEnvs }}

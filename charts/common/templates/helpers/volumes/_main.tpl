@@ -34,7 +34,20 @@ volumes:
 - name: {{ .name }}
     persistentVolumeClaim:
     claimName: {{ $.Release.Name }}-{{ .name }}
-{{- end }}
+{{- else if eq .type "template" }}
+persistentVolumeClaimRetentionPolicy:
+  whenDeleted: Retain
+  whenScaled: Retain
+volumeClaimTemplates:
+  - metadata:
+      name: {{ .name }}
+      spec:
+      storageClassName: {{ .storageClass }}
+      accessModes: {{ .accessModes | toYaml | nindent 10 }}
+      resources:
+          requests:
+          storage: {{ .size | default "1Gi" }}
+{{- end }}    
 {{- end }}
 {{- end }}
 {{- end }}

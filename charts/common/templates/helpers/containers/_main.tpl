@@ -14,6 +14,24 @@ containers:
   imagePullPolicy: {{ .Values.container.imagePullPolicy | default "Always" | quote }}
     
   {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 2 }}
+  {{ include "common-helm-library.helpers.containers.env" . | nindent 2 }}
+
+  resources:
+    requests:
+      cpu: {{ .Values.resources.requests.cpu }}
+      memory: {{ .Values.resources.requests.memory }}
+    limits:
+      cpu: {{ .Values.resources.limits.cpu }}
+      memory: {{ .Values.resources.limits.memory }}
+      gpu: {{ .Values.resources.limits.gpu }}
+
+  {{- if .Values.service.enabled }}
+  ports:
+    {{- range .Values.service.ports }}
+    - name: {{ .name }}
+      containerPort: {{ .port }}
+    {{- end }}
+  {{- end }}
 
   {{- if .Values.probes.startupProbe.enabled }}
   startupProbe:
