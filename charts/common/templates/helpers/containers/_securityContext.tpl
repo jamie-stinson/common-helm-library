@@ -5,7 +5,7 @@ securityContext:
   capabilities:
       drop:
       - ALL
-      add: {{ .Values.securityContext.capabilities.add }}
+      add: {{ .Values.securityContext.capabilities }}
   privileged: {{ .Values.securityContext.privileged }}
   fsGroup: {{ .Values.securityContext.runAsUser }}
   runAsUser: {{ .Values.securityContext.runAsUser }}
