@@ -1,4 +1,4 @@
-{{- define "common-helm-library.resources.persistentvolumeclaim" -}}
+{{- define "common-helm-library.resources.role" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 {{- if .Values.rbac.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
