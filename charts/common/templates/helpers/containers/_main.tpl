@@ -17,17 +17,17 @@ containers:
 
   {{- if .Values.probes.startupProbe.enabled }}
   startupProbe:
-  {{- include "common-helm-library.helpers.container.probe-settings" .Values.probes.startupProbe }}
+  {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.startupProbe }}
   {{- end }}
 
   {{- if .Values.probes.livenessProbe.enabled }}
   livenessProbe:
-  {{- include "common-helm-library.helpers.container.probe-settings" .Values.probes.livenessProbe }}
+  {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.livenessProbe }}
   {{- end }}
 
   {{- if .Values.probes.readinessProbe.enabled }}
   readinessProbe:
-  {{- include "common-helm-library.helpers.container.probe-settings" .Values.probes.readinessProbe }}
+  {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.readinessProbe }}
   {{- end }}
   {{- if .Values.storage.enabled }}
   volumeMounts:

@@ -1,4 +1,4 @@
-{{ define "common-helm-library.helpers.container.probe-settings" }}
+{{ define "common-helm-library.helpers.containers.probe-settings" }}
   {{- $probeType := .type -}}
   {{- $valid := list "httpGet" "tcpSocket" "exec" }}
   {{- if not (has $probeType $valid) }}

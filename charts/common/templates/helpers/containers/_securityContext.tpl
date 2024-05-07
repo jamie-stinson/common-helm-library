@@ -1,4 +1,4 @@
-{{ define "common-helm-library.helpers.container.securityContext" }}
+{{ define "common-helm-library.helpers.containers.securityContext" }}
 securityContext:
   readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
   allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
@@ -14,3 +14,4 @@ securityContext:
   fsGroupChangePolicy: {{ .Values.securityContext.fsGroupChangePolicy }}
   seccompProfile: RuntimeDefault
 {{- end }}
+
