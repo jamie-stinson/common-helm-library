@@ -1,5 +1,6 @@
-{{- define "common-helm-library.helpers.container.main" -}}
+{{- define "common-helm-library.helpers.containers.main" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+containers:
 - name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
   {{- if .Values.container.command }}  
@@ -11,13 +12,9 @@
     {{- toYaml .Values.container.args | nindent 12 }}
   {{- end }}
   imagePullPolicy: {{ .Values.container.imagePullPolicy | default "Always" | quote }}
-  securityContext:
-    readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem | default false }}
-    allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation | default false }}
-    capabilities:
-    privileged:
-    procMount:
     
+  {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 2 }}
+
   {{- if .Values.probes.startupProbe.enabled }}
   startupProbe:
   {{- include "common-helm-library.helpers.container.probe-settings" .Values.probes.startupProbe }}

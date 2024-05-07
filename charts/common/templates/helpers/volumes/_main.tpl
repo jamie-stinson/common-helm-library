@@ -1,0 +1,40 @@
+{{- define "common-helm-library.helpers.volumes.main" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+{{- if .Values.storage.enabled }}
+volumes:
+{{- range .Values.storage.volumes }}
+{{- if eq .type "configMap" }}
+- name: {{ .name }}
+    configMap:
+    name: {{ .configMapName }}
+    items:
+        {{- range .items }}
+        - key: {{ .key }}
+        path: {{ .path }}
+        {{- end }}
+{{- else if eq .type "emptyDir" }}
+- name: {{ .name }}
+    emptyDir:
+    {{- if .ramDisk }}
+    medium: "Memory"
+    {{- end }}
+    {{- if .sizeLimit }}
+    sizeLimit: {{ .sizeLimit }}
+    {{- end }}
+{{- else if eq .type "downwardAPI" }}
+- name: {{ .name }}
+    downwardAPI:
+    items:
+        {{- range .items }}
+        - path: {{ .path }}
+        fieldRef:
+            fieldPath: {{ .fieldRef.fieldPath }}
+        {{- end }}
+{{- else if eq .type "pvc" }}
+- name: {{ .name }}
+    persistentVolumeClaim:
+    claimName: {{ $.Release.Name }}-{{ .name }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
