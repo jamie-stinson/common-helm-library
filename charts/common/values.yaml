@@ -1,1 +1,58 @@
-# required
+# -- name of the application
+name: example
+
+deployment:
+  replicas: 1
+  minReadySeconds: 0
+
+container:
+  command: {}
+  requestMemory: 100Mi
+  limitMemory: 100Mi
+  requestCpu: 10M
+  limitCpu: 10m
+
+image:
+  registry: docker.io
+  repository: nginx
+  tag: latest
+
+serviceAccount:
+  name: nginx
+
+probes:
+  startupProbe:
+    enabled: false
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
+
+service:
+  type: ClusterIP
+  ports:
+    - name: jellyfin
+      protocol: TCP
+      port: 8096
+    - name: nginx
+      protocol: TCP
+      port: 80
+
+storage:
+  enabled: false
+
+rbac:
+  enabled: false
+
+
+securityContext:
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: true
+  capabilities:
+  - NET_RAW
+  privileged: true
+  fsGroup: 0
+  runAsUser: 0
+  runAsGroup: 0
+  runAsNonRoot: false
+  fsGroupChangePolicy: Always
