@@ -16,6 +16,7 @@ reclaimPolicy: {{ .Values.storageClass.reclaimPolicy }}
 {{- if .Values.storageClass.allowVolumeExpansion }}
 allowVolumeExpansion: {{ .Values.storageClass.allowVolumeExpansion }}
 {{- end }}
+volumeBindingMode: Immediate
 {{- with .Values.storageClass.parameters }}
 parameters:
   {{- toYaml . | nindent 2 }}
