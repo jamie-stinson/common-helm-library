@@ -4,25 +4,25 @@ env:
   {{- if .Values.containerEnvs }}
   {{- range .Values.containerEnvs }}
   - name: {{ .name }}
-      value: {{ .value | quote }}
+    value: {{ .value | quote }}
   {{- end }}
   {{- end }}
   {{- if .Values.containerEnvsConfigMap }}
   {{- range .Values.containerEnvsConfigMap }}
   - name: {{ .name }}
-      valueFrom:
-      configMapKeyRef:
-          name: {{ .configMap }}
-          key: {{ .name }}
+    valueFrom:
+    configMapKeyRef:
+        name: {{ .configMap }}
+        key: {{ .name }}
   {{- end }}
   {{- end }}
   {{- if .Values.containerEnvsSecret }}
   {{- range .Values.containerEnvsSecret }}
   - name: {{ .name }}
-      valueFrom:
-      secretKeyRef:
-          name: {{ .secret }}
-          key: {{ .key }}
+    valueFrom:
+    secretKeyRef:
+        name: {{ .secret }}
+        key: {{ .key }}
   {{- end }}
   {{- end }}
 {{- end }}
