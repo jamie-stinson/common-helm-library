@@ -3,7 +3,7 @@
 containers:
 - name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-  {{- if .Values.container.command }}  
+  {{- if ((.Values.container).command) }}  
   command:
     {{- toYaml ((.Values.container).command) | nindent 12 }}
   {{- end }}
