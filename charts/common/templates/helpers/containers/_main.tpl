@@ -5,7 +5,7 @@ containers:
   image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
   {{- if .Values.container.command }}  
   command:
-    {{- toYaml .Values.container.command | nindent 12 }}
+    {{- toYaml ((.Values.container).command) | nindent 12 }}
   {{- end }}
   {{- if .Values.container.args }}
   args:
