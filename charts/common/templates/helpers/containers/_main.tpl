@@ -23,7 +23,6 @@ containers:
     limits:
       cpu: {{ .Values.resources.limits.cpu }}
       memory: {{ .Values.resources.limits.memory }}
-      gpu: {{ .Values.resources.limits.gpu }}
 
   {{- if .Values.service.enabled }}
   ports:
