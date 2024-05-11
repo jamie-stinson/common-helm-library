@@ -8,6 +8,7 @@ default-values:
 
   container:
     command: {}
+    args: {}
     requestMemory: 100Mi
     limitMemory: 100Mi
     requestCpu: 10M

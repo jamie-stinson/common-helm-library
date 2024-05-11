@@ -2,6 +2,8 @@
 Main entrypoint for the common library chart. It will render all underlying templates based on the provided values.
 */}}
 {{- define "common-helm-library.loader.all" -}}
+  {{- include "common.values.setup" . | nindent 0 -}}
+
   {{- /* Build the templates */ -}}
   {{- include "common-helm-library.resources.deployment" . | nindent 0 -}}
   {{- include "common-helm-library.resources.serviceaccount" . | nindent 0 -}}
@@ -12,3 +14,4 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.rolebinding" . | nindent 0 -}}
   {{- include "common-helm-library.resources.storageClass" . | nindent 0 -}}  
 {{- end -}}
+
