@@ -1,4 +1,4 @@
-global:
+common:
   # - application name
   name: example
 
