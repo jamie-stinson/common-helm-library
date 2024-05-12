@@ -11,7 +11,7 @@ containers:
   args:
     {{- toYaml ((.Values.container).args) | nindent 12 }}
   {{- end }}
-  imagePullPolicy: {{ .Values.container.imagePullPolicy | default "Always" | quote }}
+  imagePullPolicy: {{ ((.Values.container).imagePullPolicy) | quote }}
     
   {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 2 }}
   {{ include "common-helm-library.helpers.containers.env" . | nindent 2 }}
