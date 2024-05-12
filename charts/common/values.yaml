@@ -1,48 +1,49 @@
-# - application name
-name: example
+global:
+  # - application name
+  name: example
 
-deployment:
-  replicas: 1
-  # minReadySeconds: 0
+  deployment:
+    replicas: 1
+    # minReadySeconds: 0
 
-priorityClassName: {}
+  priorityClassName: {}
 
-storage: {}
-#   volumes:
-#   - type: configMap
-#     name: my-configmap-volume
-#     configMapName: my-configmap
-#     items:
-#       - key: key1
-#         path: /path/to/mount/for/key1
-#       - key: key2
-#         path: /path/to/mount/for/key2
-#     - type: emptyDir
-#       name: my-emptydir-volume
-#       ramDisk: true
-#       sizeLimit: 1Gi
-#     - type: downwardAPI
-#       name: my-downwardapi-volume
-#       items:
-#         - path: /path/to/mount/for/field1
-#           fieldRef:
-#             fieldPath: field1
-#         - path: /path/to/mount/for/field2
-#           fieldRef:
-#             fieldPath: field2
-#     - type: pvc
-#       name: my-pvc-volume
-#       claimName: my-pvc-claim
-#     - type: template
-#       name: my-pvctemplate-volume
-#       storageClass: standard
-#       accessModes:
-#         - ReadWriteOnce
-#       size: 2Gi
+  storage: {}
+  #   volumes:
+  #   - type: configMap
+  #     name: my-configmap-volume
+  #     configMapName: my-configmap
+  #     items:
+  #       - key: key1
+  #         path: /path/to/mount/for/key1
+  #       - key: key2
+  #         path: /path/to/mount/for/key2
+  #     - type: emptyDir
+  #       name: my-emptydir-volume
+  #       ramDisk: true
+  #       sizeLimit: 1Gi
+  #     - type: downwardAPI
+  #       name: my-downwardapi-volume
+  #       items:
+  #         - path: /path/to/mount/for/field1
+  #           fieldRef:
+  #             fieldPath: field1
+  #         - path: /path/to/mount/for/field2
+  #           fieldRef:
+  #             fieldPath: field2
+  #     - type: pvc
+  #       name: my-pvc-volume
+  #       claimName: my-pvc-claim
+  #     - type: template
+  #       name: my-pvctemplate-volume
+  #       storageClass: standard
+  #       accessModes:
+  #         - ReadWriteOnce
+  #       size: 2Gi
 
-# - list of config maps
-configMaps: {}
-  # - name: example-config
-  #   data:
-  #     example.conf: |
-  #       listen 80
+  # - list of config maps
+  configMaps: {}
+    # - name: example-config
+    #   data:
+    #     example.conf: |
+    #       listen 80
