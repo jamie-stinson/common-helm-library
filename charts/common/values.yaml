@@ -1,4 +1,4 @@
-common:
+defaults:
   # - application name
   name: example
 
