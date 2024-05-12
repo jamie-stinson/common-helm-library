@@ -1,6 +1,10 @@
 {{- define "common-helm-library.helpers.containers.env" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 env:
+  - name: POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
   {{- if .Values.containerEnvs }}
   {{- range .Values.containerEnvs }}
   - name: {{ .name }}
