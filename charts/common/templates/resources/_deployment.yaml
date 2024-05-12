@@ -18,11 +18,7 @@ spec:
       labels:
         {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ .Values.serviceAccount.name | quote }}
-      {{- if .Values.deployment.imagePullSecret }}
-      imagePullSecrets:
-      - name: {{ required (printf $requiredMsg "deployment.imagePullSecret") .Values.deployment.imagePullSecret| quote }}
-      {{- end }}
+      serviceAccountName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
       priorityClassName: {{ .Values.priorityClassName }}
       {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
       {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}

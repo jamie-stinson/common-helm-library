@@ -7,9 +7,9 @@ containers:
   command:
     {{- toYaml ((.Values.container).command) | nindent 12 }}
   {{- end }}
-  {{- if .Values.container.args }}
+  {{- if ((.Values.container).args) }}
   args:
-    {{- toYaml .Values.container.args | nindent 12 }}
+    {{- toYaml ((.Values.container).args) | nindent 12 }}
   {{- end }}
   imagePullPolicy: {{ .Values.container.imagePullPolicy | default "Always" | quote }}
     

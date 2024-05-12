@@ -1,59 +1,48 @@
-default-values:
-  # -- name of the application
-  name: example
+# - application name
+name: example
 
-  deployment:
-    replicas: 1
-    minReadySeconds: 0
+deployment:
+  replicas: 1
+  # minReadySeconds: 0
 
-  container:
-    command: {}
-    args: {}
-    requestMemory: 100Mi
-    limitMemory: 100Mi
-    requestCpu: 10M
-    limitCpu: 10m
+priorityClassName: {}
 
-  image:
-    registry: docker.io
-    repository: nginx
-    tag: latest
+storage: {}
+#   volumes:
+#   - type: configMap
+#     name: my-configmap-volume
+#     configMapName: my-configmap
+#     items:
+#       - key: key1
+#         path: /path/to/mount/for/key1
+#       - key: key2
+#         path: /path/to/mount/for/key2
+#     - type: emptyDir
+#       name: my-emptydir-volume
+#       ramDisk: true
+#       sizeLimit: 1Gi
+#     - type: downwardAPI
+#       name: my-downwardapi-volume
+#       items:
+#         - path: /path/to/mount/for/field1
+#           fieldRef:
+#             fieldPath: field1
+#         - path: /path/to/mount/for/field2
+#           fieldRef:
+#             fieldPath: field2
+#     - type: pvc
+#       name: my-pvc-volume
+#       claimName: my-pvc-claim
+#     - type: template
+#       name: my-pvctemplate-volume
+#       storageClass: standard
+#       accessModes:
+#         - ReadWriteOnce
+#       size: 2Gi
 
-  serviceAccount:
-    name: nginx
-
-  probes:
-    startupProbe:
-      enabled: false
-    livenessProbe:
-      enabled: false
-    readinessProbe:
-      enabled: false
-
-  service:
-    type: ClusterIP
-    ports:
-      - name: jellyfin
-        protocol: TCP
-        port: 8096
-      - name: nginx
-        protocol: TCP
-        port: 80
-
-  storage:
-    enabled: false
-
-  rbac:
-    enabled: false
-
-  securityContext:
-    readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
-    capabilities:
-    - NET_RAW
-    privileged: true
-    fsGroup: 0
-    runAsUser: 0
-    runAsGroup: 0
-    runAsNonRoot: false
-  fsGroupChangePolicy: Always
+# - list of config maps
+configMaps: {}
+  # - name: example-config
+  #   data:
+  #     example.conf: |
+  #       listen 80
