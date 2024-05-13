@@ -1,5 +1,6 @@
-{{- define "common-helm-library.resources.deployment" -}}
+{{- define "common-helm-library.resources.statefulset" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+{{- if eq .Values.type "statefulset" }}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -8,12 +9,11 @@ metadata:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
   podManagementPolicy: OrderedReady
-  replicas: {{ .Values.deployment.replicas }}
+  replicas: {{ .Values.replicaCount }}
   {{- if .Values.service }}
   serviceName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   {{- end }}
-  minReadySeconds: {{ .Values.deployment.minReadySeconds }}
-  strategy: {}
+  minReadySeconds: {{ .Values.minReadySeconds }}
   selector:
     matchLabels:
       {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}
@@ -23,10 +23,6 @@ spec:
         {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name | quote }}
-      {{- if .Values.deployment.imagePullSecret }}
-      imagePullSecrets:
-      - name: {{ required (printf $requiredMsg "deployment.imagePullSecret") .Values.deployment.imagePullSecret| quote }}
-      {{- end }}
       priorityClassName: {{ .Values.priorityClassName }}
       {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
       {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}

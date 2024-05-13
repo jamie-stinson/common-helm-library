@@ -1,5 +1,6 @@
 {{- define "common-helm-library.resources.deployment" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+{{- if eq .Values.type "deployment" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,9 +8,11 @@ metadata:
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.deployment.replicas }}
-  minReadySeconds: {{ .Values.deployment.minReadySeconds }}
-  strategy: {}
+  securityContext:
+    fsGroup: {{ .Values.securityContext.runAsUser }}
+    fsGroupChangePolicy: {{ .Values.securityContext.fsGroupChangePolicy }}
+  replicas: {{ .Values.replicaCount }}
+  minReadySeconds: {{ .Values.minReadySeconds }}
   selector:
     matchLabels:
       {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}
@@ -22,5 +25,5 @@ spec:
       priorityClassName: {{ .Values.priorityClassName }}
       {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
       {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
----
+---      
 {{- end }}

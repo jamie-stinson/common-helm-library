@@ -5,28 +5,22 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: metadata.name
-  {{- if .Values.containerEnvs }}
   {{- range .Values.containerEnvs }}
   - name: {{ .name }}
     value: {{ .value | quote }}
   {{- end }}
-  {{- end }}
-  {{- if .Values.containerEnvsConfigMap }}
   {{- range .Values.containerEnvsConfigMap }}
-  - name: {{ .name }}
+  - name: {{ .key }}
     valueFrom:
-    configMapKeyRef:
-        name: {{ .configMap }}
-        key: {{ .name }}
+      configMapKeyRef:
+          name: {{ .configMap }}
+          key: {{ .key }}
   {{- end }}
-  {{- end }}
-  {{- if .Values.containerEnvsSecret }}
   {{- range .Values.containerEnvsSecret }}
   - name: {{ .name }}
     valueFrom:
     secretKeyRef:
         name: {{ .secret }}
         key: {{ .key }}
-  {{- end }}
   {{- end }}
 {{- end }}

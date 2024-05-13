@@ -3,15 +3,15 @@
 containers:
 - name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-  {{- if ((.Values.container).command) }}  
+  {{- if .Values.container.command }}  
   command:
-    {{- toYaml ((.Values.container).command) | nindent 12 }}
+    {{- toYaml .Values.container.command | nindent 12 }}
   {{- end }}
-  {{- if ((.Values.container).args) }}
+  {{- if .Values.container.args }}
   args:
-    {{- toYaml ((.Values.container).args) | nindent 12 }}
+    {{- toYaml .Values.container.args | nindent 12 }}
   {{- end }}
-  imagePullPolicy: {{ ((.Values.container).imagePullPolicy) | quote }}
+  imagePullPolicy: {{ .Values.container.imagePullPolicy | quote }}
     
   {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 2 }}
   {{ include "common-helm-library.helpers.containers.env" . | nindent 2 }}
@@ -24,9 +24,9 @@ containers:
       cpu: {{ .Values.resources.limits.cpu }}
       memory: {{ .Values.resources.limits.memory }}
 
-  {{- if .Values.service.enabled }}
+  {{- range .Values.services }}
   ports:
-    {{- range .Values.service.ports }}
+    {{- range .ports }}
     - name: {{ .name }}
       containerPort: {{ .port }}
     {{- end }}
@@ -46,12 +46,10 @@ containers:
   readinessProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.readinessProbe }}
   {{- end }}
-  {{- if .Values.storage.enabled }}
+  {{- range .Values.storage }}
   volumeMounts:
-  {{- range .Values.storage.volumes }}
   - name: {{ .name }}
     mountPath: {{ .mountPath }}
     readOnly: {{ .readOnly }}
-  {{- end }}
   {{- end }}
 {{- end }}

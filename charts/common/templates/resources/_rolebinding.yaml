@@ -1,18 +1,20 @@
 {{- define "common-helm-library.resources.rolebinding" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
-{{- if and .Values.rbac.enabled .Values.serviceAccount.enabled }}
+{{- if and .Values.rbac .Values.serviceAccount }}
+{{- range .Values.rbac }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: {{ .Values.rbac.type }}Binding
+kind: {{ .type }}Binding
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .name }}
 roleRef:
-  kind: {{ .Values.rbac.type }}
-  name: {{ .Release.Name }}
+  kind: {{ .type }}
+  name: {{ .name }}
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: ServiceAccount
-  name: {{ .Release.Name }}
+  name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   namespace: {{ .Release.Namespace }}
 {{- end }}
----
 {{- end }}
+{{- end }}
+---

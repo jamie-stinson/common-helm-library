@@ -1,8 +1,7 @@
 {{- define "common-helm-library.helpers.volumes.main" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
-{{- if .Values.storage.enabled }}
+{{- range .Values.storage }}
 volumes:
-{{- range .Values.storage.volumes }}
 {{- if eq .type "configMap" }}
 - name: {{ .name }}
     configMap:
@@ -46,8 +45,7 @@ volumeClaimTemplates:
       accessModes: {{ .accessModes | toYaml | nindent 10 }}
       resources:
           requests:
-          storage: {{ .size | default "1Gi" }}
-{{- end }}    
+          storage: {{ .size }}   
 {{- end }}
 {{- end }}
 {{- end }}

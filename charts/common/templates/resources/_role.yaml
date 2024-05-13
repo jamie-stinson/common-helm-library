@@ -1,12 +1,14 @@
 {{- define "common-helm-library.resources.role" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
-{{- if .Values.rbac.enabled }}
+{{- if .Values.rbac }}
+{{- range .Values.rbac }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: {{ .Values.rbac.type }}
+kind: {{ .type }}
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .name }}
 rules:
-{{ toYaml .Values.rbac.rules | indent 2 }}
+{{ toYaml .rules | indent 2 }}
+{{- end }}
+{{- end }}
 {{- end }}
 ---
-{{- end}}

@@ -1,45 +1,190 @@
+# - This file shows the default values applied to all charts using the common helm library.
+# - It shows all available possible values you can use in your chart, with some hashed out examples.
+
 defaults:
   # - application name
   name: example
+   # - type of application i.e deployment, statefulset
+  type: deployment
+   # - amount of replicas for type
+  replicaCount: 1
+   # - min ready time
+  minReadySeconds: 0
 
-  deployment:
-    replicas: 1
-    # minReadySeconds: 0
+  image:
+    registry: docker.io
+    repository: {}
+    tag: {}
 
-  priorityClassName: default123
+  container:
+    command: {}
+    args: {}
+    imagePullPolicy: IfNotPresent
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 10Mi
+    limits:
+      cpu: 10m
+      memory: 10Mi
+
+  securityContext:
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+    # - List of capabilities to add to the container
+    # capabilities:
+    # - NET_RAW
+    privileged: false
+    fsGroup: 1000
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroupChangePolicy: Always    
+
+  rbac: {}
+    # - name: example
+    #   type: ClusterRole
+    #   rules:
+    #     - apiGroups:
+    #         - ""
+    #       resources:
+    #         - secrets
+    #       verbs:
+    #         - get
+    #         - create
+    #         - list
+    #         - watch
+    #         - update
+    #     - apiGroups:
+    #           - secretgenerator.mittwald.de
+    #       resources:
+    #         - basicauths
+    #         - basicauths/status
+    #         - sshkeypairs
+    #         - sshkeypairs/status
+    #         - stringsecrets
+    #         - stringsecrets/status
+    #       verbs:
+    #         - get
+    #         - list
+    #         - watch
+    #         - update
+
+  probes: {}
+    # readinessProbe:
+    #   httpGetProbe:
+    #     path: "/health"
+    #     port: 8080
+    #     host: "localhost"
+    #     httpHeaders:
+    #       Content-Type: "application/json"
+    #     scheme: "HTTP"
+    #     periodSeconds: 10
+    #     timeoutSeconds: 5
+    #     successThreshold: 1
+    #     failureThreshold: 3
+    #     initialDelaySeconds: 30
+
+    # livenessProbe:
+    #   tcpSocketProbe:
+    #     port: 8080
+    #     host: "localhost"
+    #     periodSeconds: 10
+    #     timeoutSeconds: 5
+    #     successThreshold: 1
+    #     failureThreshold: 3
+    #     initialDelaySeconds: 30
+        
+    # startupProbe:
+    #   execProbe:
+    #     command: ["ls", "-l"]
+    #     periodSeconds: 10
+    #     timeoutSeconds: 5
+    #     successThreshold: 1
+    #     failureThreshold: 3
+    #     initialDelaySeconds: 30
+
+
+  # - priority class for deployment/statefulset
+  priorityClassName: default
+
+  # - create a storage class
+  # storageClass:
+  #   defaultClass: true
+  #   reclaimPolicy: Delete    
+  #   allowVolumeExpansion: true
+  #   parameters:
+  #     archiveOnDelete: "true"
+  #   mountOptions:
+  #     - discard
+
+  containerEnvs: {}
+  #   - name: EXAMPLE_ENV
+  #     value: "HELLO"
+
+  containerEnvsConfigMap: {}
+  #   - key: EXAMPLE_ENV
+  #     configMap: example-config-map
+
+  # - service account options
+  serviceAccount:
+    enabled: true
+    automountToken: true
+
+  # - list of services
+  services: {}
+    # - name: http-clusterip
+    #   type: ClusterIP
+    #   headless: false
+    #   publishNotReadyAddresses: false
+    #   loadBalancerIP: {}
+    #   ports:
+    #   - name: http
+    #     protocol: TCP
+    #     port: 80
+    # - name: http-loadbalancer   
+    #   type: LoadBalancer
+    #   headless: true
+    #   publishNotReadyAddresses: false
+    #   loadBalancerIP: {}
+    #   ports:
+    #   - name: http
+    #     protocol: TCP
+    #     port: 8080
+
+  # - list of volumes
   storage: {}
-  #   volumes:
-  #   - type: configMap
-  #     name: my-configmap-volume
-  #     configMapName: my-configmap
-  #     items:
-  #       - key: key1
-  #         path: /path/to/mount/for/key1
-  #       - key: key2
-  #         path: /path/to/mount/for/key2
-  #     - type: emptyDir
-  #       name: my-emptydir-volume
-  #       ramDisk: true
-  #       sizeLimit: 1Gi
-  #     - type: downwardAPI
-  #       name: my-downwardapi-volume
-  #       items:
-  #         - path: /path/to/mount/for/field1
-  #           fieldRef:
-  #             fieldPath: field1
-  #         - path: /path/to/mount/for/field2
-  #           fieldRef:
-  #             fieldPath: field2
-  #     - type: pvc
-  #       name: my-pvc-volume
-  #       claimName: my-pvc-claim
-  #     - type: template
-  #       name: my-pvctemplate-volume
-  #       storageClass: standard
-  #       accessModes:
-  #         - ReadWriteOnce
-  #       size: 2Gi
+    # - type: configMap
+    #   name: my-configmap-volume
+    #   configMapName: my-configmap
+    #   items:
+    #     - key: key1
+    #       path: /path/to/mount/for/key1
+    #     - key: key2
+    #       path: /path/to/mount/for/key2
+    #   - type: emptyDir
+    #     name: my-emptydir-volume
+    #     ramDisk: true
+    #     sizeLimit: 1Gi
+    #   - type: downwardAPI
+    #     name: my-downwardapi-volume
+    #     items:
+    #       - path: /path/to/mount/for/field1
+    #         fieldRef:
+    #           fieldPath: field1
+    #       - path: /path/to/mount/for/field2
+    #         fieldRef:
+    #           fieldPath: field2
+    #   - type: pvc
+    #     name: my-pvc-volume
+    #     claimName: my-pvc-claim
+    #   - type: template
+    #     name: my-pvctemplate-volume
+    #     storageClass: standard
+    #     accessModes:
+    #       - ReadWriteOnce
+    #     size: 2Gi
 
   # - list of config maps
   configMaps: {}
@@ -47,3 +192,7 @@ defaults:
     #   data:
     #     example.conf: |
     #       listen 80
+    # - name: my-config
+    #   data:
+    #     run.sh: |
+    #       cat example.conf

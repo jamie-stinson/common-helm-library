@@ -14,8 +14,3 @@ securityContext:
   runAsGroup: {{ .Values.securityContext.runAsGroup }}
   runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
 {{- end }}
-
-
-
-#fsGroup: {{ .Values.securityContext.runAsUser }}
-#fsGroupChangePolicy: {{ .Values.securityContext.fsGroupChangePolicy }}
