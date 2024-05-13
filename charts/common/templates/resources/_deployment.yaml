@@ -35,7 +35,7 @@ spec:
   entryPoints:
   - traefik
   routes:
-  - match: Host(`traefik.projectwhitebox.com`) && PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+  - match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
     kind: Rule
     services:
     - name: api@internal
