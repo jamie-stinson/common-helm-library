@@ -26,5 +26,22 @@ spec:
       initContainers:
         {{- toYaml .Values.initContainers | nindent 8 }}
 ---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard
+  namespace: default
+spec:
+  entryPoints:
+  - traefik
+  routes:
+  - match: Host(`traefik.projectwhitebox.com`) && PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+    kind: Rule
+    services:
+    - name: api@internal
+      kind: TraefikService
+  tls:
+    certResolver: myresolver  
+---
 {{- end }}
 {{- end }}
