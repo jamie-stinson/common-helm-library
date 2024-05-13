@@ -4,31 +4,31 @@
 volumes:
 {{- if eq .type "configMap" }}
 - name: {{ .name }}
-    configMap:
-    name: {{ .configMapName }}
-    items:
-        {{- range .items }}
-        - key: {{ .key }}
-        path: {{ .path }}
-        {{- end }}
+  configMap:
+  name: {{ .configMapName }}
+  items:
+      {{- range .items }}
+      - key: {{ .key }}
+      path: {{ .path }}
+      {{- end }}
 {{- else if eq .type "emptyDir" }}
 - name: {{ .name }}
-    emptyDir:
-      {{- if .ramDisk }}
-      medium: "Memory"
-      {{- end }}
-      {{- if .sizeLimit }}
-      sizeLimit: {{ .sizeLimit }}
-      {{- end }}
+  emptyDir:
+    {{- if .ramDisk }}
+    medium: "Memory"
+    {{- end }}
+    {{- if .sizeLimit }}
+    sizeLimit: {{ .sizeLimit }}
+    {{- end }}
 {{- else if eq .type "downwardAPI" }}
 - name: {{ .name }}
-    downwardAPI:
-    items:
-        {{- range .items }}
-        - path: {{ .path }}
-        fieldRef:
-            fieldPath: {{ .fieldRef.fieldPath }}
-        {{- end }}
+  downwardAPI:
+  items:
+    {{- range .items }}
+    - path: {{ .path }}
+    fieldRef:
+      fieldPath: {{ .fieldRef.fieldPath }}
+    {{- end }}
 {{- else if eq .type "pvc" }}
 - name: {{ .name }}
     persistentVolumeClaim:
