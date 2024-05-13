@@ -32,17 +32,17 @@ containers:
     {{- end }}
   {{- end }}
 
-  {{- if .Values.probes.startupProbe.enabled }}
+  {{- if .Values.probes.startupProbe }}
   startupProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.startupProbe }}
   {{- end }}
 
-  {{- if .Values.probes.livenessProbe.enabled }}
+  {{- if .Values.probes.livenessProbe }}
   livenessProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.livenessProbe }}
   {{- end }}
 
-  {{- if .Values.probes.readinessProbe.enabled }}
+  {{- if .Values.probes.readinessProbe }}
   readinessProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.readinessProbe }}
   {{- end }}
