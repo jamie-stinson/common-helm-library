@@ -14,12 +14,12 @@ volumes:
 {{- else if eq .type "emptyDir" }}
 - name: {{ .name }}
     emptyDir:
-    {{- if .ramDisk }}
-    medium: "Memory"
-    {{- end }}
-    {{- if .sizeLimit }}
-    sizeLimit: {{ .sizeLimit }}
-    {{- end }}
+      {{- if .ramDisk }}
+      medium: "Memory"
+      {{- end }}
+      {{- if .sizeLimit }}
+      sizeLimit: {{ .sizeLimit }}
+      {{- end }}
 {{- else if eq .type "downwardAPI" }}
 - name: {{ .name }}
     downwardAPI:
