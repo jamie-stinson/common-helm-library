@@ -52,6 +52,8 @@ containers:
   volumeMounts:
   - name: {{ .name }}
     mountPath: {{ .mountPath }}
+    {{- if .readOnly }}
     readOnly: {{ .readOnly }}
+    {{- end }}
   {{- end }}
 {{- end }}
