@@ -13,7 +13,6 @@ spec:
   {{- if .Values.service }}
   serviceName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   {{- end }}
-  minReadySeconds: {{ .Values.minReadySeconds }}
   selector:
     matchLabels:
       {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}

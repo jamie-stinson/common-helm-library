@@ -8,11 +8,7 @@ metadata:
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
-  securityContext:
-    fsGroup: {{ .Values.securityContext.runAsUser }}
-    fsGroupChangePolicy: {{ .Values.securityContext.fsGroupChangePolicy }}
   replicas: {{ .Values.replicaCount }}
-  minReadySeconds: {{ .Values.minReadySeconds }}
   selector:
     matchLabels:
       {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}

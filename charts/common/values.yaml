@@ -8,8 +8,6 @@ defaults:
   type: deployment
    # - amount of replicas for type
   replicaCount: 1
-   # - min ready time
-  minReadySeconds: 0
 
   image:
     registry: docker.io
