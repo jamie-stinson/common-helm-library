@@ -13,7 +13,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: {{ required (printf $requiredMsg "name") $.Values.name | quote }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ $.Release.Namespace }}
 {{- end }}
 {{- end }}
 {{- end }}
