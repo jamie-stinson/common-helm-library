@@ -21,13 +21,13 @@ defaults:
     args: {}
     imagePullPolicy: IfNotPresent
 
-  resources:
-    requests:
-      cpu: 10m
-      memory: 10Mi
-    limits:
-      cpu: 10m
-      memory: 10Mi
+  resources: {}
+    # requests:
+    #   cpu: 10m
+    #   memory: 10Mi
+    # limits:
+    #   cpu: 10m
+    #   memory: 10Mi
 
   securityContext:
     readOnlyRootFilesystem: true

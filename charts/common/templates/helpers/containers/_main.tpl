@@ -16,6 +16,7 @@ containers:
   {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 2 }}
   {{ include "common-helm-library.helpers.containers.env" . | nindent 2 }}
 
+  {{- if .Values.resources }}
   resources:
     requests:
       cpu: {{ .Values.resources.requests.cpu }}
@@ -23,6 +24,7 @@ containers:
     limits:
       cpu: {{ .Values.resources.limits.cpu }}
       memory: {{ .Values.resources.limits.memory }}
+  {{- end }}
 
   {{- range .Values.services }}
   ports:

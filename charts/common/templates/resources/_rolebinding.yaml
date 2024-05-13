@@ -1,6 +1,6 @@
 {{- define "common-helm-library.resources.rolebinding" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
-{{- if and .Values.rbac .Values.serviceAccount }}
+{{- if .Values.serviceAccount }}
 {{- range .Values.rbac }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: {{ .type }}Binding
