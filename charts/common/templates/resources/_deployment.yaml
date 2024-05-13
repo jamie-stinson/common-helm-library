@@ -25,5 +25,6 @@ spec:
       priorityClassName: {{ .Values.priorityClassName }}
       {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
       {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
----      
+---
+{{- end }}
 {{- end }}
