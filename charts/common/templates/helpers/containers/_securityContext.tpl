@@ -13,6 +13,8 @@ securityContext:
   runAsUser: {{ .Values.securityContext.runAsUser }}
   runAsGroup: {{ .Values.securityContext.runAsGroup }}
   runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
+  {{- if .Values.storage }}
   fsGroup: {{ .Values.securityContext.runAsUser }}
-  fsGroupChangePolicy: {{ .Values.securityContext.fsGroupChangePolicy }}  
+  fsGroupChangePolicy: {{ .Values.securityContext.fsGroupChangePolicy }}
+  {{- end }}
 {{- end }}
