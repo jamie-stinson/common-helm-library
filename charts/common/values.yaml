@@ -107,7 +107,7 @@ defaults:
 
 
   # - priority class for deployment/statefulset
-  priorityClassName: default
+  priorityClassName: {}
 
   # - create a storage class
   # storageClass:

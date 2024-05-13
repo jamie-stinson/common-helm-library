@@ -22,7 +22,9 @@ spec:
         {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+      {{ if .Values.priorityClassName }}
       priorityClassName: {{ .Values.priorityClassName }}
+      {{- end }}
       {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
       {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
 ---
