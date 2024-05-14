@@ -26,6 +26,8 @@ defaults:
     # limits:
     #   cpu: 10m
     #   memory: 10Mi
+  
+  ingress: {}
 
   securityContext:
     readOnlyRootFilesystem: true

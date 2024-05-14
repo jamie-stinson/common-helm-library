@@ -1,0 +1,31 @@
+{{- define "common-helm-library.resources.ingressroute" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+{{- if .Values.ingress }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+spec:
+  entryPoints:
+  {{- if ne .Release.Name "traefik" }}
+  - web
+  - websecure
+  {{- end }}
+  {{- if eq .Release.Name "traefik" }}
+  - traefik
+  {{- end }}
+  routes:
+  - match: Host(`{{ .Values.ingress.host }}`)
+    kind: Rule
+    services:
+    - kind: Service
+      name: traefik
+      namespace: default
+      passHostHeader: true
+      port: 8080
+  tls:
+    certResolver: myresolver
+---
+{{- end }}
+{{- end }}
+{{- end }}
