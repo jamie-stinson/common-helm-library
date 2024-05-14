@@ -11,6 +11,10 @@ volumes:
       - key: {{ .key }}
       path: {{ .path }}
       {{- end }}
+{{- else if eq .type "hostPath" }}
+- name: {{ .name }}
+    hostPath:
+      path: {{ .hostPath }} 
 {{- else if eq .type "emptyDir" }}
 - name: {{ .name }}
   emptyDir:
