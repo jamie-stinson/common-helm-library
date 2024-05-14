@@ -18,11 +18,13 @@ spec:
   - match: Host(`{{ .Values.ingress.host }}`)
     kind: Rule
     services:
-    - kind: Service
-      name: traefik
-      namespace: default
-      passHostHeader: true
-      port: 8080
+    {{- if eq .Release.Name "traefik" }}    
+    - name: api@internal
+      kind: TraefikService
+    {{- end }}
+      # namespace: default
+      # passHostHeader: true
+      # port: 8080
   tls:
     certResolver: myresolver
 ---
