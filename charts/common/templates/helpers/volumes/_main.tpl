@@ -13,8 +13,8 @@ volumes:
       {{- end }}
 {{- else if eq .type "hostPath" }}
 - name: {{ .name }}
-    hostPath:
-      path: {{ .hostPath }} 
+  hostPath:
+    path: {{ .hostPath }} 
 {{- else if eq .type "emptyDir" }}
 - name: {{ .name }}
   emptyDir:
