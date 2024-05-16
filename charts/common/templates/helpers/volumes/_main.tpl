@@ -35,7 +35,7 @@ volumes:
     {{- end }}
 {{- else if eq .type "pvc" }}
 - name: {{ .name }}
-    persistentVolumeClaim:
+  persistentVolumeClaim:
     claimName: {{ $.Release.Name }}-{{ .name }}
 {{- else if eq .type "template" }}
 persistentVolumeClaimRetentionPolicy:
