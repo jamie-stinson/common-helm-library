@@ -36,9 +36,9 @@ defaults:
     # capabilities:
     # - NET_RAW
     privileged: false
-    fsGroup: 1000
-    runAsUser: 1000
-    runAsGroup: 1000
+    fsGroup: 556
+    runAsUser: 556
+    runAsGroup: 556
     runAsNonRoot: true
     fsGroupChangePolicy: Always    
 
