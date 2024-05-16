@@ -8,7 +8,7 @@ metadata:
 spec:
   type: {{ required (printf $requiredMsg ".type") .type | quote }}
   selector:
-    app.kubernetes.io/name: traefik
+    app.kubernetes.io/name: {{ $.Relase.Name }}
   {{- if .loadBalancerIP }}
   loadBalancerIP: {{ .loadBalancerIP }}
   {{- end }}
