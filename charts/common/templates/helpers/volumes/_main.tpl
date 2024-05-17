@@ -27,12 +27,12 @@ volumes:
 {{- else if eq .type "iscsi" }}   
 - name: {{ .name }}
   iscsi:
-    targetPortal: {{ .targetPortal }}
-    portals: {{ .portals }}
+    targetPortal: {{ .portal }}
+    portals: {{ .portal }}
     iqn: {{ .iqn }}
-    lun: 0
+    lun: {{ .lun }}
     fsType: ext4
-    readOnly: false
+    readOnly: {{ .readOnly }}
 {{- else if eq .type "downwardAPI" }}
 - name: {{ .name }}
   downwardAPI:
