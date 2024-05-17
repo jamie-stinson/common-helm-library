@@ -24,6 +24,14 @@ volumes:
     {{- if .sizeLimit }}
     sizeLimit: {{ .sizeLimit }}
     {{- end }}
+{{- else if eq .type "iscsi" }}   
+- name: {{ .name }}
+  iscsi:
+    targetPortal: {{ .targetPortal }}
+    iqn: {{ .iqn }}
+    lun: 0
+    fsType: ext4
+    readOnly: false
 {{- else if eq .type "downwardAPI" }}
 - name: {{ .name }}
   downwardAPI:
