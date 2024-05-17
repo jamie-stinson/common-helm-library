@@ -7,7 +7,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ $.Release.Name }}-{{ .name }}
 spec:
-  # storageClassName: {{ .storageClass }}
+  storageClassName: iscsi-storageclass
   accessModes: {{ .accessModes | toYaml | nindent 10 }}
   resources:
     requests:
