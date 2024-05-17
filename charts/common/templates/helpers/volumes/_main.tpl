@@ -27,7 +27,8 @@ volumes:
 {{- else if eq .type "iscsi" }}   
 - name: {{ .name }}
   iscsi:
-    portals: {{ .targetPortal }}
+    targetPortals: {{ .targetPortal }}
+    portals: {{ .portals }}
     iqn: {{ .iqn }}
     lun: 0
     fsType: ext4
