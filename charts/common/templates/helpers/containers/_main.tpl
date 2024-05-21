@@ -48,12 +48,14 @@ containers:
   readinessProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.readinessProbe }}
   {{- end }}
-  {{- range .Values.storage }}
+  {{- if .Values.storage }}
   volumeMounts:
+  {{- range .Values.storage }}
   - name: {{ .name }}
     mountPath: {{ .mountPath }}
     {{- if .readOnly }}
     readOnly: {{ .readOnly }}
+    {{- end }}
     {{- end }}
   {{- end }}
 {{- end }}
