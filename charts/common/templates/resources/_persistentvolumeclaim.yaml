@@ -1,4 +1,4 @@
-{{- define "common-helm-library.resources.persistentvolumeclaim" -}}
+{{- define "common-helm-library.resources.persistentvolume" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 {{- range .Values.storage }}
 {{- if eq .type "pvc" }}
@@ -12,7 +12,7 @@ spec:
   resources:
     requests:
       storage: {{ .size }}
-  volumeName: nfs
+  volumeName: {{ $.Release.Name }}-{{ .name }}
 ---      
 {{- end }}
 {{- end }}

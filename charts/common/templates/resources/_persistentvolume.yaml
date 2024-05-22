@@ -1,0 +1,27 @@
+{{- define "common-helm-library.resources.persistentvolumeclaim" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+{{- range .Values.storage }}
+{{- if and (eq .type "pvc") (.nfs) }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ $.Release.Name }}-{{ .name }}
+spec:
+  capacity:
+    storage: {{ .size }}
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  mountOptions:
+    - nfsvers=4.1
+    - hard
+    - sync
+    - noac
+    - nolock
+  nfs:
+    path: {{ .nfs.path }}
+    server: {{ .nfs.server }}
+---      
+{{- end }}
+{{- end }}
+{{- end }}
