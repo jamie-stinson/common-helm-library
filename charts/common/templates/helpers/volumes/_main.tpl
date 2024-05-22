@@ -23,7 +23,7 @@ volumes:
     medium: "Memory"
     {{- end }}
     {{- if .sizeLimit }}
-    sizeLimit: {{ .sizeLimit }}
+    sizeLimit: {{ .size }}
     {{- end }}
 {{- else if eq .type "iscsi" }}   
 - name: {{ .name }}
