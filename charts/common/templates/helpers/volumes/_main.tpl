@@ -22,7 +22,7 @@ volumes:
     {{- if .ramDisk }}
     medium: "Memory"
     {{- end }}
-    {{- if .sizeLimit }}
+    {{- if .size }}
     sizeLimit: {{ .size }}
     {{- end }}
 {{- else if eq .type "iscsi" }}   
