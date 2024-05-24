@@ -5,7 +5,7 @@ defaults:
   # - application name
   name: example
    # - type of application i.e deployment, statefulset
-  type: deployment
+  type: statefulset
    # - amount of replicas for type
   replicaCount: 1
 
