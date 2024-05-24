@@ -50,6 +50,8 @@ containers:
   {{- end }}
   {{- if .Values.storage }}
   volumeMounts:
+  - name: tmp
+    mountPath: "/tmp"
   {{- range .Values.storage }}
   - name: {{ .name }}
     mountPath: {{ .mountPath }}

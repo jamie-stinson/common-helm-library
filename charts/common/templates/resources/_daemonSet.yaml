@@ -1,0 +1,29 @@
+{{- define "common-helm-library.resources.daemonset" -}}
+{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
+{{- if eq .Values.type "daemonset" }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+  labels:
+    {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+      {{ if .Values.priorityClassName }}
+      priorityClassName: {{ .Values.priorityClassName }}
+      {{- end }}
+      {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
+      initContainers:
+        {{- toYaml .Values.initContainers | nindent 8 }} 
+---
+{{- end }}
+{{- end }}

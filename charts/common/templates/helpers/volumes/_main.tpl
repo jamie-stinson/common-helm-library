@@ -2,6 +2,9 @@
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 {{- if .Values.storage }}
 volumes:
+- name: tmp
+  emptyDir:
+    sizeLimit: 1Gi
 {{- range .Values.storage }}
 {{- if eq .type "configMap" }}
 - name: {{ .name }}
