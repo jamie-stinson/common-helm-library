@@ -21,7 +21,7 @@ spec:
       labels:
         {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ .Values.serviceAccount.name | quote }}
+      serviceAccountName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
       {{ if .Values.priorityClassName }}
       priorityClassName: {{ .Values.priorityClassName }}
       {{- end }}
