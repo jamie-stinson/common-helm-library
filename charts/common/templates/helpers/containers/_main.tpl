@@ -58,6 +58,9 @@ containers:
     {{- if .readOnly }}
     readOnly: {{ .readOnly }}
     {{- end }}
+    {{- if .mountPropagation }}
+    mountPropagation: {{ .mountPropagation }}
+    {{- end }}
     {{- end }}
   {{- end }}
 {{- end }}
