@@ -37,6 +37,10 @@ volumes:
     lun: {{ .lun }}
     fsType: ext4
     readOnly: {{ .readOnly }}
+{{- else if eq .type "secret" }}   
+- name: {{ .name }}
+  secret:
+    secretName: {{ .secretName }}
 {{- else if eq .type "downwardAPI" }}
 - name: {{ .name }}
   downwardAPI:
