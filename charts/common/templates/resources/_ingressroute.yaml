@@ -34,7 +34,7 @@ spec:
       port: {{ .Values.ingress.port }}
     {{- end }}
   tls:
-    secretName: letsencrypt-wildcard
+    secretName: tls-secret
 ---
 {{- end }}
 {{- end }}
