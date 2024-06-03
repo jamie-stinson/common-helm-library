@@ -29,7 +29,7 @@ defaults:
   
   ingress: {}
 
-  initContainers: {}
+  initContainers: []
 
   securityContext:
     readOnlyRootFilesystem: true
