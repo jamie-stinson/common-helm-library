@@ -27,7 +27,7 @@ defaults:
     #   cpu: 10m
     #   memory: 10Mi
   
-  ingress: []
+  ingress: {}
 
   securityContext:
     readOnlyRootFilesystem: true
@@ -71,7 +71,7 @@ defaults:
     #         - watch
     #         - update
 
-  probes: []
+  probes: {}
     # readinessProbe:
     #   httpGetProbe:
     #     path: "/health"
