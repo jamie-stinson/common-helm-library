@@ -1,7 +1,7 @@
 {{- define "common-helm-library.resources.workload" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 apiVersion: apps/v1
-kind: {{- .Values.type }}
+kind: {{- $.Values.type }}
 metadata:
   name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   labels:
@@ -24,10 +24,10 @@ spec:
       labels:
         {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
     spec:
-      {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
-      {{ include "common-helm-library.helpers.initContainers.main" . | nindent 6 }}
-      {{ include "common-helm-library.helpers.serviceAccount" . | nindent 6 }}
-      {{ include "common-helm-library.helpers.priorityClass" . | nindent 6 }}
-      {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
+      {{- include "common-helm-library.helpers.containers.main" . | nindent 6 }}
+      {{- include "common-helm-library.helpers.initContainers.main" . | nindent 6 }}
+      {{- include "common-helm-library.helpers.serviceAccount" . | nindent 6 }}
+      {{- include "common-helm-library.helpers.priorityClass" . | nindent 6 }}
+      {{- include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
 ---
 {{- end }}
