@@ -26,7 +26,7 @@ spec:
     spec:
       {{- include "common-helm-library.helpers.containers.main" . | nindent 6 }}
       {{- include "common-helm-library.helpers.initContainers.main" . | nindent 6 }}
-      {{- include "common-helm-library.helpers.serviceAccount" . | nindent 6 }}
+      {{- include "common-helm-library.helpers.serviceaccount" . | nindent 6 }}
       {{- include "common-helm-library.helpers.priorityClass" . | nindent 6 }}
       {{- include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
 ---
