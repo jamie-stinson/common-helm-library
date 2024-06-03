@@ -1,4 +1,4 @@
-{{- define "common-helm-library.helpers.initContainers.main" -}}
+{{- define "common-helm-library.helpers.initcontainers.main" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 {{- if .Values.initContainers }}
 initContainers:
