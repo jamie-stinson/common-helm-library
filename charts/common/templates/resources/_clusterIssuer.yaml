@@ -15,7 +15,7 @@ spec:
           cloudflare:
             email: {{ .Values.tls.cloudflare.email | quote }}
             apiTokenSecretRef:
-              name: cloudflare-letsencrypt
+              name: cloudflare-letsencrypt-credentials
               key: api-token
 ---
 {{- end }}
