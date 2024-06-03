@@ -7,6 +7,5 @@ metadata:
   name: {{ .name }}
 rules:
 {{ toYaml .rules | indent 2 }}
----
 {{- end }}
 {{- end }}

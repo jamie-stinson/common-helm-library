@@ -35,6 +35,5 @@ spec:
     {{- end }}
   tls:
     secretName: cloudflare-letsencrypt-production-certificate
----
 {{- end }}
 {{- end }}

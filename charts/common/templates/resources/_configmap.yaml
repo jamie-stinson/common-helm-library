@@ -9,6 +9,5 @@ metadata:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 data:
   {{- toYaml .data | nindent 2 }}
----
 {{- end }}
 {{- end }}

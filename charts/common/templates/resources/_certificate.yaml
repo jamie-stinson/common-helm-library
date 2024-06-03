@@ -13,6 +13,5 @@ spec:
   commonName: {{ .Values.tls.cloudflare.commonName | quote }}
   dnsNames:
     - {{ .Values.tls.cloudflare.commonName | quote }}
----
 {{- end }}
 {{- end }}
