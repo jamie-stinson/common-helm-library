@@ -1,0 +1,22 @@
+{{- define "common-helm-library.resources.certificate" -}}
+{{- if and (eq .Release.Name "traefik") .Values.tls.cloudflare }}
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: cloudflare-letsencrypt-production
+spec:
+  acme:
+    email:  {{ .Values.tls.cloudflare.email }}
+    server:  {{ .Values.tls.cloudflare.server }}
+    privateKeySecretRef:
+      name: cloudflare-letsencrypt-production-issuer
+    solvers:
+      - dns01:
+          cloudflare:
+            email: {{ .Values.tls.cloudflare.email }}
+            apiTokenSecretRef:
+              name: cloudflare-letsencrypt
+              key: api-token
+---
+{{- end }}
+{{- end }}

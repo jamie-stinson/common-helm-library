@@ -34,7 +34,7 @@ spec:
       port: {{ .Values.ingress.port }}
     {{- end }}
   tls:
-    secretName: tls-secret
+    secretName: letsencrypt-production-certificate
 ---
 {{- end }}
 {{- end }}
