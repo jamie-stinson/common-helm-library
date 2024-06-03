@@ -3,9 +3,7 @@ Main entrypoint for the common library chart. It will render all underlying temp
 */}}
 {{- define "common-helm-library.loader.all" -}}
   {{- /* Build templates */ -}}
-  {{- include "common-helm-library.resources.deployment" . }}
-  {{- include "common-helm-library.resources.daemonset" . }}
-  {{- include "common-helm-library.resources.statefulset" . }}
+  {{- include "common-helm-library.resources.workload" . }}
   {{- include "common-helm-library.resources.ingressroute" . }}
   {{- include "common-helm-library.resources.service" . }}
   {{- include "common-helm-library.resources.serviceaccount" . }}

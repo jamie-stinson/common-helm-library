@@ -1,16 +1,19 @@
-{{- define "common-helm-library.resources.statefulset" -}}
+{{- define "common-helm-library.resources.workload" -}}
 {{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
-{{- if eq .Values.type "statefulset" }}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: {{ .Values.type }}
 metadata:
   name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
-  podManagementPolicy: OrderedReady
+  {{- if ne .Values.type "Daemonset" }}
   replicas: {{ .Values.replicaCount }}
-  {{- if .Values.service }}
+  {{- end }}
+  {{- if .Values.type "StatefulSet" }}
+  podManagementPolicy: OrderedReady
+  {{- end }}
+  {{- if and (eq .Values.type "StatefulSet") .Values.Service }}
   serviceName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   {{- end }}
   selector:
@@ -21,12 +24,10 @@ spec:
       labels:
         {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
-      {{ if .Values.priorityClassName }}
-      priorityClassName: {{ .Values.priorityClassName }}
-      {{- end }}
       {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.initContainers.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.serviceAccount" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.priorityClass" . | nindent 6 }}
       {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
 ---
-{{- end }}
 {{- end }}

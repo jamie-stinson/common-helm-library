@@ -4,8 +4,8 @@
 defaults:
   # - application name
   name: example
-   # - type of application i.e deployment, statefulset
-  type: statefulset
+   # - type of application i.e Deployment, StatefulSet & DaemonSet
+  type: Deployment
    # - amount of replicas for type
   replicaCount: 1
 
@@ -130,9 +130,8 @@ defaults:
   #     configMap: example-config-map
 
   # - service account options
-  serviceAccount:
-    enabled: true
-    automountToken: true
+  serviceAccount: {}
+    # automountToken: true
 
   # - list of services
   services: []
