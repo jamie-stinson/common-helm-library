@@ -17,5 +17,6 @@ spec:
             apiTokenSecretRef:
               name: cloudflare-letsencrypt-credentials
               key: api-token
+---
 {{- end }}
 {{- end }}

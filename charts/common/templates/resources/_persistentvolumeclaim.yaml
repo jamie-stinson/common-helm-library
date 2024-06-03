@@ -13,6 +13,7 @@ spec:
     requests:
       storage: {{ .size }}
   volumeName: {{ $.Release.Name }}-{{ .name }}   
+---
 {{- end }}
 {{- end }}
 {{- end }}

@@ -21,6 +21,7 @@ spec:
   nfs:
     path: {{ .nfs.path }}
     server: {{ .nfs.server }}
+---
 {{- end }}
 {{- end }}
 {{- end }}

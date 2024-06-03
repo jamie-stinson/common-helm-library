@@ -24,5 +24,6 @@ spec:
     protocol: {{ .protocol }}
     port: {{ .port }}
   {{- end }}
+---
 {{- end -}}
 {{- end -}}
