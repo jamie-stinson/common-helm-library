@@ -9,13 +9,11 @@ containers:
   {{- end }}
   {{- if .Values.container.args }}
   args:
-    {{- toYaml .Values.container.args | nindent 12 }}
+    {{- toYaml .Values.container.args | nindent 4 }}
   {{- end }}
   imagePullPolicy: {{ .Values.container.imagePullPolicy | quote }}
-    
   {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 2 }}
   {{ include "common-helm-library.helpers.containers.env" . | nindent 2 }}
-
   {{- if .Values.resources }}
   resources:
     requests:
@@ -25,7 +23,6 @@ containers:
       cpu: {{ .Values.resources.limits.cpu }}
       memory: {{ .Values.resources.limits.memory }}
   {{- end }}
-
   {{- range .Values.services }}
   ports:
     {{- range .ports }}
@@ -33,17 +30,14 @@ containers:
       containerPort: {{ .port }}
     {{- end }}
   {{- end }}
-
   {{- if .Values.probes.startupProbe }}
   startupProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.startupProbe }}
   {{- end }}
-
   {{- if .Values.probes.livenessProbe }}
   livenessProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.livenessProbe }}
   {{- end }}
-
   {{- if .Values.probes.readinessProbe }}
   readinessProbe:
   {{- include "common-helm-library.helpers.containers.probe-settings" .Values.probes.readinessProbe }}

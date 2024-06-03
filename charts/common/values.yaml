@@ -29,6 +29,8 @@ defaults:
   
   ingress: {}
 
+  initContainers: {}
+
   securityContext:
     readOnlyRootFilesystem: true
     allowPrivilegeEscalation: false
