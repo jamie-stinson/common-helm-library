@@ -10,9 +10,9 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: cloudflare-letsencrypt-production
-  commonName: {{ .Values.tls.cloudflare.commonName }}
+  commonName: {{ .Values.tls.cloudflare.commonName | quote }}
   dnsNames:
-    - {{ .Values.tls.cloudflare.commonName }}
+    - {{ .Values.tls.cloudflare.commonName | quote }}
 ---
 {{- end }}
 {{- end }}

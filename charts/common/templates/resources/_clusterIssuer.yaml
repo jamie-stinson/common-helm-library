@@ -6,14 +6,14 @@ metadata:
   name: cloudflare-letsencrypt-production
 spec:
   acme:
-    email:  {{ .Values.tls.cloudflare.email }}
-    server:  {{ .Values.tls.cloudflare.server }}
+    email: {{ .Values.tls.cloudflare.email | quote }}
+    server: {{ .Values.tls.cloudflare.server | quote }}
     privateKeySecretRef:
       name: cloudflare-letsencrypt-production-issuer
     solvers:
       - dns01:
           cloudflare:
-            email: {{ .Values.tls.cloudflare.email }}
+            email: {{ .Values.tls.cloudflare.email | quote }}
             apiTokenSecretRef:
               name: cloudflare-letsencrypt
               key: api-token
