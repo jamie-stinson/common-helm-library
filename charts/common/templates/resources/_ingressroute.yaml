@@ -34,7 +34,7 @@ spec:
       port: {{ .Values.ingress.port }}
     {{- end }}
   tls:
-    secretName: letsencrypt-production-certificate
+    secretName: cloudflare-letsencrypt-production-certificate
 ---
 {{- end }}
 {{- end }}

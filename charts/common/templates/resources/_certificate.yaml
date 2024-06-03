@@ -6,7 +6,7 @@ metadata:
   name: letsencrypt-production
   namespace: platform-ingress
 spec:
-  secretName: letsencrypt-production-certificate
+  secretName: cloudflare-letsencrypt-production-certificate
   issuerRef:
     kind: ClusterIssuer
     name: cloudflare-letsencrypt-production
