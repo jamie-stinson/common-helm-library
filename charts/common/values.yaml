@@ -11,15 +11,15 @@ defaults:
 
   image:
     registry: docker.io
-    repository: {}
-    tag: {}
+    repository: []
+    tag: []
 
   container:
-    command: {}
-    args: {}
+    command: []
+    args: []
     imagePullPolicy: IfNotPresent
 
-  resources: {}
+  resources: []
     # requests:
     #   cpu: 10m
     #   memory: 10Mi
@@ -27,7 +27,7 @@ defaults:
     #   cpu: 10m
     #   memory: 10Mi
   
-  ingress: {}
+  ingress: []
 
   securityContext:
     readOnlyRootFilesystem: true
@@ -42,7 +42,7 @@ defaults:
     runAsNonRoot: true
     fsGroupChangePolicy: Always    
 
-  rbac: {}
+  rbac: []
     # - name: example
     #   type: ClusterRole
     #   rules:
@@ -71,7 +71,7 @@ defaults:
     #         - watch
     #         - update
 
-  probes: {}
+  probes: []
     # readinessProbe:
     #   httpGetProbe:
     #     path: "/health"
@@ -107,7 +107,7 @@ defaults:
 
 
   # - priority class for deployment/statefulset
-  priorityClassName: {}
+  priorityClassName: []
 
   # - create a storage class
   # storageClass:
@@ -119,11 +119,11 @@ defaults:
   #   mountOptions:
   #     - discard
 
-  containerEnvs: {}
+  containerEnvs: []
   #   - name: EXAMPLE_ENV
   #     value: "HELLO"
 
-  containerEnvsConfigMap: {}
+  containerEnvsConfigMap: []
   #   - key: EXAMPLE_ENV
   #     configMap: example-config-map
 
@@ -133,12 +133,12 @@ defaults:
     automountToken: true
 
   # - list of services
-  services: {}
+  services: []
     # - name: http-clusterip
     #   type: ClusterIP
     #   headless: false
     #   publishNotReadyAddresses: false
-    #   loadBalancerIP: {}
+    #   loadBalancerIP: []
     #   ports:
     #   - name: http
     #     protocol: TCP
@@ -147,14 +147,14 @@ defaults:
     #   type: LoadBalancer
     #   headless: true
     #   publishNotReadyAddresses: false
-    #   loadBalancerIP: {}
+    #   loadBalancerIP: []
     #   ports:
     #   - name: http
     #     protocol: TCP
     #     port: 8080
 
   # - list of volumes
-  storage: {}
+  storage: []
     # - type: configMap
     #   name: my-configmap-volume
     #   configMapName: my-configmap
@@ -187,7 +187,7 @@ defaults:
     #     size: 2Gi
 
   # - list of config maps
-  configMaps: {}
+  configMaps: []
     # - name: example-config
     #   data:
     #     example.conf: |
