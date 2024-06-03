@@ -12,8 +12,8 @@ containers:
       {{- toYaml .Values.container.args | nindent 4 }}
     {{- end }}
     imagePullPolicy: {{ .Values.container.imagePullPolicy | quote }}
-    {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 2 }}
-    {{ include "common-helm-library.helpers.containers.env" . | nindent 2 }}
+    {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 4 }}
+    {{ include "common-helm-library.helpers.containers.env" . | nindent 4 }}
     {{- if .Values.resources }}
     resources:
       requests:
