@@ -17,7 +17,7 @@ env:
           key: {{ .key }}
   {{- end }}
   {{- range .Values.containerEnvsSecret }}
-  - name: {{ .key }}
+  - name: {{ .name }}
     valueFrom:
       secretKeyRef:
         name: {{ .secret }}
