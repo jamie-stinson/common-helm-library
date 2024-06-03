@@ -10,5 +10,6 @@ data:
 {{- range $key, $value := .Values.config }}
   {{ $key }}: |-
 {{ $value | indent 4 }}
+{{- end }}
 ---
 {{- end }}
