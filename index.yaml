@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   common-helm-library:
   - apiVersion: v2
+    created: "2024-06-03T16:33:11.127263758Z"
+    description: A Helm library chart
+    digest: 8412007a14dfaed8c531062083313ed30ccd5ed2732224da185ec2e6969212e8
+    name: common-helm-library
+    type: library
+    urls:
+    - https://github.com/jamie-stinson/common-helm-library/releases/download/common-helm-library-1.0.149/common-helm-library-1.0.149.tgz
+    version: 1.0.149
+  - apiVersion: v2
     created: "2024-06-03T16:31:47.20094681Z"
     description: A Helm library chart
     digest: 7e55a1ee3bf502987703c4aedd2d43956c00297cddbe23231371da1f75c5ca81
@@ -1315,4 +1324,4 @@ entries:
     urls:
     - https://github.com/jamie-stinson/common-helm-library/releases/download/common-helm-library-1.0.0/common-helm-library-1.0.0.tgz
     version: 1.0.0
-generated: "2024-06-03T16:31:47.201277129Z"
+generated: "2024-06-03T16:33:11.127835129Z"
