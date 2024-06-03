@@ -129,9 +129,7 @@ defaults:
   #   - key: EXAMPLE_ENV
   #     configMap: example-config-map
 
-  # - service account options
-  serviceAccount: {}
-    # automountToken: true
+  serviceAccount: false
 
   # - list of services
   services: []
