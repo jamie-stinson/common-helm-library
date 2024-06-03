@@ -7,7 +7,7 @@ metadata:
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
 spec:
-  {{- if ne .Values.type "Daemonset" }}
+  {{- if ne .Values.type "DaemonSet" }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   {{- if eq .Values.type "StatefulSet" }}
