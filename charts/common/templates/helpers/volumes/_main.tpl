@@ -8,8 +8,8 @@ volumes:
 {{- range .Values.storage }}
 {{- if eq .type "configMap" }}
 - name: {{ .name }}
-    configMap:
-      name: {{ .configMapName }}
+  configMap:
+    name: {{ .configMapName }}
 {{- else if eq .type "hostPath" }}
 - name: {{ .name }}
   hostPath:
