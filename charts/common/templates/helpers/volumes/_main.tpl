@@ -6,16 +6,14 @@ volumes:
   emptyDir:
     sizeLimit: 1Gi
 {{- range .Values.storage }}
-{{- if eq .type "configMap" }}
 - name: {{ .name }}
+{{- if eq .type "configMap" }}
   configMap:
     name: {{ .configMapName }}
 {{- else if eq .type "hostPath" }}
-- name: {{ .name }}
   hostPath:
     path: {{ .hostPath }} 
 {{- else if eq .type "emptyDir" }}
-- name: {{ .name }}
   emptyDir:
     {{- if .ramDisk }}
     medium: "Memory"
@@ -24,7 +22,6 @@ volumes:
     sizeLimit: {{ .size }}
     {{- end }}
 {{- else if eq .type "iscsi" }}   
-- name: {{ .name }}
   iscsi:
     targetPortal: {{ .targetPortal }}
     portals: {{ .portals }}
@@ -33,11 +30,9 @@ volumes:
     fsType: ext4
     readOnly: {{ .readOnly }}
 {{- else if eq .type "secret" }}   
-- name: {{ .name }}
   secret:
     secretName: {{ .secretName }}
 {{- else if eq .type "downwardAPI" }}
-- name: {{ .name }}
   downwardAPI:
   items:
     {{- range .items }}
@@ -46,22 +41,8 @@ volumes:
       fieldPath: {{ .fieldRef.fieldPath }}
     {{- end }}
 {{- else if eq .type "pvc" }}
-- name: {{ .name }}
   persistentVolumeClaim:
     claimName: {{ $.Release.Name }}-{{ .name }}
-{{- else if eq .type "template" }}
-persistentVolumeClaimRetentionPolicy:
-  whenDeleted: Retain
-  whenScaled: Retain
-volumeClaimTemplates:
-  - metadata:
-      name: {{ .name }}
-      spec:
-      storageClassName: {{ .storageClass }}
-      accessModes: {{ .accessModes | toYaml | nindent 10 }}
-      resources:
-          requests:
-          storage: {{ .size }}   
 {{- end }}
 {{- end }}
 {{- end }}
