@@ -16,6 +16,10 @@ spec:
   {{- if and (eq .Values.type "StatefulSet") .Values.Service }}
   serviceName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
   {{- end }}
+  {{- if eq .Values.type "Deployment" }}
+  strategy:
+    type: {{ .Values.strategy }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}

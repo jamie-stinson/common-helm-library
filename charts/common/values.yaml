@@ -6,6 +6,9 @@ defaults:
   name: example
    # - type of application i.e Deployment, StatefulSet & DaemonSet
   type: Deployment
+
+  strategy: RollingUpdate
+
    # - amount of replicas for type
   replicaCount: 1
 
