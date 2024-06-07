@@ -57,4 +57,7 @@ containers:
       {{- end }}
       {{- end }}
     {{- end }}
+{{- if .Values.additionalContainers }}
+  {{- toYaml .Values.additionalContainers | nindent 2 }} 
+{{- end }}
 {{- end }}
