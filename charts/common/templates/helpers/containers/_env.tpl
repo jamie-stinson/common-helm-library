@@ -5,12 +5,26 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: metadata.name
+  # thanos-query and receive-ingestor
+  - name: HOST_IP_ADDRESS
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
+  # receive-ingestor
+  - name: NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
   {{- range .Values.containerEnvs }}
   - name: {{ .name }}
     value: {{ .value | quote }}
   {{- end }}
   {{- range .Values.containerEnvsConfigMap }}
-  - name: {{ .key }}
+  - name: {{ .name }}
     valueFrom:
       configMapKeyRef:
           name: {{ .configMap }}
