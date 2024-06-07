@@ -7,9 +7,9 @@ containers:
     command:
       {{- toYaml .Values.container.command | nindent 12 }}
     {{- end }}
-    {{- if .Values.container.args }}
+    {{- if .Values.containerArgs }}
     args:
-      {{- toYaml .Values.container.args | nindent 4 }}
+      {{- toYaml .Values.containerArgs | nindent 4 }}
     {{- end }}
     imagePullPolicy: {{ .Values.container.imagePullPolicy | quote }}
     {{ include "common-helm-library.helpers.containers.securityContext" . | nindent 4 }}
