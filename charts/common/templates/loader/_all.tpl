@@ -13,5 +13,7 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.role" . }}
   {{- include "common-helm-library.resources.rolebinding" . }}
   {{- include "common-helm-library.resources.storageClass" . }}
+  {{- include "common-helm-library.resources.certificate" . }}
+  {{- include "common-helm-library.resources.clusterIssuer" . }}
 {{- end -}}
 
