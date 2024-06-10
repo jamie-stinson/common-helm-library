@@ -13,6 +13,8 @@ During the setup of my homelab, I encountered numerous challenges using a variet
 <br>
 To address these issues, I developed a comprehensive library that enables users to create Helm charts with the following benefits:
 
+<br>
+
 * `Semantic Versioning`: Ensuring consistent and meaningful version updates.
 * `Common Templates`: Eliminating repeated code for easier maintenance.
 * `Standardized & Clear Values`: Providing clarity and uniformity.
