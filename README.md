@@ -7,6 +7,7 @@
 <a href="https://github.com/jamie-stinson/common-helm-library/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/jamie-stinson/common-helm-library?style=for-the-badge"></a>
 <a href="https://github.com/jamie-stinson/common-helm-library/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jamie-stinson/common-helm-library?style=for-the-badge" alt="License Badge"/></a>
 </div>
+
 <br>
 During the setup of my homelab, I encountered numerous challenges using a variety of external Helm charts. Having so many charts from different sources led to several annoyances such as different versioning standards, template duplication, inconsistent values, missing features, and poor security practices.
 
@@ -22,6 +23,7 @@ To address these issues, I developed a comprehensive library that enables users 
 * `Enhanced Security Measures`: Implementing stringent security protocols.
 
 <br>
+
 This library is designed to streamline the creation and maintenance of Helm charts, offering a standardized and secure foundation. Users can easily build and maintain their own charts by following the provided getting started guide, or they can utilize our existing prebuilt Helm charts, all of which leverage this common library.
 
 ## Getting Started
@@ -97,7 +99,7 @@ The common helm library has a function to load in all templates, you must put th
 
 ### Installing Charts
 
-We **strongly** recommend installing charts via GitOps tool like [ArgoCD](https://github.com/argoproj/argo-cd) however you can package up and install the charts manually. Below is an example ArgoCD ApplicationSet you can use to dynamically generate your helm charts.
+We **strongly** recommend installing charts via a GitOps tool like [ArgoCD](https://github.com/argoproj/argo-cd). You can package up and install the charts manually however that is out of scope from this project. Below is an example ArgoCD ApplicationSet you can use to dynamically generate your helm charts. There are so many different ways you can customise and install helm charts, so definitely do your research and find what suits you the best.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
