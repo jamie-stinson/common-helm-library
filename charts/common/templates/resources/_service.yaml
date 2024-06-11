@@ -1,39 +1,41 @@
-{{- define "common-helm-library.resources.service" -}}
-{{- range .Values.services }}
+{{ define "common-helm-library.resources.service" }}
+{{ range .Values.services }}
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Chart.Name }}-{{ .name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" $ | nindent 4 }}
+    {{ include "common-helm-library.helpers.metadata.labels" $ | nindent 4 }}
   annotations:
-    {{- include "common-helm-library.helpers.metadata.annotations" $ | nindent 4 }}
-    {{- if .annotations }}
-    {{- toYaml .annotations | nindent 4 }}
-    {{- end }}
+    {{ include "common-helm-library.helpers.metadata.annotations" $ | nindent 4 }}
+    {{ if .annotations }}
+    {{ toYaml .annotations | nindent 4 }}
+    {{ end }}
 spec:
   type: {{ .type }}
   selector:
-    {{- include "common-helm-library.helpers.metadata.selector-labels" $ | nindent 4 }}
-  {{- if and (eq .type "LoadBalancer") .loadBalancerIP }}
+    {{ include "common-helm-library.helpers.metadata.selector-labels" $ | nindent 4 }}
+  {{ if and (eq .type "LoadBalancer") .loadBalancerIP }}
   loadBalancerIP: {{ .loadBalancerIP }}
-  {{- end }}
-  {{- if .publishNotReadyAddresses }}
+  {{ end }}
+  {{ if .publishNotReadyAddresses }}
   publishNotReadyAddresses: {{ .publishNotReadyAddresses }}
-  {{- end }}
-  {{- if .headless }}
+  {{ end }}
+  {{ if and (eq .type "ClusterIP") .headless }}
   clusterIP: None
-  {{- end }}
+  {{ end }}
+  {{ if .ports }}
   ports:
-  {{- range .ports }}
+  {{ range .ports }}
   - name: {{ .name }}
     protocol: {{ .protocol }}
     port: {{ .port }}
     targetPort: {{ .targetPort }}
-    {{- if and (eq .type "nodePort") .nodePort }}
+    {{- if and (eq .type "NodePort") .nodePort }}
     nodePort: {{ .nodePort }}
     {{ end }}
-  {{- end }}
+  {{ end }}
+  {{ end }}
 ---
-{{- end -}}
-{{- end -}}
+{{ end }}
+{{ end }}
