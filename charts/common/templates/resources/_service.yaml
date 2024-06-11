@@ -1,17 +1,21 @@
 {{- define "common-helm-library.resources.service" -}}
-{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
 {{- range .Values.services }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ required (printf $requiredMsg "name") $.Values.name | quote}}
+  name: {{ .Chart.Name }}-{{ .name }}
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" $ | nindent 4 }}
+  annotations:
+    {{- include "common-helm-library.helpers.metadata.annotations" $ | nindent 4 }}
+    {{- if .annotations }}
+    {{- toYaml .annotations | nindent 4 }}
+    {{- end }}
 spec:
-  type: {{ required (printf $requiredMsg ".type") .type | quote }}
+  type: {{ .type }}
   selector:
-    {{- include "common-helm-library.helpers.metadata.selector-labels" $ | nindent 6 }}
-  {{- if .loadBalancerIP }}
+    {{- include "common-helm-library.helpers.metadata.selector-labels" $ | nindent 4 }}
+  {{- if and (eq .type "LoadBalancer") .loadBalancerIP }}
   loadBalancerIP: {{ .loadBalancerIP }}
   {{- end }}
   {{- if .publishNotReadyAddresses }}
@@ -25,6 +29,10 @@ spec:
   - name: {{ .name }}
     protocol: {{ .protocol }}
     port: {{ .port }}
+    targetPort: {{ .targetPort }}
+    {{- if and (eq .type "nodePort") .nodePort }}
+    nodePort: {{ .nodePort }}
+    {{ end }}
   {{- end }}
 ---
 {{- end -}}

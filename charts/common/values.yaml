@@ -136,7 +136,7 @@ defaults:
 
   # - list of services
   services: []
-    # - name: http-clusterip
+    # - name: http
     #   type: ClusterIP
     #   headless: false
     #   publishNotReadyAddresses: false
@@ -145,15 +145,7 @@ defaults:
     #   - name: http
     #     protocol: TCP
     #     port: 80
-    # - name: http-loadbalancer   
-    #   type: LoadBalancer
-    #   headless: true
-    #   publishNotReadyAddresses: false
-    #   loadBalancerIP: []
-    #   ports:
-    #   - name: http
-    #     protocol: TCP
-    #     port: 8080
+    #     targetPort: 80 
 
   # - list of volumes
   storage: []
