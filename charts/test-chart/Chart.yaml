@@ -1,0 +1,12 @@
+apiVersion: v2
+description: A Helm chart
+name: test-chart
+version: 1.0.0
+appVersion: 10.9.3
+dependencies:
+- name: common-helm-library
+  version: ~1.0.0
+  repository: https://jamie-stinson.github.io/common-helm-library/
+  import-values:
+    - child: defaults
+      parent: .

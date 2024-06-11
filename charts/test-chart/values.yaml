@@ -1,0 +1,128 @@
+name: test-chart
+namespace: business-application
+strategy: Recreate
+labels:
+  team: tbc
+  language: tbc
+  category: tbc
+
+image:
+  repository: jellyfin/jellyfin
+  tag: 10.9.4@sha256:e6b71e6cd18fa272ffaf5c376ac0db1113dab0bddf60e889a65eab05e17cfb73
+
+ingress:
+  public: false
+  host: jellyfin.projectwhitebox.com
+  port: 8096
+  service: jellyfin
+
+storage:
+  - name: config
+    type: emptyDir
+    ramDisk: false
+    size: 5Gi
+    mountPath: /config
+  - name: cache
+    type: emptyDir
+    ramDisk: false
+    size: 5Gi
+    mountPath: /cache
+  # - name: config
+  #   type: pvc
+  #   accessModes:
+  #     - ReadWriteMany    
+  #   nfs:
+  #     server: 10.10.0.12
+  #     path: /mnt/data-pool/jellyfin-test
+  #   size: 250Ti
+  #   readOnly: false
+  #   mountPath: /config
+  # - name: movies
+  #   type: pvc
+  #   accessModes:
+  #     - ReadWriteMany    
+  #   nfs:
+  #     server: 10.10.0.12
+  #     path: /mnt/data-pool/test-movies
+  #   size: 250Ti
+  #   readOnly: false
+  #   mountPath: /data/movies
+  # - name: tv
+  #   type: pvc
+  #   accessModes:
+  #     - ReadWriteMany    
+  #   nfs:
+  #     server: 10.10.0.12
+  #     path: /mnt/data-pool/test-tv
+  #   size: 250Ti
+  #   readOnly: false
+  #   mountPath: /data/tv
+
+services:
+  - name: clusterip
+    type: ClusterIP
+    ports:
+    - name: tcp
+      protocol: TCP
+      port: 3000
+    - name: udp
+      protocol: UDP
+      port: 3001
+    - name: strean
+      protocol: SCTP
+      port: 3002
+  - name: clusterip-headless
+    type: ClusterIP
+    headless: true
+    ports:
+    - name: tcp
+      protocol: TCP
+      port: 3000
+    - name: udp
+      protocol: UDP
+      port: 3001
+    - name: strean
+      protocol: SCTP
+      port: 3002
+  - name: clusterip-portless
+    type: ClusterIP
+    ports: {}
+  - name: nodePort
+    type: NodePort
+    headless: false
+    publishNotReadyAddresses: false
+    loadBalancerIP: {}
+    ports:
+    - name: websecure
+      protocol: TCP
+      port: 443
+      nodePort: 30050
+
+probes:
+  readinessProbe:
+    type: "httpGet"
+    path: "/health"
+    port: 8096
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 2
+    successThreshold: 1
+    failureThreshold: 1
+  livenessProbe:
+    type: "httpGet"
+    path: "/health"
+    port: 8096
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 2
+    successThreshold: 1
+    failureThreshold: 3
+  startupProbe:
+    type: "httpGet"
+    path: "/health"
+    port: 8096
+    initialDelaySeconds: 15
+    periodSeconds: 5
+    timeoutSeconds: 2
+    successThreshold: 1
+    failureThreshold: 3
