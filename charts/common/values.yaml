@@ -3,16 +3,20 @@
 
 defaults:
 
-  global:
-    annotations: []
-    labels: []
-
   workload:
     enabled: false
     annotations: []
     labels: []
+
+    ## Workload Type
+    ## The value must Deployment, DaemonSet or StatefulSet (case sensitive)
+    ##
     type: Deployment
+
+    ## Number of replicas
+    ##
     replicaCount: 1
+
     podManagementPolicy: OrderedReady
     strategy:
       type: RollingUpdate
