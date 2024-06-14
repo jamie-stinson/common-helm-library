@@ -6,10 +6,10 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.workload" . }}
   {{- include "common-helm-library.resources.ingressroute" . }}
   {{- include "common-helm-library.resources.service" . }}
-  {{- include "common-helm-library.resources.serviceaccount" . }}
+  {{- include "common-helm-library.resources.serviceAccount" . }}
   {{- include "common-helm-library.resources.configmap" . }}
-  {{- include "common-helm-library.resources.persistentvolume" . }}
-  {{- include "common-helm-library.resources.persistentvolumeclaim" . }}
+  {{- include "common-helm-library.resources.persistentVolume" . }}
+  {{- include "common-helm-library.resources.persistentVolumeClaim" . }}
   {{- include "common-helm-library.resources.role" . }}
   {{- include "common-helm-library.resources.rolebinding" . }}
   {{- include "common-helm-library.resources.storageClass" . }}

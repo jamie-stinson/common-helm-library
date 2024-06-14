@@ -9,7 +9,7 @@
 </div>
 
 <br>
-During the setup of my homelab, I encountered numerous challenges using a variety of external Helm charts. Having so many charts from different sources led to several annoyances such as different versioning standards, template duplication, inconsistent values, missing features, and poor security practices.
+During the setup of my homelab, I encountered numerous challenges using a variety of external Helm charts. Having so many charts from different sources led to several annoyances such as different versioning standards, monolithic charts, template duplication, inconsistent values, missing features, and poor security practices.
 
 <br>
 To address these issues, I developed a comprehensive library that enables users to create Helm charts with the following benefits:
@@ -17,6 +17,7 @@ To address these issues, I developed a comprehensive library that enables users 
 <br>
 
 * `Semantic Versioning`: Ensuring consistent and meaningful version updates.
+* `Minimal Design`: Following microservice artitecture, no monolithic charts
 * `Common Templates`: Eliminating repeated code for easier maintenance.
 * `Standardized & Clear Values`: Providing clarity and uniformity.
 * `Extensive Features`: Incorporating a wide range of Kubernetes functionalities into the template specification.

@@ -2,6 +2,162 @@
 # - It shows all available possible values you can use in your chart, with some hashed out examples.
 
 defaults:
+
+  global:
+    annotations: []
+    labels: []
+
+  workload:
+    enabled: false
+    annotations: []
+    labels: []
+    type: Deployment
+    replicaCount: 1
+    podManagementPolicy: OrderedReady
+    strategy:
+      type: RollingUpdate
+      maxSurge: 1
+      maxUnavailable: 1
+
+  storage:
+    enabled: false
+    persistentVolumes:
+      - name: pv-1
+        sizeLimit: 1Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteMany
+        mountOptions:
+          - nfsvers=4.1
+          - hard
+          - sync
+          - noac
+          - nolock
+        nfs:
+          server: 10.10.10.10
+          path: /mnt/test
+
+    volumeMounts:
+      - name: test-configmap
+        type: configMap
+        configMapName: my-config
+        items:
+          - key: key1
+            path: /path/to/mount/for/key1
+          - key: key2
+            path: /path/to/mount/for/key2
+      - name: test-hostpath
+        type: hostPath
+        hostPath: /mnt/test
+        mountPath: /mnt/hello
+        readOnly: false
+      - name: test-hostpath
+        type: emptyDir
+        ramDisk: true
+        sizeLimit: 1Gi
+        readOnly: false
+      - name: test-iscsi
+        type: iscsi
+        targetPortal: 1.2.3.4
+        portals: 1.2.3.4
+        iqn: 1
+        lun: 0
+        fsType: ext4
+        readOnly: false
+      - name: test-secret
+        type: secret
+        secretName: test-secret
+      - name: test-downwardapi
+        type: downwardAPI
+        items:
+          - path: /path/to/mount/for/field1
+            fieldRef:
+              fieldPath: field1
+          - path: /path/to/mount/for/field2
+            fieldRef:
+              fieldPath: field2
+      - name: test-pvc
+        type: pvc
+        claimName: pv-1
+        storageClassName: ""
+        readOnly: false
+      - name: test-pvc-template
+        type: template
+        storageClass: standard
+        accessModes:
+          - ReadWriteOnce
+        size: 2Gi
+        readOnly: false
+        whenDeleted: Retain
+        whenScaled: Retain
+
+  ingress:
+
+  rbac:
+    enabled: false
+    type: ClusterRole #ClusterRole or Role
+    rules:
+      - apiGroups:
+          - ""
+        resources:
+          - secrets
+        verbs:
+          - get
+          - create
+          - list
+          - watch
+          - update
+
+  monitoring:
+    enabled: false
+    prometheus:
+      enabled: true
+    loki:
+      enabled: true
+
+  configMap:
+    enabled: false
+    annotations: []
+    labels: []
+    data: []
+
+  serviceAccount:
+    enabled: false
+    annotations: []
+    labels: []
+
+  service:
+    enabled: false
+    annotations: []
+    lablels: []
+    type: ClusterIP
+    loadBalancerIP: {}
+    publishNotReadyAddresses: {}
+    clusterIP: {}
+    ports:
+      - name: web
+        protocol: TCP
+        port: 80
+      - name: test
+        protocol: TCP
+        port: 8000
+        nodePort: 30050
+
+  storageClass:
+    enabled: false
+    annotations: []
+    lablels: []
+    defaultClass: false
+    reclaimPolicy: Delete
+    allowVolumeExpansion: false
+    volumeBindingMode: Immediate
+    parameters: []
+    mountOptions: []
+
+
+
+
+defaults:
   # - application name
   name: example
    # - type of application i.e Deployment, StatefulSet & DaemonSet

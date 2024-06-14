@@ -4,8 +4,8 @@
 {{- range .Values.storage }}
 {{- if eq .type "template" }}
 persistentVolumeClaimRetentionPolicy:
-  whenDeleted: Retain
-  whenScaled: Retain
+  whenDeleted: {{ .whenDeleted }}
+  whenScaled: {{ .whenScaled }}
 volumeClaimTemplates:
   - metadata:
       name: {{ .name }}
@@ -14,7 +14,7 @@ volumeClaimTemplates:
       accessModes: {{ .accessModes | toYaml | nindent 10 }}
       resources:
           requests:
-          storage: {{ .size }}
+            storage: {{ .size }}
 {{- end }}
 {{- end }}
 {{- end }}

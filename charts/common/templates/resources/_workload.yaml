@@ -4,21 +4,34 @@ kind: {{ .Values.type | indent 1 }}
 metadata:
   name: {{ .Chart.Name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+    {{ include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+    {{ if .Values.workload.labels }}
+    {{ toYaml .Values.workload.labels | nindent 4 }}
+    {{ end }}
+  annotations:
+    {{ include "common-helm-library.helpers.metadata.annotations" $ | nindent 4 }}
+    {{ if .Values.workload.annotations }}
+    {{ toYaml .Values.workload.annotations | nindent 4 }}
+    {{ end }}
 spec:
   {{- if ne .Values.type "DaemonSet" }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
-  {{- if eq .Values.type "StatefulSet" }}
+  replicas: {{ .Values.workload.replicaCount }}
+  {{ end }}
+  {{ if eq .Values.type "StatefulSet" }}
   podManagementPolicy: OrderedReady
-  {{- end }}
-  {{- if and (eq .Values.type "StatefulSet") .Values.Service }}
-  serviceName: {{ required (printf $requiredMsg "name") .Values.name | quote }}
-  {{- end }}
-  {{- if eq .Values.type "Deployment" }}
+  {{ end }}
+  {{ if and (eq .Values.type "StatefulSet") .Values.Service.enabled }}
+  serviceName: {{ .Chart.Name }}
+  {{ end }}
+  {{ if eq .Values.type "Deployment" }}
   strategy:
-    type: {{ .Values.strategy }}
-  {{- end }}
+    type: {{ .Values.workload.strategy }}
+    {{ if eq .Values.workload.strategy.type "RollingUpdate" }}
+    rollingUpdate:
+      maxSurge: {{ .Values.workload.strategy.maxSurge }}
+      maxUnavailable: {{ .Values.workload.strategy.maxUnavailable }}
+    {{ end }}
+  {{ end }}
   selector:
     matchLabels:
       {{- include "common-helm-library.helpers.metadata.selector-labels" . | nindent 6 }}
@@ -26,12 +39,20 @@ spec:
     metadata:
       labels:
         {{- include "common-helm-library.helpers.metadata.labels" . | nindent 8 }}
+        {{ if .Values.workload.labels }}
+        {{ toYaml .Values.workload.labels | nindent 4 }}
+        {{ end }}
+      annotations:
+        {{ include "common-helm-library.helpers.metadata.annotations" $ | nindent 4 }}
+        {{ if .Values.workload.annotations }}
+        {{ toYaml .Values.workload.annotations | nindent 4 }}
+        {{ end }}
     spec:
-      {{- include "common-helm-library.helpers.containers.main" . | nindent 6 }}
-      {{- include "common-helm-library.helpers.initcontainers.main" . | nindent 6 }}
-      {{- include "common-helm-library.helpers.serviceaccount.main" . | nindent 6 }}
-      {{- include "common-helm-library.helpers.priorityclass.main" . | nindent 6 }}
-      {{- include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
-      {{- include "common-helm-library.helpers.volumes.volumeClaimTemplates" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.containers.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.initcontainers.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.serviceAccount.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.priorityclass.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.volumes.main" . | nindent 6 }}
+      {{ include "common-helm-library.helpers.volumes.volumeClaimTemplates" . | nindent 6 }}
 ---
 {{- end }}

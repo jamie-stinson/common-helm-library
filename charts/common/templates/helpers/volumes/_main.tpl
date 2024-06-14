@@ -27,7 +27,7 @@ volumes:
     portals: {{ .portals }}
     iqn: {{ .iqn }}
     lun: {{ .lun }}
-    fsType: ext4
+    fsType: {{ .fsType }}
     readOnly: {{ .readOnly }}
 {{- else if eq .type "secret" }}   
   secret:
@@ -42,7 +42,7 @@ volumes:
     {{- end }}
 {{- else if eq .type "pvc" }}
   persistentVolumeClaim:
-    claimName: {{ $.Release.Name }}-{{ .name }}
+    claimName: {{ .claimName }}
 {{- end }}
 {{- end }}
 {{- end }}

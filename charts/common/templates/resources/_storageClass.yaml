@@ -1,23 +1,36 @@
-{{- define "common-helm-library.resources.storageClass" -}}
-{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
-{{- if .Values.storageClass -}}
+{{ define "common-helm-library.resources.storageClass" -}}
+{{ if .Values.storageClass.enabled -}}
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+  name: {{ .Chart.Name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
-  {{- if .Values.storageClass.defaultClass }}
+    {{ include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+    {{ if .Values.storageClass.labels }}
+    {{ toYaml .Values.storageClass.labels | nindent 4 }}
+    {{ end }}
+  annotations:
+    {{ include "common-helm-library.helpers.metadata.annotations" $ | nindent 4 }}
+    {{ if .Values.storageClass.annotations }}
+    {{ toYaml .Values.storageClass.annotations | nindent 4 }}
+    {{ end }}
+  {{ if .Values.storageClass.defaultClass }}
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-  {{- end }}
-provisioner: {{ required (printf $requiredMsg "name") .Values.name | quote }}
+  {{ end }}
+{{ if .Values.storageClass.provisioner }}
+provisioner: {{ .Values.storageClass.provisioner }}
+{{ end }}
+{{ if .Values.storageClass.reclaimPolicy }}
 reclaimPolicy: {{ .Values.storageClass.reclaimPolicy }}
-{{- if .Values.storageClass.allowVolumeExpansion }}
+{{ end }}
+{{ if .Values.storageClass.allowVolumeExpansion }}
 allowVolumeExpansion: {{ .Values.storageClass.allowVolumeExpansion }}
-{{- end }}
-volumeBindingMode: Immediate
-{{- with .Values.storageClass.parameters }}
+{{ end }}
+{{ if .Values.storageClass.volumeBindingMode }}
+volumeBindingMode: {{ .Values.storageClass.volumeBindingMode }}
+{{ end }}
+{{ with .Values.storageClass.parameters }}
 parameters:
   {{- toYaml . | nindent 2 }}
 {{- end }}

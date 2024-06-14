@@ -1,17 +1,24 @@
-{{- define "common-helm-library.resources.configmap" -}}
-{{- $requiredMsg := include "common-helm-library.helpers.chart.check-required-value" . -}}
-{{- if .Values.config }}
+{{ define "common-helm-library.resources.configMap" -}}
+{{ if .Values.configMap.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ required (printf $requiredMsg "name") $.Values.name | quote }}
+  name: {{ .Chart.Name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+    {{ include "common-helm-library.helpers.metadata.labels" . | nindent 4 }}
+    {{ if .Values.configMap.labels }}
+    {{ toYaml .Values.configMap.labels | nindent 4 }}
+    {{ end }}
+  annotations:
+    {{ include "common-helm-library.helpers.metadata.annotations" . | nindent 4 }}
+    {{ if .Values.configMap.annotations }}
+    {{ toYaml .Values.configMap.annotations | nindent 4 }}
+    {{ end }}
 data:
-{{- range $key, $value := .Values.config }}
+{{ range $key, $value := .Values.configMap.data }}
   {{ $key }}: |-
 {{ $value | indent 4 }}
-{{- end }}
+{{ end }}
 ---
-{{- end }}
-{{- end }}
+{{ end }}
+{{ end }}
