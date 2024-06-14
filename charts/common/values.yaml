@@ -21,6 +21,53 @@ defaults:
 
   storage:
     enabled: false
+    volumes: []
+      ### emptyDir
+      #
+      # - name: my-emptydir-volume
+      #   type: emptyDir
+      #   mountPath: /path/to/mount/host
+      #   sizeLimit: 1Gi
+      #   readOnly: false
+      #   ramDisk: false
+      #
+      ### hostPath
+      #
+      # - name: my-hostpath-volume
+      #   type: hostPath
+      #   mountPath: /path/to/mount/host
+      #   hostPath: /path/to/mount/container
+      #   readOnly: false
+      #
+      ### secret
+      #
+      # - name: my-secret-volume
+      #   type: secret
+      #   mountPath: /path/to/mount/container
+      #   secretName: my-secret
+      #   items:
+      #     - key: key1
+      #       path: /path/to/mount/container
+      #
+      ### configMap
+      #
+      # - name: my-configmap-volume
+      #   type: configMap
+      #   configMapName: my-configmap
+      #   items:
+      #     - key: key1
+      #       path: /path/to/mount/container
+      #
+      ### downardAPI
+      #
+      # - name: my-downwardapi-volume
+      #   type: downwardAPI
+      #   items:
+      #     - path: /path/to/mount/for/field1
+      #       fieldRef:
+      #         fieldPath: field1
+      #
+
     persistentVolumes:
       - name: pv-1
         sizeLimit: 1Gi
@@ -38,24 +85,8 @@ defaults:
           path: /mnt/test
 
     volumeMounts:
-      - name: test-configmap
-        type: configMap
-        configMapName: my-config
-        items:
-          - key: key1
-            path: /path/to/mount/for/key1
-          - key: key2
-            path: /path/to/mount/for/key2
-      - name: test-hostpath
-        type: hostPath
-        hostPath: /mnt/test
-        mountPath: /mnt/hello
-        readOnly: false
-      - name: test-hostpath
-        type: emptyDir
-        ramDisk: true
-        sizeLimit: 1Gi
-        readOnly: false
+
+
       - name: test-iscsi
         type: iscsi
         targetPortal: 1.2.3.4
@@ -64,18 +95,6 @@ defaults:
         lun: 0
         fsType: ext4
         readOnly: false
-      - name: test-secret
-        type: secret
-        secretName: test-secret
-      - name: test-downwardapi
-        type: downwardAPI
-        items:
-          - path: /path/to/mount/for/field1
-            fieldRef:
-              fieldPath: field1
-          - path: /path/to/mount/for/field2
-            fieldRef:
-              fieldPath: field2
       - name: test-pvc
         type: pvc
         claimName: pv-1
@@ -91,8 +110,6 @@ defaults:
         whenDeleted: Retain
         whenScaled: Retain
 
-  ingress:
-
   rbac:
     enabled: false
     type: ClusterRole #ClusterRole or Role
@@ -107,13 +124,6 @@ defaults:
           - list
           - watch
           - update
-
-  monitoring:
-    enabled: false
-    prometheus:
-      enabled: true
-    loki:
-      enabled: true
 
   configMap:
     enabled: false
