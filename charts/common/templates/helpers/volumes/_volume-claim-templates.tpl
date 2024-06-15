@@ -14,7 +14,7 @@ volumeClaimTemplates:
       accessModes: {{ .accessModes | toYaml | nindent 10 }}
       resources:
           requests:
-            storage: {{ .size }}
+            storage: {{ .sizeLimit }}
 {{- end }}
 {{- end }}
 {{- end }}

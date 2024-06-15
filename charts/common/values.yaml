@@ -28,6 +28,9 @@ defaults:
 
   storage:
     enabled: false
+    persistentVolumes:
+
+
     volumeMounts: []
       ## emptyDir
       #
@@ -78,43 +81,35 @@ defaults:
       # - name: my-pvc-volume
       #   type: pvc
       #   mountPath: /path/to/mount/container
-      #   claimName: pv-1
+      #   claimName: ""
       #   readOnly: false
       #
-      ## pvc template
+      ## pvcTemplate
       #
       # - name: my-pvc-template-volume
       #   type: template
       #   mountPath: /path/to/mount/container
-      #   claimName: pv-1
+      #   sizeLimit: 1Gi
       #   readOnly: false
-
-
-      - name: test-pvc-template
-        type: template
-        mountPath: /path/to/mount/container
-        storageClass: standard
-        accessModes:
-          - ReadWriteOnce
-        size: 2Gi
-        readOnly: false
-        whenDeleted: Retain
-        whenScaled: Retain
-
-
-      - name: my-iscsi-volume
-        type: iscsi
-        mountPath: /path/to/mount/container
-        portals: ['10.0.2.16:3260', '10.0.2.17:3260']
-        targetPortal: 10.0.2.15:3260
-        iqn: iqn.2001-04.com.example:storage.kube.sys1.xyz
-        lun: 0
-        fsType: ext4
-        chapAuthDiscovery: true
-        chapAuthSession: true
-        secretRef:
-          name: chap-secret
-        readOnly: false
+      #   storageClass: "my-storageclass"
+      #   accessModes: []
+      #   whenDeleted: Retain
+      #   whenScaled: Retain
+      #
+      ## iscsii
+      #
+      # - name: my-iscsi-volume
+      #   type: iscsi
+      #   mountPath: /path/to/mount/container
+      #   readOnly: false
+      #   targetPortal: 10.0.2.15:3260
+      #   portals: ['10.0.2.16:3260', '10.0.2.17:3260']
+      #   iqn: iqn.2001-04.com.example:storage.kube.sys1.xyz
+      #   lun: 0
+      #   fsType: ext4
+      #   chapAuthDiscovery: true
+      #   chapAuthSession: true
+      #   authSecret: iscsii-chap-secret
 
 
 
