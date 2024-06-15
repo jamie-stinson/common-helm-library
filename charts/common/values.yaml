@@ -18,6 +18,9 @@ defaults:
     replicaCount: 1
 
     podManagementPolicy: OrderedReady
+
+    ## Strategy used to replace old Pods by new ones. 
+    ##
     strategy:
       type: RollingUpdate
       maxSurge: 1
@@ -25,8 +28,8 @@ defaults:
 
   storage:
     enabled: false
-    volumes: []
-      ### emptyDir
+    volumeMounts: []
+      ## emptyDir
       #
       # - name: my-emptydir-volume
       #   type: emptyDir
@@ -35,7 +38,7 @@ defaults:
       #   readOnly: false
       #   ramDisk: false
       #
-      ### hostPath
+      ## hostPath
       #
       # - name: my-hostpath-volume
       #   type: hostPath
@@ -43,7 +46,7 @@ defaults:
       #   hostPath: /path/to/mount/host
       #   readOnly: false
       #
-      ### secret
+      ## secret
       #
       # - name: my-secret-volume
       #   type: secret
@@ -52,7 +55,7 @@ defaults:
       #     - key: key1
       #       path: /path/to/mount/container
       #
-      ### configMap
+      ## configMap
       #
       # - name: my-configmap-volume
       #   type: configMap
@@ -61,7 +64,7 @@ defaults:
       #     - key: key1
       #       path: /path/to/mount/container
       #
-      ### downardAPI
+      ## downardAPI
       #
       # - name: my-downwardapi-volume
       #   type: downwardAPI
@@ -70,14 +73,22 @@ defaults:
       #       fieldRef:
       #         fieldPath: field1
       #
-      ### pvc
+      ## pvc
       #
       # - name: my-pvc-volume
       #   type: pvc
       #   mountPath: /path/to/mount/container
       #   claimName: pv-1
-      #   storageClassName: ""
       #   readOnly: false
+      #
+      ## pvc template
+      #
+      # - name: my-pvc-template-volume
+      #   type: template
+      #   mountPath: /path/to/mount/container
+      #   claimName: pv-1
+      #   readOnly: false
+
 
       - name: test-pvc-template
         type: template
