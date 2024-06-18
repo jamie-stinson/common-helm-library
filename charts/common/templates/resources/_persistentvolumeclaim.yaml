@@ -6,11 +6,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ $.Release.Name }}-{{ .name }}
 spec:
-  storageClassName: {{ .storageClassName }}
+  storageClassName: {{ .storageClass }}
   accessModes: {{ .accessModes | toYaml | nindent 10 }}
   resources:
     requests:
-      storage: {{ .size }}
+      storage: {{ .sizeLimit }}
   volumeName: {{ $.Release.Name }}-{{ .name }}   
 ---
 {{ end }}

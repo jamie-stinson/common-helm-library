@@ -29,7 +29,29 @@ defaults:
   storage:
     enabled: false
     persistentVolumes:
-
+      - name: pv-1
+        sizeLimit: 1Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteMany
+        mountOptions:
+          - nfsvers=4.1
+          - hard
+          - sync
+          - noac
+          - nolock
+        nfs:
+          server: 10.10.10.10
+          path: /path/to/mount/nfs
+    persistentVolumeClaims:
+      - name: pvc-1
+        sizeLimit: 1Gi
+        accessModes:
+          - ReadWriteMany
+        ## Claims that specify a storageClass of "" disable dynamic PV dynamic provisioning and need to specify a PV with VolumeName.
+        #
+        storageClass: "" # If using a static PV, empty string must be explicitly set otherwise default StorageClass will be set
+        volumeName: ""
 
     volumeMounts: []
       ## emptyDir
@@ -110,26 +132,6 @@ defaults:
       #   chapAuthDiscovery: true
       #   chapAuthSession: true
       #   authSecret: iscsii-chap-secret
-
-
-
-
-    persistentVolumes:
-      - name: pv-1
-        sizeLimit: 1Gi
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteMany
-        mountOptions:
-          - nfsvers=4.1
-          - hard
-          - sync
-          - noac
-          - nolock
-        nfs:
-          server: 10.10.10.10
-          path: /mnt/test
-
 
   rbac:
     enabled: false
