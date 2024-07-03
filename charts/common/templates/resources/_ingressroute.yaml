@@ -8,33 +8,16 @@ metadata:
   namespace: platform-ingress
 spec:
   entryPoints:
-  {{- if ne .Release.Name "traefik" }}
-    {{- if .Values.ingress.public }}
   - web
   - websecure
-    {{- else }}
-  - internal  
-    {{- end }}
-  {{- end }}
-  {{- if eq .Release.Name "traefik" }}
-  - traefik
-  {{- end }}
- 
   routes:
   - match: Host(`{{ .Values.ingress.host }}`)
     kind: Rule
     services:
-    {{- if eq .Release.Name "traefik" }}    
-    - name: api@internal
-      kind: TraefikService
-    {{- else }}
     - name: {{ .Values.ingress.service }}
       kind: Service
       namespace: {{ .Release.Namespace }}
       port: {{ .Values.ingress.port }}
-    {{- end }}
-  tls:
-    secretName: cloudflare-letsencrypt-production-certificate
 ---
 {{- end }}
 {{- end }}
