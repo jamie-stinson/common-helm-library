@@ -1,0 +1,340 @@
+global:
+  # -- Annotations for all resources
+  annotations: {}
+
+  # -- Labels for all resources
+  labels: {}
+
+workload:
+  # -- Main workload feature flag
+  enabled: false
+
+  # -- Main workload type. Either: `Deployment`, `StatefulSet` or `DaemonSet`
+  type: Deployment
+
+  # -- Annotations for main workload type
+  annotations: {}
+
+  # -- Labels for main workload type
+  labels: {}
+
+  image:
+    # -- Registry to use for the main workload
+    registry: ""
+
+    # -- Repository to use for the main workload
+    repository: ""
+
+    # -- Tag to use for the main workload
+    tag: ""
+
+    # -- Image pull policy for the main workload
+    imagePullPolicy: IfNotPresent
+
+  # -- Command to pass to the main workload
+  command: []
+
+  # -- Arguments to pass to the main workload
+  args: []
+
+  # -- Environment variables to pass to main workload
+  envs: []
+  #   - name: EXAMPLE_ENV
+  #     value: "HELLO"
+
+  # -- envFrom to pass to application controller
+  envsConfigMap: []
+  # - name: EXAMPLE_ENV
+  #   configMap: MyConfigMap
+  #   key: HELLO
+
+  # -- envFrom to pass to application controller
+  envsSecret: []
+  # - name: EXAMPLE_ENV
+  #   secret: MySecret
+  #   key: HELLO
+
+  # -- The number of pods to run.
+  replicaCount: 1
+
+  # -- Toggle and define security context.
+  ## Unless absolutely neccessary these should not be changed.
+  securityContext:
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+    capabilities: []
+    privileged: false
+    fsGroup: 556
+    runAsUser: 556
+    runAsGroup: 556
+    runAsNonRoot: true
+    fsGroupChangePolicy: Always
+
+  # -- Resource limits and requests for the main workload pods
+  resources:
+    requests:
+      cpu: 10m
+      memory: 10Mi
+    limits:
+      cpu: 10m
+      memory: 10Mi
+
+  probes: {}
+    # -- Probes for main workload
+    ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+    # readinessProbe:
+    #   type: httpGet
+    #   path: "/health"
+    #   port: 8080
+    #   host: "localhost"
+    #   httpHeaders:
+    #     Content-Type: "application/json"
+    #   scheme: "HTTP"
+    #   periodSeconds: 10
+    #   timeoutSeconds: 5
+    #   successThreshold: 1
+    #   failureThreshold: 3
+    #   initialDelaySeconds: 30
+
+    # livenessProbe:
+    #   type: tcpSocket
+    #   port: 8080
+    #   host: "localhost"
+    #   periodSeconds: 10
+    #   timeoutSeconds: 5
+    #   successThreshold: 1
+    #   failureThreshold: 3
+    #   initialDelaySeconds: 30
+
+    # startupProbe:
+    #   type: exec
+    #   command: ["ls", "-l"]
+    #   periodSeconds: 10
+    #   timeoutSeconds: 5
+    #   successThreshold: 1
+    #   failureThreshold: 3
+    #   initialDelaySeconds: 30
+
+  storage: []
+    ## configMap
+    # - name: my-configmap-volume
+    #   type: configMap
+    #   mountPath: /path/to/mount/container
+    #   configMapName: my-configmap
+    #   items:
+    #     - key: key1
+    #       path: /path/to/mount/container
+    ## secret
+    # - name: my-secret-volume
+    #   type: secret
+    #   mountPath: /path/to/mount/container
+    #   secretName: my-secret
+    #   items:
+    #     - key: key1
+    #       path: /path/to/mount/container
+    ## emptyDir
+    # - name: my-emptydir-volume
+    #   type: emptyDir
+    #   mountPath: /path/to/mount/container
+    #   sizeLimit: 1Gi
+    #   readOnly: false
+    #   ramDisk: false
+    ## hostPath
+    # - name: my-hostpath-volume
+    #   type: hostPath
+    #   mountPath: /path/to/mount/container
+    #   hostPath: /path/to/mount/host
+    #   readOnly: false
+    ## downardAPI
+    # - name: my-downwardapi-volume
+    #   type: downwardAPI
+    #   mountPath: /path/to/mount/container
+    #   items:
+    #     - path: /path/to/mount/for/field1
+    #       fieldRef:
+    #         fieldPath: field1
+    ## pvc
+    # - name: my-pvc-volume
+    #   type: pvc
+    #   mountPath: /path/to/mount/container
+    #   claimName: "test"
+    #   readOnly: false
+    ## pvcTemplate -- STATEFULSET ONLY
+    # - name: my-pvc-template-volume
+    #   type: template
+    #   mountPath: /path/to/mount/container
+    #   sizeLimit: 1Gi
+    #   readOnly: false
+    #   storageClass: "my-storageclass"
+    #   accessModes: []
+    #   whenDeleted: Retain
+    #   whenScaled: Retain
+
+  # -- Termination grace period seconds for container lifecycle hook
+  terminationGracePeriodSeconds: 30
+
+  # -- Priority class for the main workload pods
+  priorityClassName: ""
+
+  # -- Node selector for the main workload pods
+  nodeSelector: {}
+
+  # -- Tolerations for use with node taints
+  tolerations: []
+
+  # -- Assign custom affinity rules to the main workload
+  affinity: {}
+
+  # -- Assign custom TopologySpreadConstraints rules to the main workload
+  # Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+  topologySpreadConstraints:
+    # - maxSkew: 1
+    #   topologyKey: topology.kubernetes.io/zone
+    #   whenUnsatisfiable: DoNotSchedule
+
+  strategy:
+    # -- Deployment strategy to be added to the main workload
+    type: RollingUpdate
+
+    # -- Maximum number or percentage of pods that can be created over the desired number of pods
+    minAvailable: 1
+
+    # -- Maximum number or percentage of pods that can be unavailable during the update process
+    maxUnavailable: 1
+
+autoscaling:
+  # -- Enable Horizontal Pod Autoscaler (HPA) for the main workload
+  enabled: false
+
+  # -- Annotations for HPA
+  annotations: {}
+
+  # -- Labels for HPA
+  labels: {}
+
+  # -- Minimum number of replicas for the main workload (HPA)
+  minReplicas: 2
+
+  # -- Maximum number of replicas for the main workload (HPA)
+  maxReplicas: 3
+
+  # -- Average CPU utilization percentage for the main workload (HPA)
+  targetCPUUtilizationPercentage: 75
+
+  # -- Average memory utilization percentage for the main workload (HPA)
+  targetMemoryUtilizationPercentage: 75
+
+  # -- Configures the scaling behavior of the target in both Up and Down directions.
+  behavior: {}
+  #   scaleDown:
+  #    stabilizationWindowSeconds: 300
+  #    policies:
+  #     - type: Pods
+  #       value: 1
+  #       periodSeconds: 180
+  #   scaleUp:
+  #     stabilizationWindowSeconds: 300
+  #     policies:
+  #     - type: Pods
+  #       value: 2
+  #       periodSeconds: 60
+
+  # -- Configures custom HPA metrics for the main workload
+  # Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+  metrics: []
+
+pdb:
+  # -- Deploy a PodDisruptionBudget for the application controller
+  # Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+  enabled: false
+
+  # -- Labels to be added to application controller pdb
+  labels: {}
+
+  # -- Annotations to be added to application controller pdb
+  annotations: {}
+
+  # -- Maximum number of pods that can be unavailable during a disruption as a number or percentage (eg.: 50%).
+  ## Mutually exlusive with minAvailable
+  ## Has higher precedence over `minAvailable`
+  maxUnavailable: "1"
+
+  # -- Minimum number of pods that must be available at any given time during a disruption as a number or percentage (eg.: 50%)
+  ## Mutually exlusive with minAvailable
+  minAvailable: ""
+
+service:
+  # -- Service feature flag
+  enabled: false
+
+  # -- Main workload type. Either: `ClusterIP`, `NodePort`, `LoadBalancer` or `ExternalName`
+  type: ClusterIP
+
+  # -- Annotations for service
+  annotations: {}
+
+  # -- Labels for service
+  labels: {}
+
+  # -- LoadBalancer will get created with the IP specified in this field
+  loadBalancerIP: {}
+
+  # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
+  clusterIP: {}
+
+  # -- List of ports for service
+  ports: []
+    # - name: web
+    #   protocol: TCP
+    #   port: 80
+
+configMaps:
+    # -- Name for configMap
+  - name: example-config
+
+    # -- Feature flag
+    enabled: false
+
+    # -- Annotations for service
+    annotations: {}
+
+    # -- Labels for service
+    labels: {}
+
+    # -- List of config data for the configMap
+    data: {}
+      # example.conf: |
+      #   listen 80
+
+serviceAccount:
+  # -- Service Account feature flag
+  enabled: false
+
+  # -- Annotations for service
+  annotations: {}
+
+  # -- Labels for service
+  labels: {}
+
+  # -- Automount API credentials for the Service Account into the pod
+  automountServiceAccountToken: false
+
+rbac:
+  # -- RBAC feature flag
+  enabled: false
+
+  # -- RBAC type. Either: `ClusterRole` or `Role`
+  type: Role
+
+  # -- RBAC Rules
+  rules: []
+    # - apiGroups:
+    #     - ""
+    #   resources:
+    #     - secrets
+    #   verbs:
+    #     - get
+    #     - create
+    #     - list
+    #     - watch
+    #     - update

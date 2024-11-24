@@ -1,0 +1,7 @@
+apiVersion: v2
+name: common-helm-library
+description: A Helm library chart
+type: library
+version: 1.0.0
+maintainers:
+  - name: jamie-stinson

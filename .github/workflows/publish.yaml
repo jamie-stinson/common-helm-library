@@ -1,0 +1,37 @@
+name: "Package and Publish Release to GHCR"
+
+permissions:
+  contents: read
+  packages: write
+
+on:
+  release:
+    types: 
+      - 'published'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4.2.0
+        with:
+          version: 'v3.13.3'
+
+      - name: Login to GHCR Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Push chart to Docker Hub
+        run: |
+          pkg=$(helm package . | awk '/Successfully packaged chart/ {print $NF}')
+          helm push "${pkg}" oci://ghcr.io/jamie-stinson/common-helm-library
