@@ -56,7 +56,7 @@ workload:
 ```
 2. Install using the latest version of the common-helm-library
 
-```helm install my-release oci://ghcr.io/jamie-stinson/common-helm-library -f values.yaml```
+```helm install my-release oci://ghcr.io/jamie-stinson/common-helm-library/common-helm-library -f values.yaml```
 
 ### Recommendations
 It’s highly recommended to use tools like ArgoCD or Flux to automate rollouts for this library and your values files. However, setting up these tools is outside the scope of this project.
