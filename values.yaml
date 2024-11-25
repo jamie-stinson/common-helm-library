@@ -193,7 +193,7 @@ workload:
     #   whenUnsatisfiable: DoNotSchedule
 
   strategy:
-    # -- Deployment strategy to be added to the main workload
+    # -- Deployment or StatefulSet strategy to be added to the main workload
     type: RollingUpdate
 
     # -- Maximum number or percentage of pods that can be created over the desired number of pods

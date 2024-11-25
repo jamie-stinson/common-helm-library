@@ -8,4 +8,8 @@ strategy:
     maxUnavailable: {{ .Values.workload.strategy.maxUnavailable }}
   {{- end }}
 {{- end }}
+{{- if eq .Values.workload.type "StatefulSet" }}
+updateStrategy:
+  type: {{ .Values.workload.strategy.type }}
+{{- end }}
 {{- end }}
