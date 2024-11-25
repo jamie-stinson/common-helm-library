@@ -338,3 +338,26 @@ rbac:
     #     - list
     #     - watch
     #     - update
+
+# -- REQUIRES: Prometheus
+serviceMonitor:
+  # -- Enable a prometheus ServiceMonitor
+  enabled: true
+  # -- Prometheus ServiceMonitor port
+  port: 81
+  # -- Prometheus ServiceMonitor interval
+  interval: 30s
+  # -- Prometheus ServiceMonitor scrapeTimeout. If empty, Prometheus uses the global scrape timeout unless it is less than the target's scrape interval value in which the latter is used.
+  scrapeTimeout: ""
+  # -- Prometheus ServiceMonitor path
+  path: /metrics
+  # -- Prometheus [RelabelConfigs] to apply to samples before scraping
+  relabelings: []
+  # -- Prometheus [MetricRelabelConfigs] to apply to samples before ingestion
+  metricRelabelings: []
+  # -- When true, honorLabels preserves the metric’s labels when they collide with the target’s labels.
+  honorLabels: false
+  # -- Prometheus ServiceMonitor scheme
+  scheme: ""
+  # -- Prometheus ServiceMonitor tlsConfig
+  tlsConfig: {}

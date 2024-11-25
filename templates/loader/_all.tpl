@@ -11,4 +11,5 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.serviceAccount" . }}
   {{- include "common-helm-library.resources.role" . }}
   {{- include "common-helm-library.resources.roleBinding" . }}
+  {{- include "common-helm-library.resources.serviceMonitor" . }}
 {{- end }}
