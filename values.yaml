@@ -343,6 +343,10 @@ rbac:
 serviceMonitor:
   # -- Enable a prometheus ServiceMonitor
   enabled: true
+  # -- Annotations for serviceMonitor
+  annotations: {}
+  # -- Labels for serviceMonitor
+  labels: {}
   # -- Prometheus ServiceMonitor port
   port: 81
   # -- Prometheus ServiceMonitor interval
