@@ -342,7 +342,7 @@ rbac:
 # -- REQUIRES: Prometheus
 serviceMonitor:
   # -- Enable a prometheus ServiceMonitor
-  enabled: true
+  enabled: false
   # -- Annotations for serviceMonitor
   annotations: {}
   # -- Labels for serviceMonitor
