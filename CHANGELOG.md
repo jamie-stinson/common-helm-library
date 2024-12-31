@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.0...v1.1.1) (2024-12-31)
+
+
+### Bug Fixes
+
+* affinity indent ([#13](https://github.com/jamie-stinson/common-helm-library/issues/13)) ([2365bc5](https://github.com/jamie-stinson/common-helm-library/commit/2365bc5dd50e85e8a396b64ece880a9917716b1c))
+
 ## [1.1.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.0.2...v1.1.0) (2024-12-31)
 
 
