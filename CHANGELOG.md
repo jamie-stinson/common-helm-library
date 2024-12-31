@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.0.2...v1.1.0) (2024-12-31)
+
+
+### Features
+
+* add prometheus servicemonitor support ([#11](https://github.com/jamie-stinson/common-helm-library/issues/11)) ([797e605](https://github.com/jamie-stinson/common-helm-library/commit/797e605cc9b4e1d192f1275c5957d7d0dd08775c))
+* add strategy support for statefulset ([#9](https://github.com/jamie-stinson/common-helm-library/issues/9)) ([07260d8](https://github.com/jamie-stinson/common-helm-library/commit/07260d8d17538b289aff27d91becbe527e99d273))
+
+
+### Bug Fixes
+
+* crb subject namespace ([#12](https://github.com/jamie-stinson/common-helm-library/issues/12)) ([ba5a7c9](https://github.com/jamie-stinson/common-helm-library/commit/ba5a7c971f6989672be4ea495689b0c689f76d5b))
+
 ## [1.0.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.0.1...v1.0.2) (2024-11-24)
 
 
