@@ -21,9 +21,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: {{ .Release.Name }}
-  {{- if eq .Values.type "Role" }}
   namespace: {{ .Release.Namespace }}
-  {{- end }}
 ---
 {{- end }}
 {{- end }}
