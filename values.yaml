@@ -71,13 +71,7 @@ workload:
     fsGroupChangePolicy: Always
 
   # -- Resource limits and requests for the main workload pods
-  resources:
-    requests:
-      cpu: 10m
-      memory: 10Mi
-    limits:
-      cpu: 10m
-      memory: 10Mi
+  resources: {}
 
   probes: {}
     # -- Probes for main workload
