@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.6](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.5...v1.1.6) (2024-12-31)
+
+
+### Bug Fixes
+
+* disable default resources ([#23](https://github.com/jamie-stinson/common-helm-library/issues/23)) ([3e164ac](https://github.com/jamie-stinson/common-helm-library/commit/3e164acf97fa1832e20f9a588e9c6949e70312c9))
+
 ## [1.1.5](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.4...v1.1.5) (2024-12-31)
 
 
