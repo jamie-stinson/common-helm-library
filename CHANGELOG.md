@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.4...v1.1.5) (2024-12-31)
+
+
+### Bug Fixes
+
+* configmap annotation and label references ([#21](https://github.com/jamie-stinson/common-helm-library/issues/21)) ([aa48a18](https://github.com/jamie-stinson/common-helm-library/commit/aa48a186d0b459582e370cf803ef30aa286b0111))
+
 ## [1.1.4](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.3...v1.1.4) (2024-12-31)
 
 
