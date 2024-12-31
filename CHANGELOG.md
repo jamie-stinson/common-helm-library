@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.9](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.8...v1.1.9) (2024-12-31)
+
+
+### Bug Fixes
+
+* volume mount indentation ([#29](https://github.com/jamie-stinson/common-helm-library/issues/29)) ([450907a](https://github.com/jamie-stinson/common-helm-library/commit/450907ae8f5076e40a30f439c17eadc3b1f14372))
+
 ## [1.1.8](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.7...v1.1.8) (2024-12-31)
 
 
