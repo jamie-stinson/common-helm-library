@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.2...v1.1.3) (2024-12-31)
+
+
+### Bug Fixes
+
+* add podnamespace env variable ([#17](https://github.com/jamie-stinson/common-helm-library/issues/17)) ([9e60eed](https://github.com/jamie-stinson/common-helm-library/commit/9e60eed27f56232a9b7d649102e28f7a22bc26ea))
+
 ## [1.1.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.1...v1.1.2) (2024-12-31)
 
 
