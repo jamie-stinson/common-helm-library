@@ -23,5 +23,6 @@ spec:
   selector:
     matchLabels:
       {{- include "common-helm-library.helpers.metadata.selector-labels" . | indent 6 }}
+---
 {{- end }}
 {{- end }}
