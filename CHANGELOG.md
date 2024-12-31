@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.7](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.6...v1.1.7) (2024-12-31)
+
+
+### Bug Fixes
+
+* add missing node name env variable ([#25](https://github.com/jamie-stinson/common-helm-library/issues/25)) ([1825441](https://github.com/jamie-stinson/common-helm-library/commit/182544158e04aba9ee7390181413967b089ec03e))
+
 ## [1.1.6](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.5...v1.1.6) (2024-12-31)
 
 
