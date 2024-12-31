@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.8](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.7...v1.1.8) (2024-12-31)
+
+
+### Bug Fixes
+
+* pdb template ([#27](https://github.com/jamie-stinson/common-helm-library/issues/27)) ([50e78da](https://github.com/jamie-stinson/common-helm-library/commit/50e78da576ab5cd2a098b6f7baeddde8eeb482a2))
+
 ## [1.1.7](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.6...v1.1.7) (2024-12-31)
 
 
