@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.1...v1.1.2) (2024-12-31)
+
+
+### Bug Fixes
+
+* disable service monitor by default ([#15](https://github.com/jamie-stinson/common-helm-library/issues/15)) ([12c6fa5](https://github.com/jamie-stinson/common-helm-library/commit/12c6fa515bf7804bdcc1ffe6273062066fbbae2c))
+
 ## [1.1.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.0...v1.1.1) (2024-12-31)
 
 
