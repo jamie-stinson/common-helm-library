@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.3...v1.1.4) (2024-12-31)
+
+
+### Bug Fixes
+
+* allow configmap to call common labels/annotations ([#19](https://github.com/jamie-stinson/common-helm-library/issues/19)) ([d4b97a8](https://github.com/jamie-stinson/common-helm-library/commit/d4b97a83d21682e5aa71b2a34c5fe4faecfa171e))
+
 ## [1.1.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.2...v1.1.3) (2024-12-31)
 
 
