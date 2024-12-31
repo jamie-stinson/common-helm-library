@@ -12,6 +12,10 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: metadata.namespace
+  - name: POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
   - name: HOST_IP_ADDRESS
     valueFrom:
       fieldRef:
