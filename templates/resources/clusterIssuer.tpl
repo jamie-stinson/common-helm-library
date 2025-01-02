@@ -3,7 +3,7 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: {{ .Release.Name }}
+  name: cloudflare-issuer
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | indent 4 }}
     {{- if .Values.certificate.labels }}
