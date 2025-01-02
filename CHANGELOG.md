@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.2...v1.3.3) (2025-01-02)
+
+
+### Bug Fixes
+
+* auto reflection ([#42](https://github.com/jamie-stinson/common-helm-library/issues/42)) ([0e328dc](https://github.com/jamie-stinson/common-helm-library/commit/0e328dcafa4814a4d2700ef215405eec029875e3))
+
 ## [1.3.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.1...v1.3.2) (2025-01-02)
 
 
