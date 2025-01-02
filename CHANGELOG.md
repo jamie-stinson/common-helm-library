@@ -12,6 +12,18 @@
 
 * auto reflection ([#42](https://github.com/jamie-stinson/common-helm-library/issues/42)) ([0e328dc](https://github.com/jamie-stinson/common-helm-library/commit/0e328dcafa4814a4d2700ef215405eec029875e3))
 
+## [1.4.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.2...v1.4.0) (2025-01-02)
+
+
+### Features
+
+* certificate namespace ([#44](https://github.com/jamie-stinson/common-helm-library/issues/44)) ([f20b944](https://github.com/jamie-stinson/common-helm-library/commit/f20b944d32b88cbe68a536ef609357ad3c074e5b))
+
+
+### Bug Fixes
+
+* auto reflection ([#42](https://github.com/jamie-stinson/common-helm-library/issues/42)) ([0e328dc](https://github.com/jamie-stinson/common-helm-library/commit/0e328dcafa4814a4d2700ef215405eec029875e3))
+
 ## [1.3.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.2...v1.3.3) (2025-01-02)
 
 
