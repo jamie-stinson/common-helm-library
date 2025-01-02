@@ -10,7 +10,7 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: Host(`{{ .Values.ingress.host }}`)
+    match: Host(`{{ .Values.ingress.prefix }}.{{ .Values.ingress.domain }}`)
     services:
     - kind: Service
       name: {{ .Release.Name }}
