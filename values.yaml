@@ -333,6 +333,13 @@ rbac:
     #     - watch
     #     - update
 
+# -- REQUIRES: Traefik
+ingress:
+  # -- Enable Ingress
+  enabled: true
+  host: "watch.openjamlab.com"
+  containerPort: "8080"
+
 # -- REQUIRES: Cert Manager
 certificate:
   # -- Enable certificate
