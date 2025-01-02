@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.2.0...v1.2.1) (2025-01-02)
+
+
+### Bug Fixes
+
+* certificate name ([#33](https://github.com/jamie-stinson/common-helm-library/issues/33)) ([68ac7dc](https://github.com/jamie-stinson/common-helm-library/commit/68ac7dc6590fdadeb4a0b8b234833651ec4b9a8c))
+
 ## [1.2.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.9...v1.2.0) (2025-01-02)
 
 
