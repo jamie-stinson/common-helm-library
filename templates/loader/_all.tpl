@@ -14,4 +14,5 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.serviceMonitor" . }}
   {{- include "common-helm-library.resources.certificate" . }}
   {{- include "common-helm-library.resources.clusterissuer" . }}
+  {{- include "common-helm-library.resources.ingressroute" . }}
 {{- end }}
