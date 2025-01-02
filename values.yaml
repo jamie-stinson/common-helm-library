@@ -333,6 +333,13 @@ rbac:
     #     - watch
     #     - update
 
+# -- REQUIRES: Traefik
+ingress:
+  # -- Enable Ingress
+  enabled: false
+  host: ""
+  containerPort: ""
+
 # -- REQUIRES: Cert Manager
 certificate:
   # -- Enable certificate
