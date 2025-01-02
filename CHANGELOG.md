@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.9...v1.2.0) (2025-01-02)
+
+
+### Features
+
+* cert-manager support ([#31](https://github.com/jamie-stinson/common-helm-library/issues/31)) ([47884a6](https://github.com/jamie-stinson/common-helm-library/commit/47884a6b8b910ee02113f108d078da95ddcf9504))
+
 ## [1.1.9](https://github.com/jamie-stinson/common-helm-library/compare/v1.1.8...v1.1.9) (2024-12-31)
 
 
