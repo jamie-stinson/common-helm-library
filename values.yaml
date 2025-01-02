@@ -333,6 +333,21 @@ rbac:
     #     - watch
     #     - update
 
+# -- REQUIRES: Cert Manager
+certificate:
+  # -- Enable certificate
+  enabled: false
+  # -- Annotations for certificate
+  annotations: {}
+  # -- Labels for certificate
+  labels: {}
+  # -- Domain for wildcard certificate
+  domain: ""
+  # -- Cloudflare email address
+  email: ""
+  # -- Cloudflare API Token
+  cloudflareApiToken: ""
+
 # -- REQUIRES: Prometheus
 serviceMonitor:
   # -- Enable a prometheus ServiceMonitor
