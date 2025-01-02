@@ -4,7 +4,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: letsencrypt-wildcard
-  namespace: traefik
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | indent 4 }}
     {{- if .Values.certificate.labels }}
