@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.0...v1.3.1) (2025-01-02)
+
+
+### Bug Fixes
+
+* use ingress prefix ([#38](https://github.com/jamie-stinson/common-helm-library/issues/38)) ([27ebcb9](https://github.com/jamie-stinson/common-helm-library/commit/27ebcb9840f3c5fce59147e321bb927afe2882c7))
+
 ## [1.3.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.2.1...v1.3.0) (2025-01-02)
 
 
