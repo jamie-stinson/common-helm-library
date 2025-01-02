@@ -337,7 +337,8 @@ rbac:
 ingress:
   # -- Enable Ingress
   enabled: false
-  host: ""
+  prefix: ""
+  domain: ""
   containerPort: ""
 
 # -- REQUIRES: Cert Manager
