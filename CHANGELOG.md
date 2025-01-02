@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.2.1...v1.3.0) (2025-01-02)
+
+
+### Features
+
+* add ingressroute ([#35](https://github.com/jamie-stinson/common-helm-library/issues/35)) ([c06092b](https://github.com/jamie-stinson/common-helm-library/commit/c06092b8155d53e0072d498bbcdec2506ded8a23))
+
+
+### Bug Fixes
+
+* use empty defaults for ingressroute ([#37](https://github.com/jamie-stinson/common-helm-library/issues/37)) ([b72fccf](https://github.com/jamie-stinson/common-helm-library/commit/b72fccfcf6270cde55c47a30214a8e9c32ef6e04))
+
 ## [1.2.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.2.0...v1.2.1) (2025-01-02)
 
 
