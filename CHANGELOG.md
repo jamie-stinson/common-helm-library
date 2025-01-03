@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.2...v1.5.3) (2025-01-03)
+
+
+### Bug Fixes
+
+* workload ports for service refactor ([#60](https://github.com/jamie-stinson/common-helm-library/issues/60)) ([a33e1a2](https://github.com/jamie-stinson/common-helm-library/commit/a33e1a27d879459f573fc6424b1f9fe2ebf5ec88))
+
 ## [1.5.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.1...v1.5.2) (2025-01-03)
 
 
