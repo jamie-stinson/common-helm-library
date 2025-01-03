@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.4.0...v1.4.1) (2025-01-03)
+
+
+### Bug Fixes
+
+* nodeport ([#50](https://github.com/jamie-stinson/common-helm-library/issues/50)) ([7b0adae](https://github.com/jamie-stinson/common-helm-library/commit/7b0adae11cf07d6a8cfe42d949b549ae2a27f586))
+
 ## [1.4.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.2...v1.4.0) (2025-01-03)
 
 
