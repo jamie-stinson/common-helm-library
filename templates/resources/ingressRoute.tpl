@@ -13,7 +13,7 @@ spec:
     match: Host(`{{ .Values.ingress.prefix }}.{{ .Values.ingress.domain }}`)
     services:
     - kind: Service
-      name: {{ .Release.Name }}
+      name: {{ .Release.Name }}-internal
       namespace: {{ .Release.Namespace }}
       port: {{ .Values.ingress.containerPort }}
   tls:
