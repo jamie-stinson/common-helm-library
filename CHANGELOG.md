@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.4.1...v1.5.0) (2025-01-03)
+
+
+### Features
+
+* service refactor ([#54](https://github.com/jamie-stinson/common-helm-library/issues/54)) ([7b362d6](https://github.com/jamie-stinson/common-helm-library/commit/7b362d6f17baf5f46b4526b96921e321bbda7a8d))
+
+
+### Bug Fixes
+
+* service labels and annotations ([#52](https://github.com/jamie-stinson/common-helm-library/issues/52)) ([461bc7e](https://github.com/jamie-stinson/common-helm-library/commit/461bc7eabe8a090a840f8864a3d158cee3cd8be4))
+
 ## [1.4.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.4.0...v1.4.1) (2025-01-03)
 
 
