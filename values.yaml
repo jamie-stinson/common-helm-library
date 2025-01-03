@@ -284,17 +284,17 @@ services:
         protocol: TCP
         port: 80
 
-configMap:
+configMap: {}
   # -- Annotations for service
-  annotations: {}
+  # annotations: {}
 
   # -- Labels for service
-  labels: {}
+  # labels: {}
 
   # -- List of config data for the configMap
-  data:
-    example.conf: |
-      listen 80
+  # data:
+  #   example.conf: |
+  #     listen 80
 
 serviceAccount:
   # -- Service Account feature flag
