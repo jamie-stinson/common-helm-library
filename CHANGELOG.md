@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.0...v1.5.1) (2025-01-03)
+
+
+### Bug Fixes
+
+* service eof ([#57](https://github.com/jamie-stinson/common-helm-library/issues/57)) ([164ab80](https://github.com/jamie-stinson/common-helm-library/commit/164ab805b645c3bccf536970699f20493a014b3a))
+* workload service ports ([#55](https://github.com/jamie-stinson/common-helm-library/issues/55)) ([5029524](https://github.com/jamie-stinson/common-helm-library/commit/50295247680af8bce262083b907f4afc7a8015cb))
+
 ## [1.5.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.4.1...v1.5.0) (2025-01-03)
 
 
