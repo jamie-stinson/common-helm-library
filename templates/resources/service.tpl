@@ -6,13 +6,13 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     {{- include "common-helm-library.helpers.metadata.labels" . | indent 4 }}
-    {{- if .Values.serviceAccount.labels }}
-    {{- toYaml .Values.serviceAccount.labels | nindent 4 }}
+    {{- if .Values.service.labels }}
+    {{- toYaml .Values.service.labels | nindent 4 }}
     {{- end }}
   annotations:
     {{- include "common-helm-library.helpers.metadata.annotations" . | indent 4 }}
-    {{- if .Values.serviceAccount.annotations }}
-    {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
+    {{- if .Values.service.annotations }}
+    {{- toYaml .Values.service.annotations | nindent 4 }}
     {{- end }}
 spec:
   type: {{ .Values.service.type }}
