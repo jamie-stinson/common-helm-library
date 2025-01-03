@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.4](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.3...v1.5.4) (2025-01-03)
+
+
+### Bug Fixes
+
+* ingressroute for service refactor ([#62](https://github.com/jamie-stinson/common-helm-library/issues/62)) ([812ea36](https://github.com/jamie-stinson/common-helm-library/commit/812ea36de2ec9b7711e6d17f13eb2d6d84fa46b3))
+
 ## [1.5.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.2...v1.5.3) (2025-01-03)
 
 
