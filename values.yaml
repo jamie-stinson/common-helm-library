@@ -58,17 +58,16 @@ workload:
   replicaCount: 1
 
   # -- Toggle and define security context.
-  ## Unless absolutely neccessary these should not be changed.
-  securityContext:
-    readOnlyRootFilesystem: true
-    allowPrivilegeEscalation: false
-    capabilities: []
-    privileged: false
-    fsGroup: 556
-    runAsUser: 556
-    runAsGroup: 556
-    runAsNonRoot: true
-    fsGroupChangePolicy: Always
+  securityContext: []
+    # readOnlyRootFilesystem: true
+    # allowPrivilegeEscalation: false
+    # capabilities: []
+    # privileged: false
+    # fsGroup: 556
+    # runAsUser: 556
+    # runAsGroup: 556
+    # runAsNonRoot: true
+    # fsGroupChangePolicy: Always
 
   # -- Resource limits and requests for the main workload pods
   resources: {}
