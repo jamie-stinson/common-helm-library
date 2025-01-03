@@ -12,7 +12,7 @@ ports:
     protocol: {{ .protocol }}
     port: {{ .port }}
     targetPort: {{ .port }}
-    {{- if and (eq .type "NodePort") .nodePort }}
+    {{- if .nodePort }}
     nodePort: {{ .nodePort }}
     {{- end }}
   {{- end }}
