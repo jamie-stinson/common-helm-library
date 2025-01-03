@@ -11,7 +11,7 @@ metadata:
     {{- toYaml .labels | nindent 4 }}
     {{- end }}
   annotations:
-    {{- include "common-helm-library.helpers.metadata.annotations" . | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.annotations" $ | indent 4 }}
     {{- if .annotations }}
     {{- toYaml .annotations | nindent 4 }}
     {{- end }}
