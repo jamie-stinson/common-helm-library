@@ -1,13 +1,7 @@
 {{- define "common-helm-library.helpers.service.ports" }}
-{{- if or .Values.service.ports .Values.serviceMonitor.enabled }}
+{{- if .ports}}
 ports:
-  {{- if .Values.serviceMonitor.enabled }}
-  - name: metrics
-    protocol: TCP
-    port: {{ .Values.serviceMonitor.port }}
-    targetPort: {{ .Values.serviceMonitor.port }}
-  {{- end }}
-  {{- range .Values.service.ports }}
+  {{- range .ports }}
   - name: {{ .name }}
     protocol: {{ .protocol }}
     port: {{ .port }}

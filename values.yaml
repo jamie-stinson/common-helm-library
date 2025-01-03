@@ -256,30 +256,33 @@ pdb:
   ## Mutually exlusive with minAvailable
   minAvailable: ""
 
-service:
-  # -- Service feature flag
-  enabled: false
+services:
+    # -- Service name
+  - name: config
 
-  # -- Main workload type. Either: `ClusterIP`, `NodePort`, `LoadBalancer` or `ExternalName`
-  type: ClusterIP
+    # -- Service feature flag
+    enabled: false
 
-  # -- Annotations for service
-  annotations: {}
+    # -- Main workload type. Either: `ClusterIP`, `NodePort`, `LoadBalancer` or `ExternalName`
+    type: ClusterIP
 
-  # -- Labels for service
-  labels: {}
+    # -- Annotations for service
+    annotations: {}
 
-  # -- LoadBalancer will get created with the IP specified in this field
-  loadBalancerIP: {}
+    # -- Labels for service
+    labels: {}
 
-  # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
-  clusterIP: {}
+    # -- LoadBalancer will get created with the IP specified in this field
+    loadBalancerIP: {}
 
-  # -- List of ports for service
-  ports: []
-    # - name: web
-    #   protocol: TCP
-    #   port: 80
+    # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
+    clusterIP: {}
+
+    # -- List of ports for service
+    ports:
+      - name: web
+        protocol: TCP
+        port: 80
 
 configMaps:
     # -- Name for configMap
