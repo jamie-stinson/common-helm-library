@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.1...v1.5.2) (2025-01-03)
+
+
+### Bug Fixes
+
+* service annotations module call ([#58](https://github.com/jamie-stinson/common-helm-library/issues/58)) ([012873b](https://github.com/jamie-stinson/common-helm-library/commit/012873bd19910b64d787826d1c2bbe4555471414))
+
 ## [1.5.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.0...v1.5.1) (2025-01-03)
 
 
