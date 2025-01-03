@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.2...v1.4.0) (2025-01-03)
+
+
+### Features
+
+* certificate namespace ([#44](https://github.com/jamie-stinson/common-helm-library/issues/44)) ([f20b944](https://github.com/jamie-stinson/common-helm-library/commit/f20b944d32b88cbe68a536ef609357ad3c074e5b))
+
+
+### Bug Fixes
+
+* auto reflection ([#42](https://github.com/jamie-stinson/common-helm-library/issues/42)) ([0e328dc](https://github.com/jamie-stinson/common-helm-library/commit/0e328dcafa4814a4d2700ef215405eec029875e3))
+* disable security context defaults ([#48](https://github.com/jamie-stinson/common-helm-library/issues/48)) ([fbcf93c](https://github.com/jamie-stinson/common-helm-library/commit/fbcf93cb53be0a4714a485e7fd847be77a1b9c26))
+
 ## [1.4.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.3.2...v1.4.0) (2025-01-02)
 
 
