@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.6.3...v1.7.0) (2025-01-05)
+
+
+### Features
+
+* revert securitycontext ([#74](https://github.com/jamie-stinson/common-helm-library/issues/74)) ([7d2bd72](https://github.com/jamie-stinson/common-helm-library/commit/7d2bd72d711cb48ccd7bd5956255431342125103))
+
 ## [1.6.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.6.2...v1.6.3) (2025-01-05)
 
 
