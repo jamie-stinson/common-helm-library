@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.7.1...v1.8.0) (2025-01-05)
+
+
+### Features
+
+* operator env variable ([#78](https://github.com/jamie-stinson/common-helm-library/issues/78)) ([efe0f7c](https://github.com/jamie-stinson/common-helm-library/commit/efe0f7c2786669bb21f1dfa99ccb109f9224ef74))
+
 ## [1.7.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.7.0...v1.7.1) (2025-01-05)
 
 
