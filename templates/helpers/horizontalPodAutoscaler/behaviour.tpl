@@ -4,4 +4,3 @@ behavior:
 {{- toYaml . | nindent 4 }}
 {{- end }}
 {{- end }}
-
