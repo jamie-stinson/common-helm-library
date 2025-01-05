@@ -124,6 +124,7 @@ workload:
     ## secret
     # - name: my-secret-volume
     #   type: secret
+    #   optional: false
     #   mountPath: /path/to/mount/container
     #   secretName: my-secret
     #   items:

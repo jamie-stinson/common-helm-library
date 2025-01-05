@@ -14,6 +14,7 @@ volumes:
   {{- else if eq .type "secret" }}
     secret:
       secretName: {{ .secretName }}
+      optional: {{ .optional | default false }}
       {{- range .items }}
       items:
       - key: {{ .key }}
