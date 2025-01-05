@@ -1,32 +1,18 @@
-{{- define "common-helm-library.helpers.workload.securityContext" }}
-{{- with .securityContext }}
+{{ define "common-helm-library.helpers.workload.securityContext" }}
 securityContext:
-  {{- with .readOnlyRootFilesystem }}
-  readOnlyRootFilesystem: {{ . }}
-  {{- end }}
-  {{- with .allowPrivilegeEscalation }}
-  allowPrivilegeEscalation: {{ . }}
-  {{- end }}
+  readOnlyRootFilesystem: {{ .Values.workload.securityContext.readOnlyRootFilesystem }}
+  allowPrivilegeEscalation: {{ .Values.workload.securityContext.allowPrivilegeEscalation }}
   capabilities:
     drop:
       - ALL
-    {{- with .capabilities }}
+    {{- if .Values.workload.securityContext.capabilities }}
     add:
-      {{- range . }}
+      {{- range .Values.workload.securityContext.capabilities }}
       - {{ . }}
       {{- end }}
     {{- end }}
-  {{- with .priviledged }}
-  privileged: {{ . }}
-  {{- end }}
-  {{- with .runAsUser }}
-  runAsUser: {{ . }}
-  {{- end }}
-  {{- with .runAsGroup }}
-  runAsGroup: {{ . }}
-  {{- end }}
-  {{- with .runAsNonRoot }}
-  runAsNonRoot: {{ . }}
-  {{- end }}
-{{- end }}
+  privileged: {{ .Values.workload.securityContext.privileged }}
+  runAsUser: {{ .Values.workload.securityContext.runAsUser }}
+  runAsGroup: {{ .Values.workload.securityContext.runAsGroup }}
+  runAsNonRoot: {{ .Values.workload.securityContext.runAsNonRoot }}
 {{- end }}
