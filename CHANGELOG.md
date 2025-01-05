@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.4...v1.6.0) (2025-01-05)
+
+
+### Features
+
+* add default security context ([#64](https://github.com/jamie-stinson/common-helm-library/issues/64)) ([f4d96a5](https://github.com/jamie-stinson/common-helm-library/commit/f4d96a5952940fb509625e6c3261a1bf01a638c6))
+* code refactor ([#67](https://github.com/jamie-stinson/common-helm-library/issues/67)) ([5af760d](https://github.com/jamie-stinson/common-helm-library/commit/5af760d5e9300042b2928e672ee42f2fd89f5d91))
+* move to single configmap ([#66](https://github.com/jamie-stinson/common-helm-library/issues/66)) ([a5632db](https://github.com/jamie-stinson/common-helm-library/commit/a5632dbfb864621a7bc70ca7f40756c0d6d698a5))
+
 ## [1.5.4](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.3...v1.5.4) (2025-01-03)
 
 
