@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.7.0...v1.7.1) (2025-01-05)
+
+
+### Bug Fixes
+
+* cloudflare secret namespace ([#76](https://github.com/jamie-stinson/common-helm-library/issues/76)) ([0ae8c1e](https://github.com/jamie-stinson/common-helm-library/commit/0ae8c1e7c28b8ec9f040ab8cb02f05c286722d69))
+
 ## [1.7.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.6.3...v1.7.0) (2025-01-05)
 
 
