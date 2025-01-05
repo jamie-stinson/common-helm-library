@@ -24,6 +24,10 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: spec.nodeName
+  - name: OPERATOR_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
   {{- range .envs }}
   - name: {{ .name }}
     value: {{ .value }}
