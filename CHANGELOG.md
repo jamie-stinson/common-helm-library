@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.6.0...v1.6.1) (2025-01-05)
+
+
+### Bug Fixes
+
+* priority class default empty ([#68](https://github.com/jamie-stinson/common-helm-library/issues/68)) ([46a3d0f](https://github.com/jamie-stinson/common-helm-library/commit/46a3d0fdd9b4f609fa2650430eb6fe7cb5310ea1))
+
 ## [1.6.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.5.4...v1.6.0) (2025-01-05)
 
 
