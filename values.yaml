@@ -161,7 +161,7 @@ workload:
   terminationGracePeriodSeconds: 30
 
   # -- Priority class for the main workload pods
-  priorityClassName: "example"
+  priorityClassName: ""
 
   # -- Node selector for the main workload pods
   nodeSelector: {}
