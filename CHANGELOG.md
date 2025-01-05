@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.6.2...v1.6.3) (2025-01-05)
+
+
+### Bug Fixes
+
+* workload port eof ([#72](https://github.com/jamie-stinson/common-helm-library/issues/72)) ([365fc97](https://github.com/jamie-stinson/common-helm-library/commit/365fc97bd44466fe1f9d1db9f6c46bf2a2204b82))
+
 ## [1.6.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.6.1...v1.6.2) (2025-01-05)
 
 
