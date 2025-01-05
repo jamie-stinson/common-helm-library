@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.8.0...v1.9.0) (2025-01-05)
+
+
+### Features
+
+* optional secret ([#80](https://github.com/jamie-stinson/common-helm-library/issues/80)) ([713aa87](https://github.com/jamie-stinson/common-helm-library/commit/713aa87b6b41eb236585e81744430a5ed8c1e5c8))
+
 ## [1.8.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.7.1...v1.8.0) (2025-01-05)
 
 
