@@ -1,26 +1,23 @@
 {{- define "common-helm-library.resources.certificate" }}
-{{- if and (eq .Release.Name "cert-manager-controller") .Values.certificate.enabled }}
+{{- if .Values.wildcardCertificate.enabled }}
+{{- with .Values.wildcardCertificate }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-wildcard
+  name: {{ $.Release.Name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" . | indent 4 }}
-    {{- if .Values.certificate.labels }}
-    {{- toYaml .Values.certificate.labels | nindent 4 }}
-    {{- end }}
+    {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
   annotations:
-    {{- include "common-helm-library.helpers.metadata.annotations" . | indent 4 }}
-    {{- if .Values.certificate.annotations }}
-    {{- toYaml .Values.certificate.annotations | nindent 4 }}
-    {{- end }}
+    {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
 spec:
-  secretName: wildcard-tls
+  secretName: "{{ .issuer }}-{{ .domain | replace "." "" }}-certificate"
   dnsNames:
-    - '{{ .Values.certificate.domain }}'
-    - '*.{{ .Values.certificate.domain }}'
+    - '{{ .domain }}'
+    - '*.{{ .domain }}'
   issuerRef:
-    name: cloudflare-issuer
+    name: "{{ .issuer }}-{{ .domain | replace "." "" }}-issuer"
     kind: ClusterIssuer
   secretTemplate:
     annotations:
@@ -29,5 +26,6 @@ spec:
       reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
       reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: ""
 ---
+{{- end }}
 {{- end }}
 {{- end }}

@@ -1,50 +1,52 @@
 {{- define "common-helm-library.resources.serviceMonitor" -}}
-{{- if and (.Capabilities.APIVersions.Has "monitoring.coreos.com/v1") .Values.serviceMonitor.enabled }}
+{{- if .Capabilities.APIVersions.Has "monitoring.coreos.com/v1" }}
+{{- if .Values.serviceMonitor.enabled }}
+{{- with .Values.serviceMonitor }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ $.Release.Name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" . | indent 4 }}
-    {{- if .Values.serviceMonitor.labels }}
-    {{- toYaml .Values.serviceMonitor.labels | nindent 4 }}
-    {{- end }}
+    {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
   annotations:
-    {{- include "common-helm-library.helpers.metadata.annotations" . | indent 4 }}
-    {{- if .Values.serviceMonitor.annotations }}
-    {{- toYaml .Values.serviceMonitor.annotations | nindent 4 }}
-    {{- end }}
+    {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
 spec:
   endpoints:
     - port: metrics
-      {{- with .Values.serviceMonitor.interval }}
+      {{- with .interval }}
       interval: {{ . }}
       {{- end }}
-      {{- with .Values.serviceMonitor.scrapeTimeout }}
+      {{- with .scrapeTimeout }}
       scrapeTimeout: {{ . }}
       {{- end }}
-      {{- with .Values.serviceMonitor.path }}
+      {{- with .path }}
       path: {{ . }}
       {{- end }}
-      {{- with .Values.serviceMonitor.relabelings }}
+      {{- with .relabelings }}
       relabelings:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.serviceMonitor.metricRelabelings }}
+      {{- with .metricRelabelings }}
       metricRelabelings:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      honorLabels: {{ .Values.serviceMonitor.honorLabels }}
-      {{- with .Values.serviceMonitor.scheme }}
+      {{- with .honorLabels }}
+      honorLabels: {{ . }}
+      {{- end }}
+      {{- with .scheme }}
       scheme: {{ . }}
       {{- end }}
-      {{- with .Values.serviceMonitor.tlsConfig }}
+      {{- with .tlsConfig }}
       tlsConfig:
         {{- toYaml . | nindent 8 }}
       {{- end }}
   selector:
     matchLabels:
-      {{- include "common-helm-library.helpers.metadata.selector-labels" . | indent 6 }}
+      {{- include "common-helm-library.helpers.metadata.commonSelectorLabels" $ | indent 6 }}
 ---
+{{- end }}
+{{- end }}
 {{- end }}
 {{- end }}

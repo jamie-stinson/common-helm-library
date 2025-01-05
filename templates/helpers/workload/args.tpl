@@ -1,6 +1,6 @@
 {{- define "common-helm-library.helpers.workload.args" }}
-{{- if .Values.workload.args }}
+{{- with .args }}
 args:
-  {{- toYaml .Values.workload.args | nindent 2 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end }}

@@ -1,6 +1,6 @@
 {{- define "common-helm-library.helpers.workload.resources" }}
-{{- if .Values.workload.resources }}
+{{- with .resources }}
 resources:
-  {{- toYaml .Values.workload.resources | nindent 2 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end }}

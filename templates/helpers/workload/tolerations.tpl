@@ -1,6 +1,6 @@
 {{- define "common-helm-library.helpers.workload.tolerations" }}
-{{- with .Values.workload.tolerations }}
+{{- with .tolerations }}
 tolerations:
-  {{- toYaml . | nindent 0 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end }}

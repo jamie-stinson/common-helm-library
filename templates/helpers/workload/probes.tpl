@@ -1,35 +1,40 @@
 {{- define "common-helm-library.helpers.workload.probes" }}
-{{- $probes := .Values.workload.probes -}}
-{{- $valid := dict "httpGet" true "tcpSocket" true "exec" true }}
-{{- range $probeType, $probe := $probes }}
-{{- if $probe }}
+{{- with .probes }}
+{{- range $probeType, $probe := . }}
 {{ $probeType }}:
-  {{- $type := $probe.type }}
-  {{- if not (hasKey $valid $type) }}
-    {{- fail "Invalid probe type, must be one of (httpGet,tcpSocket,exec)" }}
+  {{- $valid := dict "httpGet" true "tcpSocket" true "exec" true }}
+  {{- if not (hasKey $valid $probe.type) }}
+    {{- fail "Invalid probe type, must be one of (httpGet, tcpSocket, exec)" }}
   {{- end }}
-  {{ $type }}:
-    {{- if eq $type "httpGet" }}
-    path: {{ $probe.path }}
+  {{ $probe.type }}:
+    {{- if eq $probe.type "httpGet" }}
+    path: {{ $probe.path | quote }}
     port: {{ $probe.port }}
     {{- if $probe.host }}
-    host: {{ $probe.host }}
+    host: {{ $probe.host | quote }}
     {{- end }}
     {{- if $probe.httpHeaders }}
-    httpHeaders: {{ toYaml $probe.httpHeaders | nindent 6 }}
+    httpHeaders:
+    {{- range $headerName, $headerValue := $probe.httpHeaders }}
+      - name: {{ $headerName | quote }}
+        value: {{ $headerValue | quote }}
+    {{- end }}
     {{- end }}
     {{- if $probe.scheme }}
-    scheme: {{ $probe.scheme }}
+    scheme: {{ $probe.scheme | quote }}
     {{- end }}
     {{- end }}
-    {{- if eq $type "tcpSocket" }}
+    {{- if eq $probe.type "tcpSocket" }}
     port: {{ $probe.port }}
     {{- if $probe.host }}
-    host: {{ $probe.host }}
+    host: {{ $probe.host | quote }}
     {{- end }}
     {{- end }}
-    {{- if eq $type "exec" }}
-    command: {{ toYaml $probe.command | nindent 6 }}
+    {{- if eq $probe.type "exec" }}
+    command:
+    {{- range $probe.command }}
+      - {{ . | quote }}
+    {{- end }}
     {{- end }}
   periodSeconds: {{ $probe.periodSeconds }}
   timeoutSeconds: {{ $probe.timeoutSeconds }}
@@ -39,4 +44,3 @@
 {{- end }}
 {{- end }}
 {{- end }}
-

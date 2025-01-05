@@ -1,27 +1,27 @@
 {{- define "common-helm-library.resources.roleBinding" }}
 {{- if and .Values.rbac.enabled .Values.serviceAccount.enabled }}
+{{- with .Values.rbac.roles }}
+{{- range $roleType, $role := . }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: {{ .Values.rbac.type }}Binding
+kind: {{ $roleType | title }}Binding
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ $.Release.Name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" . | indent 4 }}
-    {{- if .Values.serviceAccount.labels }}
-    {{- toYaml .Values.serviceAccount.labels | nindent 4 }}
-    {{- end }}
+    {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
   annotations:
-    {{- include "common-helm-library.helpers.metadata.annotations" . | indent 4 }}
-    {{- if .Values.serviceAccount.annotations }}
-    {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
-    {{- end }}
+    {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
 roleRef:
-  kind: {{ .Values.rbac.type }}
-  name: {{ .Release.Name }}
+  kind: {{ $roleType | title }}
+  name: {{ $.Release.Name }}
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: ServiceAccount
-  name: {{ .Release.Name }}
-  namespace: {{ .Release.Namespace }}
+  name: {{ $.Release.Name }}
+  namespace: {{ $.Release.Namespace }}
 ---
+{{- end }}
+{{- end }}
 {{- end }}
 {{- end }}

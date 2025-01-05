@@ -1,6 +1,6 @@
 {{- define "common-helm-library.helpers.workload.nodeselector" }}
-{{- with .Values.workload.nodeSelector  }}
+{{- with .nodeSelector  }}
 nodeSelector:
-  {{- toYaml . | nindent 0 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end }}

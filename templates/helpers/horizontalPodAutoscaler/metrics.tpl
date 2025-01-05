@@ -1,9 +1,9 @@
-{{- define "common-helm-library.helpers.horizontalpodautoscaler.metrics" }}
+{{- define "common-helm-library.helpers.horizontalPodAutoscaler.metrics" }}
 metrics:
-{{- with .Values.autoscaling.metrics }}
+{{- with .metrics }}
   {{- toYaml . | nindent 4 }}
 {{- else }}
-  {{- with .Values.autoscaling.targetMemoryUtilizationPercentage }}
+  {{- with .targetMemoryUtilizationPercentage }}
   - type: Resource
     resource:
       name: memory
@@ -11,7 +11,7 @@ metrics:
         type: Utilization
         averageUtilization: {{ . }}
   {{- end }}
-  {{- with .Values.autoscaling.targetCPUUtilizationPercentage }}
+  {{- with .targetCPUUtilizationPercentage }}
   - type: Resource
     resource:
       name: cpu

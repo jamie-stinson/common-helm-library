@@ -1,5 +1,5 @@
 {{- define "common-helm-library.helpers.workload.replicas" }}
-{{- if ne .Values.workload.type "DaemonSet" }}
-replicas: {{ .Values.workload.replicaCount }}
+{{- if ne .type "DaemonSet" }}
+replicas: {{ .replicaCount }}
 {{- end }}
 {{- end }}

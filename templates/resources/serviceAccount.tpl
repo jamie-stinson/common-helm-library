@@ -1,20 +1,18 @@
 {{- define "common-helm-library.resources.serviceAccount" -}}
 {{- if .Values.serviceAccount.enabled }}
+{{- with .Values.serviceAccount }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ $.Release.Name }}
   labels:
-    {{- include "common-helm-library.helpers.metadata.labels" . | indent 4 }}
-    {{- if .Values.serviceAccount.labels }}
-    {{- toYaml .Values.serviceAccount.labels | nindent 4 }}
-    {{- end }}
+    {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
   annotations:
-    {{- include "common-helm-library.helpers.metadata.annotations" . | indent 4 }}
-    {{- if .Values.serviceAccount.annotations }}
-    {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
-    {{- end }}
-automountServiceAccountToken: {{ .Values.serviceAccount.automountServiceAccountToken }}
+    {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
+    {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
+automountServiceAccountToken: {{ .automountServiceAccountToken | default true }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

@@ -24,18 +24,18 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: spec.nodeName
-  {{- range .Values.workload.envs }}
+  {{- range .envs }}
   - name: {{ .name }}
     value: {{ .value }}
   {{- end }}
-  {{- range .Values.workload.envsConfigMap }}
+  {{- range .envsConfigMap }}
   - name: {{ .name }}
     valueFrom:
       configMapKeyRef:
         name: {{ .configMap }}
         key: {{ .key }}
   {{- end }}
-  {{- range .Values.workload.envsSecret }}
+  {{- range .envsSecret }}
   - name: {{ .name }}
     valueFrom:
       secretKeyRef:

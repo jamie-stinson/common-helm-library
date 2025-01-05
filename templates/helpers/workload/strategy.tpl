@@ -1,15 +1,15 @@
 {{- define "common-helm-library.helpers.workload.strategy" }}
-{{- if eq .Values.workload.type "Deployment" }}
+{{- if eq .type "Deployment" }}
+  {{- if eq .strategy.type "RollingUpdate" }}
 strategy:
-  type: {{ .Values.workload.strategy.type }}
-  {{- if eq .Values.workload.strategy.type "RollingUpdate" }}
+  type: {{ .strategy.type }}
   rollingUpdate:
-    maxSurge: {{ .Values.workload.strategy.maxSurge }}
-    maxUnavailable: {{ .Values.workload.strategy.maxUnavailable }}
+    maxSurge: {{ .strategy.maxSurge }}
+    maxUnavailable: {{ .strategy.maxUnavailable }}
   {{- end }}
 {{- end }}
-{{- if eq .Values.workload.type "StatefulSet" }}
+{{- if eq .type "StatefulSet" }}
 updateStrategy:
-  type: {{ .Values.workload.strategy.type }}
+  type: {{ .strategy.type }}
 {{- end }}
 {{- end }}

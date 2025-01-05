@@ -1,28 +1,34 @@
 {{- define "common-helm-library.helpers.workload.volumes" }}
-{{- if .Values.workload.storage }}
+{{- with .storage }}
 volumes:
-  {{- range .Values.workload.storage }}
-  {{- if eq .type "configMap" }}
+  {{- range . }}
   - name: {{ .name }}
+  {{- if eq .type "configMap" }}
     configMap:
       name: {{ .configMapName }}
+      {{- range .items }}
+      items:
+      - key: {{ .key }}
+        path: {{ .path }}
+      {{- end }}
   {{- else if eq .type "secret" }}
-  - name: {{ .name }}
     secret:
       secretName: {{ .secretName }}
+      {{- range .items }}
+      items:
+      - key: {{ .key }}
+        path: {{ .path }}
+      {{- end }}
   {{- else if eq .type "emptyDir" }}
-  - name: {{ .name }}
     emptyDir:
       {{- if .ramDisk }}
       medium: "Memory"
       {{- end }}
       sizeLimit: {{ .sizeLimit }}
   {{- else if eq .type "hostPath" }}
-  - name: {{ .name }}
     hostPath:
-      path: {{ .hostPath }} 
+      path: {{ .hostPath }}
   {{- else if eq .type "downwardAPI" }}
-  - name: {{ .name }}
     downwardAPI:
     items:
       {{- range .items }}
@@ -31,7 +37,6 @@ volumes:
           fieldPath: {{ .fieldRef.fieldPath }}
       {{- end }}
   {{- else if eq .type "pvc" }}
-  - name: {{ .name }}
     persistentVolumeClaim:
       claimName: {{ .claimName }}
   {{- end }}

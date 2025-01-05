@@ -6,7 +6,6 @@ global:
   labels: {}
 
 workload:
-  # -- Main workload feature flag
   enabled: false
 
   # -- Main workload type. Either: `Deployment`, `StatefulSet` or `DaemonSet`
@@ -20,13 +19,13 @@ workload:
 
   image:
     # -- Registry to use for the main workload
-    registry: ""
+    registry: "docker.io"
 
     # -- Repository to use for the main workload
-    repository: ""
+    repository: "example"
 
     # -- Tag to use for the main workload
-    tag: ""
+    tag: "v1.1.0"
 
     # -- Image pull policy for the main workload
     imagePullPolicy: IfNotPresent
@@ -37,78 +36,83 @@ workload:
   # -- Arguments to pass to the main workload
   args: []
 
-  # -- Environment variables to pass to main workload
+  # -- Environment Variables to mount into pod
   envs: []
-  #   - name: EXAMPLE_ENV
-  #     value: "HELLO"
+    # - name: EXAMPLE_ENV
+    #   value: "HELLO"
 
-  # -- envFrom to pass to application controller
+  # -- Config Map to mount as Environment Variable into pod
   envsConfigMap: []
-  # - name: EXAMPLE_ENV
-  #   configMap: MyConfigMap
-  #   key: HELLO
+    # - name: EXAMPLE_ENV
+    #   configMap: MyConfigMap
+    #   key: HELLO
 
-  # -- envFrom to pass to application controller
+  # -- Secret to mount as Environment Variable into pod
   envsSecret: []
-  # - name: EXAMPLE_ENV
-  #   secret: MySecret
-  #   key: HELLO
+    # - name: EXAMPLE_ENV
+    #   secret: MySecret
+    #   key: HELLO
 
   # -- The number of pods to run.
   replicaCount: 1
 
-  # -- Toggle and define security context.
+  # --  Security Context to pass to the pod
   securityContext:
     readOnlyRootFilesystem: true
-    allowPrivilegeEscalation: false
+    allowPrivilegeEscalation: true
+    # --  List of capatabilities to pass to the pod
     capabilities: []
     privileged: false
-    fsGroup: 556
     runAsUser: 556
     runAsGroup: 556
     runAsNonRoot: true
-    fsGroupChangePolicy: Always
 
-  # -- Resource limits and requests for the main workload pods
+  # -- Resource limits and requests for the main workload pod
   resources: {}
+    # requests:
+      # cpu: 5m
+      # memory: 50Mi
+    # limits:
+      # cpu: 10m
+      # memory: 100Mi
 
+  # -- Probes for main workload
+  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
   probes: {}
-    # -- Probes for main workload
-    ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-    # readinessProbe:
-    #   type: httpGet
-    #   path: "/health"
-    #   port: 8080
-    #   host: "localhost"
-    #   httpHeaders:
-    #     Content-Type: "application/json"
-    #   scheme: "HTTP"
-    #   periodSeconds: 10
-    #   timeoutSeconds: 5
-    #   successThreshold: 1
-    #   failureThreshold: 3
-    #   initialDelaySeconds: 30
+  #   readinessProbe:
+  #     type: httpGet
+  #     path: "/health"
+  #     port: 8080
+  #     host: "localhost"
+  #     httpHeaders:
+  #       Content-Type: "application/json"
+  #     scheme: "HTTP"
+  #     periodSeconds: 10
+  #     timeoutSeconds: 5
+  #     successThreshold: 1
+  #     failureThreshold: 3
+  #     initialDelaySeconds: 30
 
-    # livenessProbe:
-    #   type: tcpSocket
-    #   port: 8080
-    #   host: "localhost"
-    #   periodSeconds: 10
-    #   timeoutSeconds: 5
-    #   successThreshold: 1
-    #   failureThreshold: 3
-    #   initialDelaySeconds: 30
+  #   livenessProbe:
+  #     type: tcpSocket
+  #     port: 8080
+  #     host: "localhost"
+  #     periodSeconds: 10
+  #     timeoutSeconds: 5
+  #     successThreshold: 1
+  #     failureThreshold: 3
+  #     initialDelaySeconds: 30
 
-    # startupProbe:
-    #   type: exec
-    #   command: ["ls", "-l"]
-    #   periodSeconds: 10
-    #   timeoutSeconds: 5
-    #   successThreshold: 1
-    #   failureThreshold: 3
-    #   initialDelaySeconds: 30
+  #   startupProbe:
+  #     type: exec
+  #     command: ["ls", "-l"]
+  #     periodSeconds: 10
+  #     timeoutSeconds: 5
+  #     successThreshold: 1
+  #     failureThreshold: 3
+  #     initialDelaySeconds: 30
 
-  storage: []
+  storage: {}
     ## configMap
     # - name: my-configmap-volume
     #   type: configMap
@@ -152,51 +156,37 @@ workload:
     #   mountPath: /path/to/mount/container
     #   claimName: "test"
     #   readOnly: false
-    ## pvcTemplate -- STATEFULSET ONLY
-    # - name: my-pvc-template-volume
-    #   type: template
-    #   mountPath: /path/to/mount/container
-    #   sizeLimit: 1Gi
-    #   readOnly: false
-    #   storageClass: "my-storageclass"
-    #   accessModes: []
-    #   whenDeleted: Retain
-    #   whenScaled: Retain
 
   # -- Termination grace period seconds for container lifecycle hook
   terminationGracePeriodSeconds: 30
 
   # -- Priority class for the main workload pods
-  priorityClassName: ""
+  priorityClassName: "example"
 
   # -- Node selector for the main workload pods
   nodeSelector: {}
 
   # -- Tolerations for use with node taints
-  tolerations: []
+  tolerations: {}
 
-  # -- Assign custom affinity rules to the main workload
+  # -- Assign affinity rules to the main workload
   affinity: {}
 
   # -- Assign custom TopologySpreadConstraints rules to the main workload
   # Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
-  topologySpreadConstraints:
-    # - maxSkew: 1
-    #   topologyKey: topology.kubernetes.io/zone
-    #   whenUnsatisfiable: DoNotSchedule
+  topologySpreadConstraints: []
 
-  strategy:
-    # -- Deployment or StatefulSet strategy to be added to the main workload
-    type: RollingUpdate
+  # -- Deployment or StatefulSet strategy to be added to the main workload
+  strategy: {}
+    # type: RollingUpdate
 
     # -- Maximum number or percentage of pods that can be created over the desired number of pods
-    minAvailable: 1
+    # maxSurge: 1
 
     # -- Maximum number or percentage of pods that can be unavailable during the update process
-    maxUnavailable: 1
+    # maxUnavailable: 1
 
 autoscaling:
-  # -- Enable Horizontal Pod Autoscaler (HPA) for the main workload
   enabled: false
 
   # -- Annotations for HPA
@@ -219,26 +209,24 @@ autoscaling:
 
   # -- Configures the scaling behavior of the target in both Up and Down directions.
   behavior: {}
-  #   scaleDown:
-  #    stabilizationWindowSeconds: 300
-  #    policies:
-  #     - type: Pods
-  #       value: 1
-  #       periodSeconds: 180
-  #   scaleUp:
-  #     stabilizationWindowSeconds: 300
-  #     policies:
-  #     - type: Pods
-  #       value: 2
-  #       periodSeconds: 60
+    # scaleDown:
+    #  stabilizationWindowSeconds: 300
+    #  policies:
+    #   - type: Pods
+    #     value: 1
+    #     periodSeconds: 180
+    # scaleUp:
+    #   stabilizationWindowSeconds: 300
+    #   policies:
+    #   - type: Pods
+    #     value: 2
+    #     periodSeconds: 60
 
   # -- Configures custom HPA metrics for the main workload
   # Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
   metrics: []
 
 pdb:
-  # -- Deploy a PodDisruptionBudget for the application controller
-  # Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
   enabled: false
 
   # -- Labels to be added to application controller pdb
@@ -256,106 +244,132 @@ pdb:
   ## Mutually exlusive with minAvailable
   minAvailable: ""
 
-services:
-    # -- Service name
-  - name: config
+service:
+  enabled: false
 
-    # -- Service feature flag
-    enabled: false
+  # -- Main workload type. Either: `ClusterIP`, `NodePort`, `LoadBalancer` or `ExternalName`
+  type: ClusterIP
 
-    # -- Main workload type. Either: `ClusterIP`, `NodePort`, `LoadBalancer` or `ExternalName`
-    type: ClusterIP
-
-    # -- Annotations for service
-    annotations: {}
-
-    # -- Labels for service
-    labels: {}
-
-    # -- LoadBalancer will get created with the IP specified in this field
-    loadBalancerIP: {}
-
-    # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
-    clusterIP: {}
-
-    # -- List of ports for service
-    ports:
-      - name: web
-        protocol: TCP
-        port: 80
-
-configMap: {}
   # -- Annotations for service
-  # annotations: {}
+  annotations: {}
 
   # -- Labels for service
-  # labels: {}
+  labels: {}
 
-  # -- List of config data for the configMap
-  # data:
+  # -- LoadBalancer will get created with the IP specified in this field
+  loadBalancerIP: {}
+
+  # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
+  clusterIP: {}
+
+  # -- List of ports for service
+  ports: []
+    # - name: web
+    #   protocol: TCP
+    #   port: 80
+    #   nodePort: 30443
+
+configMap:
+  enabled: false
+
+  # -- Annotations for Config Map
+  annotations: {}
+
+  # -- Labels for Config Map
+  labels: {}
+
+  # -- List of config data for the Config Map
+  data: {}
   #   example.conf: |
   #     listen 80
 
 serviceAccount:
-  # -- Service Account feature flag
   enabled: false
 
-  # -- Annotations for service
+  # -- Annotations for Service Account
   annotations: {}
 
-  # -- Labels for service
+  # -- Labels for Service Account
   labels: {}
 
-  # -- Automount API credentials for the Service Account into the pod
+  # -- Automount API credentials for the Service Account into the workload.
   automountServiceAccountToken: false
 
 rbac:
-  # -- RBAC feature flag
-  enabled: false
+  enabled: true
 
-  # -- RBAC type. Either: `ClusterRole` or `Role`
-  type: Role
-
-  # -- RBAC Rules
-  rules: []
-    # - apiGroups:
-    #     - ""
-    #   resources:
-    #     - secrets
-    #   verbs:
-    #     - get
-    #     - create
-    #     - list
-    #     - watch
-    #     - update
+  roles: {}
+    # # -- Create RBAC. Either: `role` and/or `clusterRole`
+    # role:
+    #   # -- Annotations for Role
+    #   annotations: {}
+    #   # -- Labels for Role
+    #   labels: {}
+    #   # -- Rules for Role
+    #   rules:
+    #     - apiGroups:
+    #         - ""
+    #       resources:
+    #         - secrets
+    #       verbs:
+    #         - get
+    #         - create
+    #         - list
+    #         - watch
+    #         - update
+    # clusterRole:
+    #   # -- Annotations for Cluster Role
+    #   annotations: {}
+    #   # -- Labels for Cluster Role
+    #   labels: {}
+    #   # -- Rules for Cluster Role
+    #   rules:
+    #     - apiGroups:
+    #         - ""
+    #       resources:
+    #         - secrets
+    #       verbs:
+    #         - get
+    #         - create
+    #         - list
+    #         - watch
+    #         - update
 
 # -- REQUIRES: Traefik
 ingress:
-  # -- Enable Ingress
   enabled: false
+
+  # -- Traefik entrypoints to expose service to
+  entryPoints: []
+  # -- Enable TLS using wildcardCertificate
+  tls: false
+  # -- subdomain to expose for service
   prefix: ""
+  # -- fqdn
   domain: ""
+  # -- port to forward traffic to
   containerPort: ""
 
-# -- REQUIRES: Cert Manager
-certificate:
-  # -- Enable certificate
+# -- REQUIRES: Cert Manager & Reflector
+## Lets Encrypt Solver
+wildcardCertificate:
   enabled: false
+
   # -- Annotations for certificate
   annotations: {}
   # -- Labels for certificate
   labels: {}
+  # -- Issuer to use for certificate. Either: `cloudflare` or `tbc`
+  issuer: ""
   # -- Domain for wildcard certificate
   domain: ""
-  # -- Cloudflare email address
+  # -- Email address for Issuer
   email: ""
-  # -- Cloudflare API Token
-  cloudflareApiToken: ""
+  # -- API Token for Issuer
+  apiToken: ""
 
 # -- REQUIRES: Prometheus
 serviceMonitor:
-  # -- Enable a prometheus ServiceMonitor
-  enabled: false
   # -- Annotations for serviceMonitor
   annotations: {}
   # -- Labels for serviceMonitor

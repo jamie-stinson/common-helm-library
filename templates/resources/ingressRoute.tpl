@@ -1,23 +1,28 @@
-{{- define "common-helm-library.resources.ingressroute" -}}
+{{- define "common-helm-library.resources.ingressRoute" -}}
 {{- if .Values.ingress.enabled }}
+{{- with .Values.ingress }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ $.Release.Name }}
 spec:
   entryPoints:
-    - web
-    - websecure
+{{- range .entryPoints }}
+    - {{ . | quote }}
+{{- end }}
   routes:
-  - kind: Rule
-    match: Host(`{{ .Values.ingress.prefix }}.{{ .Values.ingress.domain }}`)
-    services:
-    - kind: Service
-      name: {{ .Release.Name }}-internal
-      namespace: {{ .Release.Namespace }}
-      port: {{ .Values.ingress.containerPort }}
+    - kind: Rule
+      match: Host(`{{ .prefix }}.{{ .domain }}`)
+      services:
+        - kind: Service
+          name: {{ $.Release.Name }}
+          namespace: {{ $.Release.Namespace }}
+          port: {{ .containerPort }}
+  {{- if .tls }}
   tls:
-    secretName: wildcard-tls
+    secretName: "cloudflare-{{ .domain | replace "." "" }}-certificate"
+  {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

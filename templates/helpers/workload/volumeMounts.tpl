@@ -1,14 +1,14 @@
 {{- define "common-helm-library.helpers.workload.volumeMounts" }}
-{{- if .Values.workload.storage }}
+{{- with .storage }}
 volumeMounts:
-  {{- range .Values.workload.storage }}
+  {{- range . }}
   - name: {{ .name }}
     mountPath: {{ .mountPath }}
-    {{- if .readOnly }}
-    readOnly: {{ .readOnly }}
+    {{- with .readOnly }}
+    readOnly: {{ . }}
     {{- end }}
-    {{- if .mountPropagation }}
-    mountPropagation: {{ .mountPropagation }}
+    {{- with .mountPropagation }}
+    mountPropagation: {{ . }}
     {{- end }}
   {{- end }}
 {{- end }}

@@ -1,6 +1,6 @@
 {{- define "common-helm-library.helpers.workload.command" }}
-{{- if .Values.workload.command }}  
+{{- with .command }}  
 command:
-  {{- toYaml .Values.workload.command | nindent 2 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end }}
