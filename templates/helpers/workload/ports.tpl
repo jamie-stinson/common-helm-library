@@ -1,11 +1,10 @@
 {{- define "common-helm-library.helpers.workload.ports" }}
-{{- with .Values.services }}
+{{- if .Values.service.enabled }}
+{{- with .Values.service }}
 ports:
-  {{- range . }}
   {{- range .ports }}
   - name: {{ .name }}
     containerPort: {{ .port }}
-  {{- end }}
   {{- end }}
 {{- end }}
 {{- end }}
