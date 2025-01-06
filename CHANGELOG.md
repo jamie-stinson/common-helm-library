@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.9.0...v1.10.0) (2025-01-06)
+
+
+### Features
+
+* allow service name to be modified ([#82](https://github.com/jamie-stinson/common-helm-library/issues/82)) ([c6ff882](https://github.com/jamie-stinson/common-helm-library/commit/c6ff882839cea5e8faad64e5ff7749310d37b18f))
+
 ## [1.9.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.8.0...v1.9.0) (2025-01-05)
 
 
