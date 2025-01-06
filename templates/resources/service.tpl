@@ -4,7 +4,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ $.Release.Name }}
+  name: {{ .name | default $.Release.Name }}
   labels:
     {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
