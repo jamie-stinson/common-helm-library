@@ -248,7 +248,7 @@ pdb:
 service:
   enabled: false
 
-  # -- [Optional] Service name, defaults to release name 
+  # -- [Optional] Service name, defaults to release name
   name: test
 
   # -- Main workload type. Either: `ClusterIP`, `NodePort`, `LoadBalancer` or `ExternalName`
