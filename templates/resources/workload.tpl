@@ -42,7 +42,7 @@ spec:
           {{- include "common-helm-library.helpers.workload.envs" . | indent 10 }}
           {{- include "common-helm-library.helpers.workload.ports" $ | indent 10 }}
           {{- include "common-helm-library.helpers.workload.probes" . | indent 10 }}
-          {{- include "common-helm-library.helpers.workload.resources" . | indent 10 }}
+          {{- include "common-helm-library.helpers.workload.resources" . | indent 8 }}
           {{- include "common-helm-library.helpers.workload.securityContext" $ | indent 10 }}
           {{- include "common-helm-library.helpers.workload.volumeMounts" . | indent 10 }}
       {{- include "common-helm-library.helpers.workload.volumes" . | indent 6 }}
