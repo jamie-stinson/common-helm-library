@@ -69,13 +69,15 @@ workload:
     # runAsNonRoot: false
 
   # -- Resource limits and requests for the main workload pod
-  resources: {}
-    # requests:
-      # cpu: 5m
-      # memory: 50Mi
-    # limits:
-      # cpu: 10m
-      # memory: 100Mi
+  resources:
+    preset: "" # Either `nano`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge` or `4xlarge`
+    custom: {}
+      # requests:
+      #   cpu: 5m
+      #   memory: 50Mi
+      # limits:
+      #   cpu: 10m
+      #   memory: 100Mi
 
   # -- Probes for main workload
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
