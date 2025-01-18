@@ -36,10 +36,10 @@ spec:
       {{- include "common-helm-library.helpers.workload.topologySpreadConstraints" . | indent 6 }}
       containers:
         - name: {{ $.Release.Name | lower }}
+          {{- include "common-helm-library.helpers.workload.image" . | indent 10 }}
           {{- include "common-helm-library.helpers.workload.command" . | indent 10 }}
           {{- include "common-helm-library.helpers.workload.args" . | indent 10 }}
           {{- include "common-helm-library.helpers.workload.envs" . | indent 10 }}
-          {{- include "common-helm-library.helpers.workload.image" . | indent 10 }}
           {{- include "common-helm-library.helpers.workload.ports" $ | indent 10 }}
           {{- include "common-helm-library.helpers.workload.probes" . | indent 10 }}
           {{- include "common-helm-library.helpers.workload.resources" . | indent 10 }}

@@ -6,7 +6,7 @@ global:
   labels: {}
 
 workload:
-  enabled: false
+  enabled: true
 
   # -- Main workload type. Either: `Deployment`, `StatefulSet` or `DaemonSet`
   type: Deployment
@@ -22,10 +22,10 @@ workload:
     registry: "docker.io"
 
     # -- Repository to use for the main workload
-    repository: "example"
+    repository: "nginx"
 
     # -- Tag to use for the main workload
-    tag: "v1.1.0"
+    tag: "latest"
 
     # -- Image pull policy for the main workload
     imagePullPolicy: IfNotPresent
@@ -57,15 +57,16 @@ workload:
   replicaCount: 1
 
   # --  Security Context to pass to the pod
-  securityContext:
-    readOnlyRootFilesystem: true
-    allowPrivilegeEscalation: true
-    # --  List of capatabilities to pass to the pod
-    capabilities: []
-    privileged: false
-    runAsUser: 556
-    runAsGroup: 556
-    runAsNonRoot: true
+  securityContext: {}
+    # readOnlyRootFilesystem: true
+    # allowPrivilegeEscalation: true
+    # capabilities:
+    #   drop: []
+    #   add: []
+    # privileged: false
+    # runAsUser: 556
+    # runAsGroup: 556
+    # runAsNonRoot: false
 
   # -- Resource limits and requests for the main workload pod
   resources: {}
@@ -159,7 +160,7 @@ workload:
     #   readOnly: false
 
   # -- Termination grace period seconds for container lifecycle hook
-  terminationGracePeriodSeconds: 30
+  terminationGracePeriodSeconds: ""
 
   # -- Priority class for the main workload pods
   priorityClassName: ""
