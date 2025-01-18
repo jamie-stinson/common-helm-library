@@ -6,7 +6,7 @@ global:
   labels: {}
 
 workload:
-  enabled: true
+  enabled: false
 
   # -- Main workload type. Either: `Deployment`, `StatefulSet` or `DaemonSet`
   type: Deployment
