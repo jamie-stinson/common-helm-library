@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.11.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.10.0...v1.11.0) (2025-01-19)
+
+
+### Features
+
+* ingress refactor ([#87](https://github.com/jamie-stinson/common-helm-library/issues/87)) ([941076f](https://github.com/jamie-stinson/common-helm-library/commit/941076fe18decd62dddecf7aa1c74bade98922ed))
+* **resources:** add presets ([#86](https://github.com/jamie-stinson/common-helm-library/issues/86)) ([143de36](https://github.com/jamie-stinson/common-helm-library/commit/143de36ecaa0f56959f9aa992491dfc3c107c54a))
+* **workload:** code refactor ([#84](https://github.com/jamie-stinson/common-helm-library/issues/84)) ([eef18ea](https://github.com/jamie-stinson/common-helm-library/commit/eef18ea1e6eb97a255107595cabe7c662cbadc00))
+
 ## [1.10.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.9.0...v1.10.0) (2025-01-06)
 
 
