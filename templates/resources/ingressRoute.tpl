@@ -17,7 +17,7 @@ spec:
         - kind: Service
           name: {{ $.Release.Name }}
           namespace: {{ $.Release.Namespace }}
-          port: {{ .containerPort }}
+          port: {{ .port}}
   {{- if .tls }}
   tls:
     secretName: "cloudflare-{{ .domain | replace "." "" }}-certificate"

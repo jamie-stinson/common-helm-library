@@ -12,7 +12,7 @@ metadata:
     {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
 spec:
-  type: {{ .type }}
+  type: ClusterIP
   selector:
     {{- include "common-helm-library.helpers.metadata.commonSelectorLabels" $ | indent 4 }}
   {{- include "common-helm-library.helpers.service.loadBalancerIP" . | indent 2 }}
@@ -21,11 +21,15 @@ spec:
 ---
 {{- end }}
 {{- end }}
-{{- if eq .Release.Name "traefik" }}
+{{- if .Values.expose.enabled }}
+{{- with .Values.expose }}
+{{- if not (or (eq .type "NodePort") (eq .type "LoadBalancer")) }}
+{{- fail (printf "Invalid expose.service type: '%s'. Only 'NodePort' or 'LoadBalancer' are allowed." .type) }}
+{{- end }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ $.Release.Name }}-external
+  name: {{ $.Release.Name }}-expose
   labels:
     {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
@@ -33,20 +37,12 @@ metadata:
     {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
 spec:
-  type: NodePort
+  type: {{ .type }}
   selector:
     {{- include "common-helm-library.helpers.metadata.commonSelectorLabels" $ | indent 4 }}
-  ports:
-    - name: web
-      protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30080
-    - name: websecure
-      protocol: TCP
-      port: 443
-      targetPort: 443
-      nodePort: 30443
+  {{- include "common-helm-library.helpers.service.loadBalancerIP" . | indent 2 }}
+  {{- include "common-helm-library.helpers.service.ports" . | indent 2 }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

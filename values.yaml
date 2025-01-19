@@ -254,10 +254,7 @@ service:
   enabled: false
 
   # -- [Optional] Service name, defaults to release name
-  name: test
-
-  # -- Main workload type. Either: `ClusterIP`, `NodePort`, `LoadBalancer` or `ExternalName`
-  type: ClusterIP
+  name: {}
 
   # -- Annotations for service
   annotations: {}
@@ -265,12 +262,22 @@ service:
   # -- Labels for service
   labels: {}
 
-  # -- LoadBalancer will get created with the IP specified in this field
-  loadBalancerIP: {}
-
   # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
   clusterIP: {}
 
+  # -- List of ports for service
+  ports: []
+    # - name: web
+    #   protocol: TCP
+    #   port: 80
+
+expose:
+  enabled: false
+
+  # -- Either: `NodePort` or `LoadBalancer``
+  type: {}
+  # -- LoadBalancer will get created with the IP specified in this field
+  loadBalancerIP: {}
   # -- List of ports for service
   ports: []
     # - name: web
@@ -379,6 +386,7 @@ wildcardCertificate:
 
 # -- REQUIRES: Prometheus
 serviceMonitor:
+  enabled: false
   # -- Annotations for serviceMonitor
   annotations: {}
   # -- Labels for serviceMonitor
