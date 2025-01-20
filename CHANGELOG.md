@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.11.0...v1.12.0) (2025-01-20)
+
+
+### Features
+
+* use servicemonitor port to attach to service and container ([#88](https://github.com/jamie-stinson/common-helm-library/issues/88)) ([19fafa1](https://github.com/jamie-stinson/common-helm-library/commit/19fafa1ea2a4964253e22047f3b579c471dad289))
+
 ## [1.11.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.10.0...v1.11.0) (2025-01-19)
 
 
