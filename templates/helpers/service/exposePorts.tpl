@@ -1,6 +1,6 @@
-{{- define "common-helm-library.helpers.service.ports" }}
-{{- with .ports }}
+{{- define "common-helm-library.helpers.service.exposePorts" }}
 ports:
+  {{- with .Values.expose.ports }}
   {{- range . }}
   - name: {{ .name }}
     protocol: {{ .protocol }}

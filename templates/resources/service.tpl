@@ -17,7 +17,7 @@ spec:
     {{- include "common-helm-library.helpers.metadata.commonSelectorLabels" $ | indent 4 }}
   {{- include "common-helm-library.helpers.service.loadBalancerIP" . | indent 2 }}
   {{- include "common-helm-library.helpers.service.clusterIP" . | indent 2 }}
-  {{- include "common-helm-library.helpers.service.ports" . | indent 2 }}
+  {{- include "common-helm-library.helpers.service.servicePorts" $ | indent 2 }}
 ---
 {{- end }}
 {{- end }}
@@ -41,7 +41,7 @@ spec:
   selector:
     {{- include "common-helm-library.helpers.metadata.commonSelectorLabels" $ | indent 4 }}
   {{- include "common-helm-library.helpers.service.loadBalancerIP" . | indent 2 }}
-  {{- include "common-helm-library.helpers.service.ports" . | indent 2 }}
+  {{- include "common-helm-library.helpers.service.exposePorts" $ | indent 2 }}
 ---
 {{- end }}
 {{- end }}
