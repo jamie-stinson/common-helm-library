@@ -45,6 +45,9 @@ spec:
           {{- include "common-helm-library.helpers.workload.resources" . | indent 8 }}
           {{- include "common-helm-library.helpers.workload.securityContext" $ | indent 10 }}
           {{- include "common-helm-library.helpers.workload.volumeMounts" . | indent 10 }}
+        {{- if .extraContainers }}
+        {{- toYaml .extraContainers | nindent 8 }}
+        {{- end }}
       {{- include "common-helm-library.helpers.workload.volumes" . | indent 6 }}
 ---
 {{- end }}
