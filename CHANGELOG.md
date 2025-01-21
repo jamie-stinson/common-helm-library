@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.12.0...v1.13.0) (2025-01-21)
+
+
+### Features
+
+* add extra containers ([#90](https://github.com/jamie-stinson/common-helm-library/issues/90)) ([35461df](https://github.com/jamie-stinson/common-helm-library/commit/35461df30d5cd9c3a4536df517b0c76baf482f70))
+
 ## [1.12.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.11.0...v1.12.0) (2025-01-20)
 
 
