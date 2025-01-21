@@ -191,7 +191,7 @@ workload:
 
     # -- Maximum number or percentage of pods that can be unavailable during the update process
     # maxUnavailable: 1
-  
+
   extraContainers: {}
 
 autoscaling:
