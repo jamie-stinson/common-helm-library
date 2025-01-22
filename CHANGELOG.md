@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.13.0...v1.14.0) (2025-01-22)
+
+
+### Features
+
+* **env:** add hostname ([#92](https://github.com/jamie-stinson/common-helm-library/issues/92)) ([45e04cd](https://github.com/jamie-stinson/common-helm-library/commit/45e04cd96f8ac2b4a69552aabf0f53f40db9c4f0))
+
 ## [1.13.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.12.0...v1.13.0) (2025-01-21)
 
 
