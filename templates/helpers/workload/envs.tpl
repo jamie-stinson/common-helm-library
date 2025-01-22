@@ -16,18 +16,22 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: metadata.namespace
-  - name: HOST_IP_ADDRESS
-    valueFrom:
-      fieldRef:
-        fieldPath: status.hostIP
-  - name: NODE_NAME
-    valueFrom:
-      fieldRef:
-        fieldPath: spec.nodeName
   - name: OPERATOR_NAMESPACE
     valueFrom:
       fieldRef:
         fieldPath: metadata.namespace
+  - name: HOST_IP_ADDRESS
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
+  - name: HOSTNAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName  
   {{- range .envs }}
   - name: {{ .name }}
     value: {{ .value }}
