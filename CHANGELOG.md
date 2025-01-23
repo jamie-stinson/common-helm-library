@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.4...v1.17.0) (2025-01-23)
+
+
+### Features
+
+* add ingress class ([#114](https://github.com/jamie-stinson/common-helm-library/issues/114)) ([b155769](https://github.com/jamie-stinson/common-helm-library/commit/b15576941ab1a3e6e6cef1b7087ba82c2cee0bc7))
+* **traefik:** convert from ingressroute to ingress ([#112](https://github.com/jamie-stinson/common-helm-library/issues/112)) ([a29a08a](https://github.com/jamie-stinson/common-helm-library/commit/a29a08a76859c96ced31d92f4f442c1538b43aab))
+
 ## [1.16.4](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.3...v1.16.4) (2025-01-23)
 
 
