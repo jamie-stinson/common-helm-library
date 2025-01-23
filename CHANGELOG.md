@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.2...v1.15.3) (2025-01-23)
+
+
+### Bug Fixes
+
+* **redis:** peer lookup ([#100](https://github.com/jamie-stinson/common-helm-library/issues/100)) ([3aacbd9](https://github.com/jamie-stinson/common-helm-library/commit/3aacbd9e9d6fd9e37a685ccf99b4c61184f23c27))
+
 ## [1.15.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.1...v1.15.2) (2025-01-23)
 
 
