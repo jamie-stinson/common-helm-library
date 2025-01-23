@@ -29,7 +29,7 @@ data:
       pg_ctl -D /var/lib/postgresql/data/ -m fast -w stop
       rm -rf /var/lib/postgresql/data/*
       # add service name for DNS resolution
-      PGPASSWORD=k8s-postgres-ha pg_basebackup -h ${HOST_TEMPLATE}-0.{{ .Release.Namespace }}.svc.cluster.local -w -U replicator -p 5432 -D /var/lib/postgresql/data -Fp -Xs -P -R
+      PGPASSWORD=k8s-postgres-ha pg_basebackup -h ${HOST_TEMPLATE}-0.{{ .Release.Name }}-postgres.{{ .Release.Namespace }}.svc.cluster.local -w -U replicator -p 5432 -D /var/lib/postgresql/data -Fp -Xs -P -R
       # start server to keep container's screep happy
       pg_ctl -D /var/lib/postgresql/data/ -w start
       ;;
