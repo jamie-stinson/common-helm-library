@@ -55,12 +55,12 @@ data:
       START_SLOT=$(( $NUM_SLOTS * $MY_SHARD + ($MY_SHARD < $REMAINDER ? $MY_SHARD : $REMAINDER) ))
       END_SLOT=$(( $NUM_SLOTS * ($MY_SHARD+1) + ($MY_SHARD+1 < $REMAINDER ? $MY_SHARD+1 : $REMAINDER) - 1 ))
 
-      PEER_IP=$(nslookup redis-0.redis-clusterip.platform-data.svc.cluster.local | awk '/^Address: / { print $2 }')
+      PEER_IP=$(nslookup {{ .Release.Name }}-redis-0.{{ .Release.Name }}-redis.{{ .Release.Namespace }}.svc.cluster.local | awk '/^Address: / { print $2 }')
       redis-cli cluster meet $PEER_IP 6379
       redis-cli cluster addslots $(seq $START_SLOT $END_SLOT)
     else
       # Set up a replica
-      PEER_IP=$(nslookup redis-$MY_SHARD.redis-clusterip.platform-data.svc.cluster.local | awk '/^Address: / { print $2 }')
+      PEER_IP=$(nslookup {{ .Release.Name }}-redis-$MY_SHARD.{{ .Release.Name }}-redis.{{ .Release.Namespace }}.svc.cluster.local | awk '/^Address: / { print $2 }')
       redis-cli --cluster add-node localhost:6379 $PEER_IP:6379 --cluster-slave
     fi
 
