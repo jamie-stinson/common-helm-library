@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.3...v1.16.0) (2025-01-23)
+
+
+### Features
+
+* add postgres alpha extension ([#102](https://github.com/jamie-stinson/common-helm-library/issues/102)) ([204609f](https://github.com/jamie-stinson/common-helm-library/commit/204609f043611579b1bc7edb418611fe37c640ad))
+
 ## [1.15.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.2...v1.15.3) (2025-01-23)
 
 
