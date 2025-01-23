@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.0...v1.15.1) (2025-01-23)
+
+
+### Bug Fixes
+
+* **redis:** remove fs-group ([#96](https://github.com/jamie-stinson/common-helm-library/issues/96)) ([fcda418](https://github.com/jamie-stinson/common-helm-library/commit/fcda418391cc72a456ef314463add8e5e45436c9))
+
 ## [1.15.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.14.0...v1.15.0) (2025-01-23)
 
 
