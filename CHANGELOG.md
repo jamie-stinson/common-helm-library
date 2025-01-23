@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.0...v1.16.1) (2025-01-23)
+
+
+### Bug Fixes
+
+* temp probe ([#104](https://github.com/jamie-stinson/common-helm-library/issues/104)) ([7f1e047](https://github.com/jamie-stinson/common-helm-library/commit/7f1e0473f7195bb2b3633d66d393c45157fb095e))
+
 ## [1.16.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.3...v1.16.0) (2025-01-23)
 
 
