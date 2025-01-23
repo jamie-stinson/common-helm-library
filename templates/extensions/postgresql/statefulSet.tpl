@@ -11,12 +11,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ .Release.Name }}-postgres
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}-postgres
   template:
     metadata:
       labels:
         app.kubernetes.io/name: {{ .Release.Name }}-postgres
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}-postgres
     spec:
       terminationGracePeriodSeconds: 10
       containers:
