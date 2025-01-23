@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.2...v1.16.3) (2025-01-23)
+
+
+### Bug Fixes
+
+* **postgres:** replica resolution ([#108](https://github.com/jamie-stinson/common-helm-library/issues/108)) ([bd857f8](https://github.com/jamie-stinson/common-helm-library/commit/bd857f88a7cd8251597cb5e4105d480a16966978))
+
 ## [1.16.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.1...v1.16.2) (2025-01-23)
 
 
