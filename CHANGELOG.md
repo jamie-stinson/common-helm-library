@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.14.0...v1.15.0) (2025-01-23)
+
+
+### Features
+
+* add redis cluster alpha ([#94](https://github.com/jamie-stinson/common-helm-library/issues/94)) ([263b3e6](https://github.com/jamie-stinson/common-helm-library/commit/263b3e6cb57acc607a15cf694a3d99430cd565ad))
+
 ## [1.14.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.13.0...v1.14.0) (2025-01-22)
 
 
