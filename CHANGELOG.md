@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.1...v1.15.2) (2025-01-23)
+
+
+### Bug Fixes
+
+* redis labels ([#98](https://github.com/jamie-stinson/common-helm-library/issues/98)) ([a3c9147](https://github.com/jamie-stinson/common-helm-library/commit/a3c91477167485db9e28c7eedac5682f7b0f75a6))
+
 ## [1.15.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.15.0...v1.15.1) (2025-01-23)
 
 
