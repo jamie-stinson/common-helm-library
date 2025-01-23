@@ -11,12 +11,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ .Release.Name }}-redis
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}-redis
   template:
     metadata:
       labels:
         app.kubernetes.io/name: {{ .Release.Name }}-redis
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}-redis
     spec:
       serviceAccountName: "{{ .Release.Name }}-redis"
       terminationGracePeriodSeconds: 10
