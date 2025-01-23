@@ -15,4 +15,8 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.certificate" . }}
   {{- include "common-helm-library.resources.clusterIssuer" . }}
   {{- include "common-helm-library.resources.ingressRoute" . }}
+  {{- include "common-helm-library.extensions.redis.configmap" . }}
+  {{- include "common-helm-library.extensions.redis.service" . }}
+  {{- include "common-helm-library.extensions.redis.serviceaccount" . }}
+  {{- include "common-helm-library.extensions.redis.statefulset" . }}
 {{- end }}
