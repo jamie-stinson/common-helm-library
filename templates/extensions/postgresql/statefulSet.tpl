@@ -29,28 +29,16 @@ spec:
             - name: postgresql
               containerPort: 5432
               protocol: TCP
-          livenessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - exec pg_isready --host $POD_IP
-            failureThreshold: 6
-            initialDelaySeconds: 60
-            periodSeconds: 10
-            successThreshold: 1
-            timeoutSeconds: 5
           readinessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - exec pg_isready --host $POD_IP
-            failureThreshold: 3
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 1
-            timeoutSeconds: 3
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
           volumeMounts:
             - name: init-scripts
               mountPath: /docker-entrypoint-initdb.d
