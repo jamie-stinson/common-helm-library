@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.4](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.3...v1.16.4) (2025-01-23)
+
+
+### Bug Fixes
+
+* **postgres:** statefulset labels ([#110](https://github.com/jamie-stinson/common-helm-library/issues/110)) ([e0e3785](https://github.com/jamie-stinson/common-helm-library/commit/e0e37857d19a146c007f6ec6b903a054f68812fd))
+
 ## [1.16.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.2...v1.16.3) (2025-01-23)
 
 
