@@ -427,3 +427,18 @@ redis:
       # limits:
       #   cpu: 10m
       #   memory: 100Mi
+
+postgres:
+  enabled: false
+  replicas: 2
+  resources:
+    # -- Defines a preset configuration for resources. Either: `nano`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`.
+    preset: ""
+    # -- Custom Resource Configuration: Define specific requests and limits. Use this when `preset` is not set.
+    custom: {}
+      # requests:
+      #   cpu: 5m
+      #   memory: 50Mi
+      # limits:
+      #   cpu: 10m
+      #   memory: 100Mi

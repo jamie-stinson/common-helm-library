@@ -19,4 +19,7 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.extensions.redis.service" . }}
   {{- include "common-helm-library.extensions.redis.serviceaccount" . }}
   {{- include "common-helm-library.extensions.redis.statefulset" . }}
+  {{- include "common-helm-library.extensions.postgres.configmap" . }}
+  {{- include "common-helm-library.extensions.postgres.service" . }}
+  {{- include "common-helm-library.extensions.postgres.statefulset" . }}
 {{- end }}
