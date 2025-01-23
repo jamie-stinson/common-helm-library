@@ -353,6 +353,11 @@ rbac:
     #         - watch
     #         - update
 
+ingressClass:
+  enabled: false
+  controller: {}
+  isDefault: false
+
 # -- REQUIRES: Traefik
 ingress:
   enabled: false
