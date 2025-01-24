@@ -1,6 +1,6 @@
 apiVersion: v2
 name: common-helm-library
 description: A Helm library chart
-version: 1.18.0
+version: 1.18.1
 maintainers:
   - name: jamie-stinson
