@@ -23,4 +23,5 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.extensions.postgres.configmap" . }}
   {{- include "common-helm-library.extensions.postgres.service" . }}
   {{- include "common-helm-library.extensions.postgres.statefulset" . }}
+  {{- include "common-helm-library.extensions.postgres.secret" . }}
 {{- end }}
