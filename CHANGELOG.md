@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.18.2...v1.18.3) (2025-01-24)
+
+
+### Bug Fixes
+
+* **postgres:** remove role-access ([#122](https://github.com/jamie-stinson/common-helm-library/issues/122)) ([51fa244](https://github.com/jamie-stinson/common-helm-library/commit/51fa24448bb6cd95dd7d0df9267c997330524a60))
+
 ## [1.18.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.18.1...v1.18.2) (2025-01-24)
 
 
