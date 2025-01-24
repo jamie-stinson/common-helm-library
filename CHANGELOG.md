@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.18.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.17.0...v1.18.0) (2025-01-24)
+
+
+### Features
+
+* **postgres:** create app user ([#115](https://github.com/jamie-stinson/common-helm-library/issues/115)) ([4066007](https://github.com/jamie-stinson/common-helm-library/commit/406600784ea7ff61185000659e6856007d5ef86c))
+* **postgres:** create app user ([#117](https://github.com/jamie-stinson/common-helm-library/issues/117)) ([267b262](https://github.com/jamie-stinson/common-helm-library/commit/267b26295d614e8488c02eabea9ca27030ce6a92))
+
 ## [1.17.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.16.4...v1.17.0) (2025-01-23)
 
 
