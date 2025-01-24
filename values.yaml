@@ -436,6 +436,7 @@ redis:
 postgres:
   enabled: false
   replicas: 2
+  password: {}
   resources:
     # -- Defines a preset configuration for resources. Either: `nano`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`.
     preset: ""

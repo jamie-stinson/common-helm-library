@@ -36,6 +36,9 @@ data:
     esac
   create-replication-role.sql: |
     CREATE USER replicator WITH REPLICATION ENCRYPTED PASSWORD 'k8s-postgres-ha';
+  create-application-role.sql: |
+    CREATE USER {{ .Release.Name }} WITH PASSWORD '${ .Values.postgres.password }';
+    ALTER USER {{ .Release.Name }} WITH SUPERUSER;
 ---
 {{- end }}
 {{- end }}
