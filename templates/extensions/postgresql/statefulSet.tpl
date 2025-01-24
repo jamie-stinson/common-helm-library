@@ -24,7 +24,10 @@ spec:
           image: "docker.io/postgres:17.2"
           env:
             - name: POSTGRES_PASSWORD
-              value: "let-me-in"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-postgres
+                  key: POSTGRES_PASSWORD
           ports:
             - name: postgresql
               containerPort: 5432
