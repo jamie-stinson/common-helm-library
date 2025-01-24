@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.18.1...v1.18.2) (2025-01-24)
+
+
+### Bug Fixes
+
+* **postgres:** role grant ([#120](https://github.com/jamie-stinson/common-helm-library/issues/120)) ([2464ebb](https://github.com/jamie-stinson/common-helm-library/commit/2464ebb7be6a4cbdcc790411458fa2907fc90c87))
+
 ## [1.18.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.18.0...v1.18.1) (2025-01-24)
 
 
