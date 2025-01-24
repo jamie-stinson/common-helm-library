@@ -23,6 +23,7 @@ data:
       echo "max_wal_senders = 8"  >> /etc/postgresql/postgresql.conf
       echo "wal_keep_segments = 32"  >> /etc/postgresql/postgresql.conf
       echo "wal_level = hot_standby"  >> /etc/postgresql/postgresql.conf
+      psql -U {{ .Release.Name }} -c "GRANT ALL PRIVILEGES ON DATABASE {{ .Release.Name }} TO {{ .Release.Name }};"
       ;;
       *)
       # stop initial server to copy data
