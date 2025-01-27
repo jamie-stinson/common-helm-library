@@ -1,4 +1,4 @@
-{{- define "common-helm-library.resources.serviceMonitor" -}}
+{{- define "common-helm-library.extensions.prometheus.serviceMonitor" }}
 {{- if .Capabilities.APIVersions.Has "monitoring.coreos.com/v1" }}
 {{- if .Values.serviceMonitor.enabled }}
 {{- with .Values.serviceMonitor }}

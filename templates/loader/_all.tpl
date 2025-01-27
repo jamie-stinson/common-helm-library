@@ -11,7 +11,6 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.serviceAccount" . }}
   {{- include "common-helm-library.resources.role" . }}
   {{- include "common-helm-library.resources.roleBinding" . }}
-  {{- include "common-helm-library.resources.serviceMonitor" . }}
   {{- include "common-helm-library.resources.certificate" . }}
   {{- include "common-helm-library.resources.clusterIssuer" . }}
   {{- include "common-helm-library.resources.ingressClass" . }}
@@ -21,4 +20,5 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.extensions.redis.serviceaccount" . }}
   {{- include "common-helm-library.extensions.redis.statefulset" . }}
   {{- include "common-helm-library.extensions.postgres.cluster" . }}
+  {{- include "common-helm-library.extensions.prometheus.serviceMonitor" . }}
 {{- end }}
