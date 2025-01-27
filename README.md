@@ -73,8 +73,8 @@ tbc
 
 The following table lists the Kubernetes resources and their current support status.
 
-| Kubernetes Resource     | Supported?     | Notes                          |
-|-------------------------|----------------|---------------------------------|
+| Kubernetes Resource     | Supported     | Notes                          |
+|-------------------------|---------------|--------------------------------|
 | Deployment              | ✅             |  
 | StatefulSet             | ✅             |
 | DaemonSet               | ✅             |
@@ -94,12 +94,14 @@ The following table lists the Kubernetes resources and their current support sta
 | ClusterRole             | ✅             |
 | ClusterRoleBinding      | ✅             |
 | StorageClass            | ⏳             |
-| ServiceMonitor          | ✅             | Requires Prometheus
-| Certificate             | ❗             | Limited Functionality - Requires Cert Manager & Reloader
-| ClusterIssuer           | ❗             | Limited Functionality - Requires Cert Manager & Reloader
 
+| Extension Resource      | Supported     | Requirements             | Notes              |
+|-------------------------|---------------|--------------------------|--------------------|
+| ServiceMonitor          | ✅             | Prometheus               |       
+| Certificate             | ❗             | Cert Manager & Reloader  | Limited Functionality
+| ClusterIssuer           | ❗             | Cert Manager & Reloader  | Limited Functionality
+| Cluster                 | ❗             | CloudNative-PG           | Limited Functionality
 
-> **Legend**
 > - ✅: Supported  
 > - ❗: Partial support (limited functionality or features)
 > - ❌: Not Planned  
