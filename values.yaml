@@ -438,4 +438,3 @@ postgres:
   replicas: {}
   version: {}
   size: {}
-
