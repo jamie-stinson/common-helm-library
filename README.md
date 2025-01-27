@@ -4,6 +4,8 @@
 
 *A collection of Helm templates to simplify application deployment.*
 
+***Disclaimer*** - This library is still under active development and breaking changes may occur at any time until v2 release (aim is Q2 2025)
+
 </div>
 
 <div align="center">
@@ -33,7 +35,9 @@ To address these issues, I created a **comprehensive Helm library** that simplif
 - **Extensive Features:** Covers a wide range of Kubernetes functionalities.  
 - **Enhanced Security:** Incorporates best security practices.  
 
-This library is designed to streamline Helm chart creation, providing a solid, secure foundation for developers.  
+This library is designed to streamline Helm chart creation, providing a solid, secure foundation for developers.
+
+This is a community chart, contributions are more than welcome to add, fix or extend functionlity!
 
 ## Getting Started  
 
@@ -61,3 +65,42 @@ workload:
 ### Recommendations
 It’s highly recommended to use tools like ArgoCD or Flux to automate rollouts for this library and your values files. However, setting up these tools is outside the scope of this project.
 
+### Testing
+
+tbc
+
+## Supported Kubernetes Resources
+
+The following table lists the Kubernetes resources and their current support status.
+
+| Kubernetes Resource     | Supported?     | Notes                          |
+|-------------------------|----------------|---------------------------------|
+| Deployment              | ✅             |  
+| StatefulSet             | ✅             |
+| DaemonSet               | ✅             |
+| Job                     | ⏳             |
+| CronJob                 | ⏳             |
+| PodDisruptionBudget     | ✅             |
+| HorizontalPodAutoscaler | ✅             |
+| Service                 | ✅             |
+| ConfigMap               | ✅             |
+| Secret                  | ⏳             |
+| Ingress                 | ❗             | Limited Functionality
+| IngressClass            | ✅             |
+| PersistentVolumeClaim   | ⏳             |
+| ServiceAccount          | ✅             |
+| Role                    | ✅             |
+| RoleBinding             | ✅             |
+| ClusterRole             | ✅             |
+| ClusterRoleBinding      | ✅             |
+| StorageClass            | ⏳             |
+| ServiceMonitor          | ✅             | Requires Prometheus
+| Certificate             | ❗             | Limited Functionality - Requires Cert Manager & Reloader
+| ClusterIssuer           | ❗             | Limited Functionality - Requires Cert Manager & Reloader
+
+
+> **Legend**
+> - ✅: Supported  
+> - ❗: Partial support (limited functionality or features)
+> - ❌: Not Planned  
+> - ⏳: Planned for future updates
