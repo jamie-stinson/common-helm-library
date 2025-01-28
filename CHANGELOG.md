@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.19.0...v1.19.1) (2025-01-28)
+
+
+### Bug Fixes
+
+* **secret:** line break ([#134](https://github.com/jamie-stinson/common-helm-library/issues/134)) ([9d3718f](https://github.com/jamie-stinson/common-helm-library/commit/9d3718f185ca64908597ddda3e2e13d9906f60d7))
+
 ## [1.19.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.18.3...v1.19.0) (2025-01-28)
 
 
