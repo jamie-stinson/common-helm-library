@@ -178,7 +178,7 @@ The following table lists the Kubernetes resources and their current support sta
 | HorizontalPodAutoscaler | ✅             |
 | Service                 | ✅             |
 | ConfigMap               | ✅             |
-| Secret                  | ⏳             |
+| Secret                  | ❗             |
 | Ingress                 | ✅             |
 | IngressClass            | ✅             |
 | PersistentVolumeClaim   | ⏳             |
