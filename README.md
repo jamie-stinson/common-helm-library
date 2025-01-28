@@ -43,12 +43,11 @@ This is a community chart, contributions are more than welcome to add, fix or ex
 
 All valid configuration options can be found in the [`values.yaml`](https://raw.githubusercontent.com/jamie-stinson/common-helm-library/main/values.yaml) file in the root directory of this project. By default, everything is disabled, but you can override these defaults by creating additional `values.yaml` files.  
 
-### Installation  
+### Basic Installation  
 
-Here’s a simple example of how to use this chart:  
+An easy way to get started using this library is by creating a simple `values.yaml` file and adding your required values following the library values schema.
 
-1. Enable features and customize your workload in a `values.yaml` file.  
-
+`values.yaml`
 ```yaml
 workload:
   enabled: true
@@ -58,12 +57,107 @@ workload:
     repository: nginx
     tag: latest
 ```
-2. Install using the latest version of the common-helm-library
+You can then install using the latest version of the common-helm-library with the values you just created
 
 ```helm install my-release oci://ghcr.io/jamie-stinson/common-helm-library/common-helm-library -f values.yaml```
 
-### Recommendations
-It’s highly recommended to use tools like ArgoCD or Flux to automate rollouts for this library and your values files. However, setting up these tools is outside the scope of this project.
+### Chart Dependency Installation
+
+You can use this library as a dependancy for your own helm chart, this will allow you build, package and upload your own chart whilst still having the benefits of this library. 
+
+***Chart.yaml***
+```yaml
+apiVersion: v2
+name: example-application
+description: A chart for deploying a cool example application
+version: 1.0.0
+dependencies:
+  - name: common-helm-library
+    repository: "oci://ghcr.io/jamie-stinson/common-helm-library"
+    version: "1.0.0" # Replace with the appropriate version of the library
+```
+
+***values.yaml***
+```yaml
+common-helm-library:
+  workload:
+    enabled: true
+    type: DaemonSet
+    image:
+      registry: docker.io
+      repository: nginx
+      tag: latest
+```
+
+### Advanced Installation (GitOps)
+
+One of the best ways to use this library is using a tool such as ArgoCD or Flux utilising gitops methods to rollout applications.
+
+This example (my personal repository) utilises ArgoCD and a seperate monorepo for applications, utilising common values files for simplicity and code reusability.
+
+This is just one of several ways you can utilise this library with tools such as ArgoCD and Flux and I would recommend reading the documentation for these tools so you can use them with the library in a way that suits your environment.
+
+[`monorepo`](https://github.com/jamie-stinson/helm-system-monorepo)
+
+***applicationset.yaml***
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: system
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      files:
+      - path: charts/*/values.yaml
+      repoURL: https://github.com/jamie-stinson/helm-system-monorepo.git
+      revision: HEAD
+  goTemplate: true
+  template:
+    metadata:
+      name: '{{ index .path.segments 1 }}'
+    spec:
+      destination:
+        name: in-cluster
+        namespace: '{{ if .namespace }}{{ .namespace }}{{ else }}{{ index .path.segments
+          1 }}{{ end }}'
+      project: production
+      revisionHistoryLimit: 3
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        retry:
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+          limit: 3
+        syncOptions:
+        - Validate=true
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+        - ServerSideApply=true
+        - RespectIgnoreDifferences=false
+        - ApplyOutOfSyncOnly=false
+  templatePatch: |
+    spec:
+      sources:
+        - repoURL: "ghcr.io/jamie-stinson/common-helm-library"
+          chart: "common-helm-library"
+          targetRevision: "1.*.*"
+          helm:
+            releaseName: "{{ index .path.segments 1 }}"
+            valueFiles:
+              - "$values/global-values.yaml"
+              - "$values/charts/{{ index .path.segments 1 }}/values.yaml"
+        - repoURL: https://github.com/jamie-stinson/helm-system-monorepo.git
+          targetRevision: HEAD
+          ref: values
+```
 
 ### Testing
 
