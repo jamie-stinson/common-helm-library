@@ -93,7 +93,7 @@ The following table lists the Kubernetes resources and their current support sta
 | RoleBinding             | ✅             |
 | ClusterRole             | ✅             |
 | ClusterRoleBinding      | ✅             |
-| StorageClass            | ⏳             |
+| StorageClass            | ✅             |
 
 | Extension Resource      | Supported     | Requirements             | Notes              |
 |-------------------------|---------------|--------------------------|--------------------|

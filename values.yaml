@@ -313,6 +313,16 @@ serviceAccount:
   # -- Automount API credentials for the Service Account into the workload.
   automountServiceAccountToken: false
 
+storageClass:
+  enabled: false
+  annotations: {}
+  labels: {}
+  provisioner: { }
+  reclaimPolicy: {}
+  allowVolumeExpansion: {}
+  parameters: []
+  mountOptions: []
+
 rbac:
   enabled: true
 

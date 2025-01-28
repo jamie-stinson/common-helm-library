@@ -15,6 +15,7 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.resources.clusterIssuer" . }}
   {{- include "common-helm-library.resources.ingressClass" . }}
   {{- include "common-helm-library.resources.ingress" . }}
+  {{- include "common-helm-library.resources.storageClass" . }}
   {{- include "common-helm-library.extensions.postgres.cluster" . }}
   {{- include "common-helm-library.extensions.prometheus.serviceMonitor" . }}
 {{- end }}
