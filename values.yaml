@@ -414,6 +414,12 @@ wildcardCertificate:
   # -- API Token for Issuer
   apiToken: ""
 
+secret:
+  enabled: false
+  annotations: {}
+  labels: {}
+  secrets: {}
+
 # -- REQUIRES: Prometheus
 serviceMonitor:
   enabled: false
