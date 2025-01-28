@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.19.1...v1.19.2) (2025-01-28)
+
+
+### Bug Fixes
+
+* **secret:** allow optional namespace ([#136](https://github.com/jamie-stinson/common-helm-library/issues/136)) ([0961272](https://github.com/jamie-stinson/common-helm-library/commit/0961272edc92af64ed7be8cd28ab56e15c3cb484))
+
 ## [1.19.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.19.0...v1.19.1) (2025-01-28)
 
 
