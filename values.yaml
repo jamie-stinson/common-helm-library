@@ -317,7 +317,7 @@ storageClass:
   enabled: false
   annotations: {}
   labels: {}
-  provisioner: { }
+  provisioner: {}
   reclaimPolicy: {}
   allowVolumeExpansion: {}
   parameters: []
