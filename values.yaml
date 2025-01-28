@@ -388,6 +388,7 @@ secret:
   enabled: false
   annotations: {}
   labels: {}
+  namespace: {}
   secrets: {}
 
 certificate:

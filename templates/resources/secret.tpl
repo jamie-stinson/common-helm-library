@@ -5,6 +5,9 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: {{ $.Release.Name }}
+  {{- if .namespace }}
+  namespace: {{ .namespace }}
+  {{- end }}
   labels:
     {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
