@@ -85,7 +85,7 @@ The following table lists the Kubernetes resources and their current support sta
 | Service                 | ✅             |
 | ConfigMap               | ✅             |
 | Secret                  | ⏳             |
-| Ingress                 | ❗             | Limited Functionality
+| Ingress                 | ✅             |
 | IngressClass            | ✅             |
 | PersistentVolumeClaim   | ⏳             |
 | ServiceAccount          | ✅             |

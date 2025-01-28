@@ -358,9 +358,22 @@ ingressClass:
   controller: {}
   isDefault: false
 
-# -- REQUIRES: Traefik
 ingress:
   enabled: false
+  annotations: {}
+  labels: {}
+  ingressClass: {}
+  hosts: {}
+    # - host: "test.example.com"
+    #   path: "/"
+    #   pathType: "Prefix"
+    #   tls:
+    #     enabled: true
+    #     secretName: "test"
+    #   backend:
+    #     service:
+    #       name: "example"
+    #       port: 80
 
   # -- Traefik entrypoints to expose service to
   entryPoints: []
