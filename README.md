@@ -93,7 +93,7 @@ common-helm-library:
 
 One of the best ways to use this library is using a tool such as ArgoCD or Flux utilising gitops methods to rollout applications.
 
-This example (my personal repository) utilises ArgoCD and a seperate monorepo for applications, utilising common values files for simplicity and code reusability.
+This example (my personal repository) utilises ArgoCD and a seperate monorepo for applications, utilising common values files, semantic version auto patching and automatic rollouts.
 
 This is just one of several ways you can utilise this library with tools such as ArgoCD and Flux and I would recommend reading the documentation for these tools so you can use them with the library in a way that suits your environment.
 
