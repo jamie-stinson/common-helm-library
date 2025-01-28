@@ -14,6 +14,7 @@ metadata:
 type: Opaque
 stringData:
   {{- toYaml .secrets | nindent 2 }}
+---
 {{- end }}
 {{- end }}
 {{- end }}
