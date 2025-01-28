@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.19.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.18.3...v1.19.0) (2025-01-28)
+
+
+### Features
+
+* add secret resource support ([#132](https://github.com/jamie-stinson/common-helm-library/issues/132)) ([961df8f](https://github.com/jamie-stinson/common-helm-library/commit/961df8fdcddfee75513e20702c700fa89cf8b4a2))
+* add storageclass ([#130](https://github.com/jamie-stinson/common-helm-library/issues/130)) ([5ac4748](https://github.com/jamie-stinson/common-helm-library/commit/5ac47480a90441491047b9ab40d66138094f2b25))
+* **ingress:** refactor ([#129](https://github.com/jamie-stinson/common-helm-library/issues/129)) ([3970470](https://github.com/jamie-stinson/common-helm-library/commit/39704700c6d7f6a1d2df0245d19c9a46b81b61c2))
+* move postgres to cnpg ([#125](https://github.com/jamie-stinson/common-helm-library/issues/125)) ([e36beb8](https://github.com/jamie-stinson/common-helm-library/commit/e36beb8772a3a141b21b00269996e803c35b3202))
+* **prometheus:** add extension ([#127](https://github.com/jamie-stinson/common-helm-library/issues/127)) ([1fd9cbf](https://github.com/jamie-stinson/common-helm-library/commit/1fd9cbf00f34fb3f10c6a4f08095b50365e79fe7))
+* refactor cert-manager resources ([#133](https://github.com/jamie-stinson/common-helm-library/issues/133)) ([e8f390b](https://github.com/jamie-stinson/common-helm-library/commit/e8f390baa6f4b954f7b9a57541b7cb56985407f8))
+
 ## [1.18.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.18.2...v1.18.3) (2025-01-24)
 
 
