@@ -40,8 +40,8 @@ spec:
     namespace: {{ .claim.namespace }}
   {{- end }}
   persistentVolumeReclaimPolicy: {{ .persistentVolumeReclaimPolicy }}
-{{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

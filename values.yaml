@@ -359,7 +359,18 @@ persistentVolumeClaim:
       selector: 
         matchLabels:
           test: label
-
+    - name: my-pvc2
+      annotations: {}
+      labels: {}
+      accessModes: 
+        - ReadWriteOnce
+      volumeMode: "Filesystem"
+      volumeName: my-pv1 
+      capacity: "1Gi"
+      storageClass: "test"
+      selector: 
+        matchLabels:
+          test: label
 rbac:
   enabled: false
   roles: {}

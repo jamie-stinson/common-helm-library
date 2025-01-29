@@ -34,8 +34,8 @@ selector:
   matchLabels:
     {{- toYaml .selector.matchLabels | nindent 4 }}
   {{- end }}
-{{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
