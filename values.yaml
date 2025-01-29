@@ -323,6 +323,40 @@ storageClass:
   parameters: []
   mountOptions: []
 
+persistentVolume:
+  enabled: false
+#  volumes: []
+#    - name: ""
+#      annotations: {}
+#      labels: {}
+#      capacity: ""
+#      accessModes: []
+#      persistentVolumeReclaimPolicy: ""
+#      storageClass: ""
+#      hostPath: ""
+#      nfs:
+#        server: ""
+#        path: ""
+#        readonly: ""
+#      claim:
+#        name: {}
+#        namespace: {}
+
+
+persistentVolumeClaim:
+  enabled: false
+#  volumes: []
+#    - name: ""
+#      annotations: {}
+#      labels: {}
+#      accessModes: []
+#      volumeMode: {}
+#      volumeName: {}
+#      capacity: {}
+#      storageClass: {}
+#      selector:
+#        matchlabels: {}
+
 rbac:
   enabled: false
   roles: {}
