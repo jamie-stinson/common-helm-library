@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.19.2...v1.20.0) (2025-01-29)
+
+
+### Features
+
+* add persistentvolumes and persistentvolumesclaim resources ([#139](https://github.com/jamie-stinson/common-helm-library/issues/139)) ([701dd61](https://github.com/jamie-stinson/common-helm-library/commit/701dd611e109062b583c1d1ba90e8bc346c58aa9))
+
 ## [1.19.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.19.1...v1.19.2) (2025-01-28)
 
 
