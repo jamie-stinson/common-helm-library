@@ -323,6 +323,43 @@ storageClass:
   parameters: []
   mountOptions: []
 
+persistentVolume:
+  enabled: true
+  volumes:
+    - name: "my-default-pv"
+      annotations: {}
+      labels: {}
+      capacity: "1Gi"
+      accessModes:
+        - "ReadWriteOnce"
+      persistentVolumeReclaimPolicy: "Retain"
+      storageClass: "test"
+      hostPath: "/hello"
+      nfs:
+        server: "test.com"
+        path: "/hello"
+        readonly: true
+      claim:
+        name: "test-claim"
+        namespace: "default"
+
+
+persistentVolumeClaim:
+  enabled: true
+  volumes:
+    - name: my-pvc1 
+      annotations: {}
+      labels: {}
+      accessModes: 
+        - ReadWriteOnce
+      volumeMode: "Filesystem"
+      volumeName: my-pv1 
+      capacity: "1Gi"
+      storageClass: "test"
+      selector: 
+        matchLabels:
+          test: label
+
 rbac:
   enabled: false
   roles: {}
