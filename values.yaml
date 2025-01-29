@@ -323,68 +323,91 @@ storageClass:
   parameters: []
   mountOptions: []
 
-persistentVolumes:
+persistentVolume:
   enabled: false
-  # Enables the creation of Persistent Volumes defined in the `volumes` section.
   volumes:
-    - # Name of the Persistent Volume.
-      name: "my-default-pv"
-      
-      # Storage capacity of the volume (e.g., "1Gi", "5Gi", "100Mi").
-      capacity: "1Gi"
-      # Defines how the volume can be accessed by pods.
-      # - ReadWriteOnce: Only one pod can mount the volume at a time.
-      # - ReadWriteMany: Multiple pods can mount the volume concurrently.
-      # - ReadOnlyMany: Multiple pods can mount the volume read-only.
-      accessModes:
-        - "ReadWriteOnce"
-
-      # Description of the Persistent Volume.
-      description: "Default Persistent Volume for testing purposes"
-
-      # Determines how the volume is handled when the claim is deleted
-      persistentVolumeReclaimPolicy: "Retain"
-
-      # Annotations for the PersistentVolume
+    - name: "my-default-pv"
       annotations: {}
+      labels: {}
+      capacity: "1Gi"
+      accessModes:
+        - ReadWriteOnce
+      persistentVolumeReclaimPolicy: "Retain"
+      storageClass: "test"
+      hostPath: "/hello"
+      nfs:
+        server: "test.com"
+        path: "/hello"
+        readonly: true
+      claim:
+        name: "test-claim"
+        namespace: "default"
 
-persistentVolumeClaims:
-  # Enables the creation of PersistentVolumeClaims (default: false)
-  enabled: false 
+persistentVolumeClaim:
+  enabled: false
   volumes:
-    # Name of the PersistentVolumeClaim (required)
+    - name: my-pvc1 
+      annotations: {}
+      labels: {}
+      accessModes: 
+        - ReadWriteOnce
+      volumeMode: "Filesystem"
+      volumeName: my-pv1 
+      capacity: "1Gi"
+      storageClass: "test"
+      selector: 
+        matchLabels:
+          test: label
+    - name: my-pvc2
+      annotations: {}
+      labels: {}
+      accessModes: 
+        - ReadWriteOnce
+      volumeMode: "Filesystem"
+      volumeName: my-pv1 
+      capacity: "1Gi"
+      storageClass: "test"
+      selector: 
+        matchLabels:
+          test: label
+
+persistentVolumeClaim:
+  # Enables the creation of Persistent Volume Claim defined in the `volumes` section.
+  enabled: false
+  volumes:
+    # Name of the PersistentVolumeClaim
     - name: my-pvc1 
 
       # Namespace for the PVC (defaults to the chart's namespace)
       namespace: "" 
 
-      # Labels for the PersistentVolumeClaim (optional)
+      # Labels for the PersistentVolumeClaim
       labels: {}
 
       spec:
-        # Access modes for the volume (required, at least one)
+        # Access modes for the volume
         accessModes: 
           - ReadWriteOnce
         volumeMode:
           - "Filesystem"
-          # Volume mode (optional)
+          # Volume mode
           # - Filesystem (default)
           # - Block
           # - Snapshot
 
-      # Name of the existing PersistentVolume to claim (required)
+      # Name of the existing PersistentVolume to claim
       volumeName: my-pv1 
 
-      # Resource requests for the PVC (required) 
+      # Resource requests for the PVC
       resources: 
         requests:
           # Storage capacity requested (e.g., "1Gi", "5Gi")
-          storage: 1Gi 
+          capacity: 1Gi 
 
-      # Storage class for the PVC (optional)
+      # Storage class for the PVC
       storageClassName: "" 
 
-      # Selector for the PersistentVolume (optional)
+      # Selector for the PersistentVolume
       selector: 
         # Labels the PVC should match against a PV
         matchLabels: {} 
