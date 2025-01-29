@@ -181,7 +181,8 @@ The following table lists the Kubernetes resources and their current support sta
 | Secret                  | ❗             |
 | Ingress                 | ✅             |
 | IngressClass            | ✅             |
-| PersistentVolumeClaim   | ⏳             |
+| PersistentVolume        | ✅             |
+| PersistentVolumeClaim   | ✅             |
 | ServiceAccount          | ✅             |
 | Role                    | ✅             |
 | RoleBinding             | ✅             |
