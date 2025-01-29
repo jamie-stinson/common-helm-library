@@ -323,6 +323,72 @@ storageClass:
   parameters: []
   mountOptions: []
 
+persistentVolumes:
+  enabled: false
+  # Enables the creation of Persistent Volumes defined in the `volumes` section.
+  volumes:
+    - # Name of the Persistent Volume.
+      name: "my-default-pv"
+      
+      # Storage capacity of the volume (e.g., "1Gi", "5Gi", "100Mi").
+      capacity: "1Gi"
+      # Defines how the volume can be accessed by pods.
+      # - ReadWriteOnce: Only one pod can mount the volume at a time.
+      # - ReadWriteMany: Multiple pods can mount the volume concurrently.
+      # - ReadOnlyMany: Multiple pods can mount the volume read-only.
+      accessModes:
+        - "ReadWriteOnce"
+
+      # Description of the Persistent Volume.
+      description: "Default Persistent Volume for testing purposes"
+
+      # Determines how the volume is handled when the claim is deleted
+      persistentVolumeReclaimPolicy: "Retain"
+
+      # Annotations for the PersistentVolume
+      annotations: {}
+
+persistentVolumeClaims:
+  # Enables the creation of PersistentVolumeClaims (default: false)
+  enabled: false 
+  volumes:
+    # Name of the PersistentVolumeClaim (required)
+    - name: my-pvc1 
+
+      # Namespace for the PVC (defaults to the chart's namespace)
+      namespace: "" 
+
+      # Labels for the PersistentVolumeClaim (optional)
+      labels: {}
+
+      spec:
+        # Access modes for the volume (required, at least one)
+        accessModes: 
+          - ReadWriteOnce
+        volumeMode:
+          - "Filesystem"
+          # Volume mode (optional)
+          # - Filesystem (default)
+          # - Block
+          # - Snapshot
+
+      # Name of the existing PersistentVolume to claim (required)
+      volumeName: my-pv1 
+
+      # Resource requests for the PVC (required) 
+      resources: 
+        requests:
+          # Storage capacity requested (e.g., "1Gi", "5Gi")
+          storage: 1Gi 
+
+      # Storage class for the PVC (optional)
+      storageClassName: "" 
+
+      # Selector for the PersistentVolume (optional)
+      selector: 
+        # Labels the PVC should match against a PV
+        matchLabels: {} 
+
 rbac:
   enabled: false
   roles: {}
