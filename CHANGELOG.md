@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.20.0...v1.20.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* **statefulset:** service name ([#143](https://github.com/jamie-stinson/common-helm-library/issues/143)) ([7689775](https://github.com/jamie-stinson/common-helm-library/commit/768977575a5f8be0b5a86f9eaac802ac5fcc69de))
+
 ## [1.20.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.19.2...v1.20.0) (2025-01-29)
 
 
