@@ -1,5 +1,5 @@
 {{- define "common-helm-library.helpers.workload.serviceName" }}
-{{- if and (eq .type "StatefulSet") $.Values.services}}
-serviceName: {{ $.Release.Name }}-internal
+{{- if and (eq .Values.workload.type "StatefulSet") .Values.service.enabled }}
+serviceName: {{ .Release.Name }}
 {{- end }}
 {{- end }}

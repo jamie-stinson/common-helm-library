@@ -13,7 +13,7 @@ metadata:
     {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
 spec:
   {{- include "common-helm-library.helpers.workload.replicas" . | indent 2 }}
-  {{- include "common-helm-library.helpers.workload.serviceName" . | indent 2 }}
+  {{- include "common-helm-library.helpers.workload.serviceName" $ | indent 2 }}
   {{- include "common-helm-library.helpers.workload.strategy" . | indent 2 }}
   selector:
     matchLabels:
