@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.20.1...v1.21.0) (2025-02-01)
+
+
+### Features
+
+* add extra objects ([#145](https://github.com/jamie-stinson/common-helm-library/issues/145)) ([9e14f36](https://github.com/jamie-stinson/common-helm-library/commit/9e14f3624bfd8e258ff8ac6279807440f0dd5c3e))
+
 ## [1.20.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.20.0...v1.20.1) (2025-01-30)
 
 
