@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.21.0...v1.21.1) (2025-02-02)
+
+
+### Bug Fixes
+
+* include port protocol if provided in exposed ports of workload. ([#147](https://github.com/jamie-stinson/common-helm-library/issues/147)) ([293b536](https://github.com/jamie-stinson/common-helm-library/commit/293b53651287df5a1a6bc47ba08a560ad1c14cad))
+
 ## [1.21.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.20.1...v1.21.0) (2025-02-01)
 
 
