@@ -11,6 +11,9 @@ ports:
   {{- range .ports }}
   - name: {{ .name }}
     containerPort: {{ .port }}
+    {{- if .protocol }}
+    protocol: {{ .protocol }}
+    {{- end }}
   {{- end }}
 {{- end }}
 {{- end }}
