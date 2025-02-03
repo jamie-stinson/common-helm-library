@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.22.0...v1.22.1) (2025-02-03)
+
+
+### Bug Fixes
+
+* allow multiple dashboards in single chart ([#152](https://github.com/jamie-stinson/common-helm-library/issues/152)) ([dd35097](https://github.com/jamie-stinson/common-helm-library/commit/dd350971f170f3bfad73b10b58b96d9a9783c3ce))
+
 ## [1.22.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.21.1...v1.22.0) (2025-02-03)
 
 
