@@ -443,9 +443,10 @@ grafana:
     enabled: false
     spec: {}
   dashboard:
-    enabled: false
-    json: {}
-
+    enabled: true
+    dashboards: []
+      # - name: ""
+      #   json: {}
 # -- REQUIRES: Prometheus
 serviceMonitor:
   enabled: false
