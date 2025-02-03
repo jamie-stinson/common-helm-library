@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.21.1...v1.22.0) (2025-02-03)
+
+
+### Features
+
+* add grafana support ([#150](https://github.com/jamie-stinson/common-helm-library/issues/150)) ([41a20f8](https://github.com/jamie-stinson/common-helm-library/commit/41a20f866e690e64290054ebbb610bc69ef1196a))
+
 ## [1.21.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.21.0...v1.21.1) (2025-02-02)
 
 
