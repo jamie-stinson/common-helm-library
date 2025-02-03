@@ -438,6 +438,14 @@ issuer:
   type: {}
   spec: {}
 
+grafana:
+  datasource:
+    enabled: false
+    spec: {}
+  dashboard:
+    enabled: false
+    json: {}
+
 # -- REQUIRES: Prometheus
 serviceMonitor:
   enabled: false

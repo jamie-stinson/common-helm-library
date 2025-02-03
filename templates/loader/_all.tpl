@@ -22,4 +22,6 @@ Main entrypoint for the common library chart. It will render all underlying temp
   {{- include "common-helm-library.extensions.prometheus.serviceMonitor" . }}
   {{- include "common-helm-library.extensions.certManager.certificate" . }}
   {{- include "common-helm-library.extensions.certManager.issuer" . }}
+  {{- include "common-helm-library.extensions.grafana.dashboard" . }}
+  {{- include "common-helm-library.extensions.grafana.datasource" . }}
 {{- end }}
