@@ -272,8 +272,9 @@ service:
     # - name: web
     #   protocol: TCP
     #   port: 80
-  
-  selector: {} # optional
+
+  # -- optional labels
+  selector: {}
 
 expose:
   enabled: false
