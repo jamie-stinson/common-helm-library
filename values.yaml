@@ -273,7 +273,7 @@ service:
     #   protocol: TCP
     #   port: 80
 
-  # -- optional labels
+  # -- Optional labels
   selector: {}
 
 expose:
