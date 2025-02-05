@@ -1,7 +1,7 @@
 {{- define "common-helm-library.helpers.ingress.tls" }}
-{{- if .Values.ingress.hosts }}
+{{- if .hosts }}
 tls:
-  {{- range .Values.ingress.hosts }}
+  {{- range .hosts }}
   {{- if .tls.enabled }}
   - hosts:
       - {{ .host }}

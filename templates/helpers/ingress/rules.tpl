@@ -1,7 +1,7 @@
 {{- define "common-helm-library.helpers.ingress.rules" }}
-{{- if .Values.ingress.hosts }}
+{{- if .hosts }}
 rules:
-  {{- range .Values.ingress.hosts }}
+  {{- range .hosts }}
   - host: {{ .host  }}
     http:
       paths:
