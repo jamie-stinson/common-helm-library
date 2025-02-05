@@ -454,6 +454,26 @@ grafana:
       #   json: {}
       #   url: ""
       #   folder: ""
+  folder:
+    enabled: false
+    resyncPeriod: ""
+    folders: []
+      # - name: ""
+      #   title: ""
+      #   parentFolder: ""
+      #   permissions: |
+      #     {
+      #       "items": [
+      #         {
+      #           "role": "Admin",
+      #           "permission": 4
+      #         },
+      #         {
+      #           "role": "Editor",
+      #           "permission": 2
+      #         }
+      #       ]
+      #     }
 
 # -- REQUIRES: Prometheus
 serviceMonitor:
