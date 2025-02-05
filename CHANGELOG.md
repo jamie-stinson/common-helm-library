@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.23.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.22.1...v1.23.0) (2025-02-05)
+
+
+### Features
+
+* **service:** allow selector override ([#156](https://github.com/jamie-stinson/common-helm-library/issues/156)) ([6bce66c](https://github.com/jamie-stinson/common-helm-library/commit/6bce66c52c8a8ff5a5ec2225a5a2333bb67f0aa2))
+
+
+### Bug Fixes
+
+* **ingress:** correctly apply labels and annotations ([#154](https://github.com/jamie-stinson/common-helm-library/issues/154)) ([575e928](https://github.com/jamie-stinson/common-helm-library/commit/575e9280b5b8973a4c8ddeb4306971bb4213fcf4))
+
 ## [1.22.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.22.0...v1.22.1) (2025-02-03)
 
 
