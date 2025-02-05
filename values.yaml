@@ -446,10 +446,15 @@ grafana:
     enabled: false
     spec: {}
   dashboard:
-    enabled: true
+    enabled: false
+    cacheDuration: ""
+    resyncPeriod: ""
     dashboards: []
       # - name: ""
       #   json: {}
+      #   url: ""
+      #   folder: ""
+
 # -- REQUIRES: Prometheus
 serviceMonitor:
   enabled: false
