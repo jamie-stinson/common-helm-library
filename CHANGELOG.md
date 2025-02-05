@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.24.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.23.0...v1.24.0) (2025-02-05)
+
+
+### Features
+
+* **grafana:** add folders ([#159](https://github.com/jamie-stinson/common-helm-library/issues/159)) ([d54df3e](https://github.com/jamie-stinson/common-helm-library/commit/d54df3ed9b02f5a8db4570348b0b87985c954345))
+* **grafana:** allow url dashboards ([#157](https://github.com/jamie-stinson/common-helm-library/issues/157)) ([3633d0b](https://github.com/jamie-stinson/common-helm-library/commit/3633d0b99327d69584be379205ffbee6d2283823))
+
 ## [1.23.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.22.1...v1.23.0) (2025-02-05)
 
 
