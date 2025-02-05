@@ -272,6 +272,8 @@ service:
     # - name: web
     #   protocol: TCP
     #   port: 80
+  
+  selector: {} # optional
 
 expose:
   enabled: false

@@ -14,7 +14,11 @@ metadata:
 spec:
   type: ClusterIP
   selector:
+    {{- if not .selector }}
     {{- include "common-helm-library.helpers.metadata.commonSelectorLabels" $ | indent 4 }}
+    {{- else }}
+    {{- toYaml .selector | nindent 4}}
+    {{- end }}  
   {{- include "common-helm-library.helpers.service.loadBalancerIP" . | indent 2 }}
   {{- include "common-helm-library.helpers.service.clusterIP" . | indent 2 }}
   {{- include "common-helm-library.helpers.service.servicePorts" $ | indent 2 }}
