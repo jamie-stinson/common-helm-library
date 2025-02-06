@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.24.1...v1.24.2) (2025-02-06)
+
+
+### Bug Fixes
+
+* **extraobjects:** separator ([#162](https://github.com/jamie-stinson/common-helm-library/issues/162)) ([5d0620b](https://github.com/jamie-stinson/common-helm-library/commit/5d0620b492a510755e03876eb7b4c290ae8d03a9))
+
 ## [1.24.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.24.0...v1.24.1) (2025-02-06)
 
 
