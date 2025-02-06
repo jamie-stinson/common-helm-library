@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.24.0...v1.24.1) (2025-02-06)
+
+
+### Bug Fixes
+
+* add missing pod ip env variable ([#160](https://github.com/jamie-stinson/common-helm-library/issues/160)) ([2f9db0a](https://github.com/jamie-stinson/common-helm-library/commit/2f9db0aabca100d5d57709e7ce7cfcfaecb33887))
+
 ## [1.24.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.23.0...v1.24.0) (2025-02-05)
 
 
