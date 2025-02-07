@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.25.0...v1.26.0) (2025-02-07)
+
+
+### Features
+
+* pod security context ([#166](https://github.com/jamie-stinson/common-helm-library/issues/166)) ([81ce8ac](https://github.com/jamie-stinson/common-helm-library/commit/81ce8acf2ab060bee3d50914be7b139c477e7311))
+
 ## [1.25.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.24.2...v1.25.0) (2025-02-07)
 
 
