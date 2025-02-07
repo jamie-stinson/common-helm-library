@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.24.2...v1.25.0) (2025-02-07)
+
+
+### Features
+
+* **workload:** add environment variable from field ([#164](https://github.com/jamie-stinson/common-helm-library/issues/164)) ([714ace2](https://github.com/jamie-stinson/common-helm-library/commit/714ace2ee1b3eadf04e16d20898641357eca7d10))
+
 ## [1.24.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.24.1...v1.24.2) (2025-02-06)
 
 
