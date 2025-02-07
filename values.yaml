@@ -71,6 +71,10 @@ workload:
     # runAsUser: 556
     # runAsGroup: 556
     # runAsNonRoot: false
+  
+  podSecurityContext: {}
+    # fsGroup: 2000
+    # fsGroupChangePolicy: "OnRootMismatch"
 
   # -- Resource configuration for the main workload pod
   resources:
