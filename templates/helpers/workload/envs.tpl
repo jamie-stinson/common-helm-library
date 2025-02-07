@@ -40,6 +40,12 @@ env:
   - name: {{ .name }}
     value: {{ .value }}
   {{- end }}
+  {{- range .envsFromField }}
+  - name: {{ .name }}
+    valueFrom:
+      fieldRef:
+        fieldPath: {{ .fieldPath }}
+  {{- end }}
   {{- range .envsConfigMap }}
   - name: {{ .name }}
     valueFrom:

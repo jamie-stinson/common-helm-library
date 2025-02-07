@@ -41,6 +41,10 @@ workload:
     # - name: EXAMPLE_ENV
     #   value: "HELLO"
 
+  envsFromField: []
+    # - name: POD_NAME
+    #   fieldPath: metadata.name
+
   # -- Config Map to mount as Environment Variable into pod
   envsConfigMap: []
     # - name: EXAMPLE_ENV
