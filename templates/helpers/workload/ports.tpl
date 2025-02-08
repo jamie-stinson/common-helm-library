@@ -14,6 +14,12 @@ ports:
     {{- if .protocol }}
     protocol: {{ .protocol }}
     {{- end }}
+    {{- if .hostIP }}
+    hostIP: {{ .hostIP }}
+    {{- end }}
+    {{- if .hostPort }}
+    hostPort: {{ .hostPort }}
+    {{- end }}
   {{- end }}
 {{- end }}
 {{- end }}

@@ -280,6 +280,8 @@ service:
     # - name: web
     #   protocol: TCP
     #   port: 80
+    #   hostIP: 127.0.0.1
+    #   hostPort: 1234
 
   # -- Optional labels
   selector: {}
