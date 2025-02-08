@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.26.0...v1.27.0) (2025-02-08)
+
+
+### Features
+
+* add host port ([#168](https://github.com/jamie-stinson/common-helm-library/issues/168)) ([47a8de6](https://github.com/jamie-stinson/common-helm-library/commit/47a8de64c456749c08130c7cc524705d3d90ee47))
+
 ## [1.26.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.25.0...v1.26.0) (2025-02-07)
 
 
