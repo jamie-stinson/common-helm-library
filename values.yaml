@@ -191,7 +191,7 @@ workload:
   topologySpreadConstraints: {}
     # preset: "" # Currently just 'spread-across-nodes'
     # custom: []
- 
+
   # -- Deployment or StatefulSet strategy to be added to the main workload
   strategy: {}
     # type: RollingUpdate
