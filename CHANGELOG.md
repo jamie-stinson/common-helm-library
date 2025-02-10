@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.29.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.28.0...v1.29.0) (2025-02-10)
+
+
+### Features
+
+* add support for multiple configmaps ([#173](https://github.com/jamie-stinson/common-helm-library/issues/173)) ([18562a7](https://github.com/jamie-stinson/common-helm-library/commit/18562a7fd190ecd03453442d3364ba18cb6fa046))
+
 ## [1.28.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.27.0...v1.28.0) (2025-02-10)
 
 
