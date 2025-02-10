@@ -33,7 +33,7 @@ spec:
       {{- include "common-helm-library.helpers.workload.nodeselector" . | indent 6 }}
       {{- include "common-helm-library.helpers.workload.tolerations" . | indent 6 }}
       {{- include "common-helm-library.helpers.workload.affinity" . | indent 6 }}
-      {{- include "common-helm-library.helpers.workload.topologySpreadConstraints" . | indent 6 }}
+      {{- include "common-helm-library.helpers.workload.topologySpreadConstraints" $ | indent 6 }}
       {{- with .podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
