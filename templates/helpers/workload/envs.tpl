@@ -38,7 +38,7 @@ env:
         fieldPath: status.podIP
   {{- range .envs }}
   - name: {{ .name }}
-    value: {{ .value }}
+    value: {{ .value | quote }}
   {{- end }}
   {{- range .envsFromField }}
   - name: {{ .name }}
