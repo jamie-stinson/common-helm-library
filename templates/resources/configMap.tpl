@@ -1,10 +1,11 @@
 {{- define "common-helm-library.resources.configMap" }}
 {{- if .Values.configMap.enabled }}
 {{- with .Values.configMap }}
+{{- range .configMaps }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $.Release.Name }}
+  name: {{ .name }}
   labels:
     {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 4 }}
@@ -19,6 +20,7 @@ data:
   {{- end }}
 {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

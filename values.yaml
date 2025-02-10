@@ -305,16 +305,18 @@ expose:
 configMap:
   enabled: false
 
-  # -- Annotations for Config Map
-  annotations: {}
+  configMaps: []
+    # - name: ""
+      # -- Annotations for Config Map
+      # annotations: {}
 
-  # -- Labels for Config Map
-  labels: {}
+      # -- Labels for Config Map
+      # labels: {}
 
-  # -- List of config data for the Config Map
-  data: {}
-  #   example.conf: |
-  #     listen 80
+      # -- List of config data for the Config Map
+      # data:
+      #   example.conf: |
+      #     listen 80
 
 serviceAccount:
   enabled: false
