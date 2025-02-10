@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.28.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.27.0...v1.28.0) (2025-02-10)
+
+
+### Features
+
+* add topology presets ([#170](https://github.com/jamie-stinson/common-helm-library/issues/170)) ([0b337e9](https://github.com/jamie-stinson/common-helm-library/commit/0b337e9bfc994042cb76d702e75679277e31ef3e))
+
+
+### Bug Fixes
+
+* environment variable value quote ([#172](https://github.com/jamie-stinson/common-helm-library/issues/172)) ([f075665](https://github.com/jamie-stinson/common-helm-library/commit/f075665d93e997b693a87f22914a1f64fd1bd987))
+
 ## [1.27.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.26.0...v1.27.0) (2025-02-08)
 
 
