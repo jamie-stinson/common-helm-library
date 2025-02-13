@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.29.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.29.0...v1.29.1) (2025-02-13)
+
+
+### Bug Fixes
+
+* downwardapi indent ([#175](https://github.com/jamie-stinson/common-helm-library/issues/175)) ([3b7b038](https://github.com/jamie-stinson/common-helm-library/commit/3b7b038c80fa4515a811e42ae4c9f8988d992b52))
+
 ## [1.29.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.28.0...v1.29.0) (2025-02-10)
 
 
