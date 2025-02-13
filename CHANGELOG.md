@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.29.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.29.1...v1.29.2) (2025-02-13)
+
+
+### Bug Fixes
+
+* add publishnotreadyaddresses ([#177](https://github.com/jamie-stinson/common-helm-library/issues/177)) ([214f901](https://github.com/jamie-stinson/common-helm-library/commit/214f901cdf2638fb4878bfcc3bccacfd9ec877a8))
+
 ## [1.29.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.29.0...v1.29.1) (2025-02-13)
 
 
