@@ -277,6 +277,8 @@ service:
   # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
   clusterIP: {}
 
+  publishNotReadyAddresses: false
+
   # -- List of ports for service
   ports: []
     # - name: web

@@ -21,6 +21,9 @@ spec:
     {{- end }}  
   {{- include "common-helm-library.helpers.service.loadBalancerIP" . | indent 2 }}
   {{- include "common-helm-library.helpers.service.clusterIP" . | indent 2 }}
+  {{- if .publishNotReadyAddresses }}
+  publishNotReadyAddresses: true
+  {{- end }}
   {{- include "common-helm-library.helpers.service.servicePorts" $ | indent 2 }}
 ---
 {{- end }}
