@@ -31,12 +31,12 @@ volumes:
       path: {{ .hostPath }}
   {{- else if eq .type "downwardAPI" }}
     downwardAPI:
-    items:
-      {{- range .items }}
-      - path: {{ .path }}
-        fieldRef:
-          fieldPath: {{ .fieldRef.fieldPath }}
-      {{- end }}
+      items:
+        {{- range .items }}
+        - path: {{ .path }}
+          fieldRef:
+            fieldPath: {{ .fieldRef.fieldPath }}
+        {{- end }}
   {{- else if eq .type "pvc" }}
     persistentVolumeClaim:
       claimName: {{ .claimName }}
