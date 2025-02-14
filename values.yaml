@@ -36,6 +36,9 @@ workload:
   # -- Arguments to pass to the main workload
   args: []
 
+  # -- Disable selective default env variables
+  disableDefaultEnv: {}
+
   # -- Environment Variables to mount into pod
   envs: []
     # - name: EXAMPLE_ENV

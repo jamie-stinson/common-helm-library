@@ -1,41 +1,35 @@
 {{- define "common-helm-library.helpers.workload.envs" }}
 env:
-  - name: NAME
+  {{- $standardVars := list
+    (dict "name" "NAME" "fieldPath" "metadata.name")
+    (dict "name" "POD_NAME" "fieldPath" "metadata.name")
+    (dict "name" "NAMESPACE" "fieldPath" "metadata.namespace")
+    (dict "name" "POD_NAMESPACE" "fieldPath" "metadata.namespace")
+    (dict "name" "OPERATOR_NAMESPACE" "fieldPath" "metadata.namespace")
+    (dict "name" "HOST_IP_ADDRESS" "fieldPath" "status.hostIP")
+    (dict "name" "HOSTNAME" "fieldPath" "spec.nodeName")
+    (dict "name" "NODE_NAME" "fieldPath" "spec.nodeName")
+    (dict "name" "POD_IP" "fieldPath" "status.podIP")
+  }}
+  {{- $disableDefaultEnv := .disableDefaultEnv | default list }}
+
+  {{- range $standardVars }}
+    {{- $varName := .name }}
+    {{- $isDisabled := false }}
+    {{- range $disableDefaultEnv }}
+      {{- if eq $varName . }}
+        {{- $isDisabled = true }}
+        {{- break }}
+      {{- end }}
+    {{- end }}
+    {{- if not $isDisabled }}
+  - name: {{ $varName }}
     valueFrom:
       fieldRef:
-        fieldPath: metadata.name
-  - name: POD_NAME
-    valueFrom:
-      fieldRef:
-        fieldPath: metadata.name
-  - name: NAMESPACE
-    valueFrom:
-      fieldRef:
-        fieldPath: metadata.namespace
-  - name: POD_NAMESPACE
-    valueFrom:
-      fieldRef:
-        fieldPath: metadata.namespace
-  - name: OPERATOR_NAMESPACE
-    valueFrom:
-      fieldRef:
-        fieldPath: metadata.namespace
-  - name: HOST_IP_ADDRESS
-    valueFrom:
-      fieldRef:
-        fieldPath: status.hostIP
-  - name: HOSTNAME
-    valueFrom:
-      fieldRef:
-        fieldPath: spec.nodeName
-  - name: NODE_NAME
-    valueFrom:
-      fieldRef:
-        fieldPath: spec.nodeName
-  - name: POD_IP
-    valueFrom:
-      fieldRef:
-        fieldPath: status.podIP
+        fieldPath: {{ .fieldPath }}
+    {{- end }}
+  {{- end }}
+
   {{- range .envs }}
   - name: {{ .name }}
     value: {{ .value | quote }}
