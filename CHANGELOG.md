@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.30.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.29.2...v1.30.0) (2025-02-14)
+
+
+### Features
+
+* add version-checker support ([#180](https://github.com/jamie-stinson/common-helm-library/issues/180)) ([ffccf1d](https://github.com/jamie-stinson/common-helm-library/commit/ffccf1d32fcf425adb6ce2bc6dad3b594da78ae5))
+
+
+### Bug Fixes
+
+* no hpa on daemonset ([#182](https://github.com/jamie-stinson/common-helm-library/issues/182)) ([6ed550f](https://github.com/jamie-stinson/common-helm-library/commit/6ed550f2fea134e69a34819712352e2b9f872da2))
+* no pdb on daemonset ([#183](https://github.com/jamie-stinson/common-helm-library/issues/183)) ([15a746b](https://github.com/jamie-stinson/common-helm-library/commit/15a746b4c32ce52f13adfffc85925b22e6e09527))
+
 ## [1.29.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.29.1...v1.29.2) (2025-02-13)
 
 
