@@ -523,4 +523,7 @@ postgres:
   version: {}
   size: {}
 
+versionChecker:
+  imageOverride: false
+
 extraObjects: []
