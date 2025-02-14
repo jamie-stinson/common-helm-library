@@ -1,5 +1,5 @@
 {{- define "common-helm-library.resources.horizontalPodAutoscaler" }}
-{{- if .Values.autoscaling.enabled }}
+{{- if and .Values.autoscaling.enabled (ne .Values.workload.type "DaemonSet") }}
 {{- with .Values.autoscaling }}
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
