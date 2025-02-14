@@ -1,5 +1,5 @@
 {{- define "common-helm-library.resources.podDisruptionBudget" }}
-{{- if .Values.pdb.enabled }}
+{{- if and .Values.pdb.enabled (ne .Values.workload.type "DaemonSet") }}
 {{- with .Values.pdb }}
 apiVersion: policy/v1
 kind: PodDisruptionBudget
