@@ -11,6 +11,9 @@ metadata:
   annotations:
     {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
+    {{- if $.Values.versionChecker.imageOverride }}
+    override-url.version-checker.io/{{ $.Release.Name }}: {{ .image.registry }}/{{ .repository }}
+    {{- end }}
 spec:
   {{- include "common-helm-library.helpers.workload.replicas" . | indent 2 }}
   {{- include "common-helm-library.helpers.workload.serviceName" $ | indent 2 }}
