@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.30.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.30.0...v1.30.1) (2025-02-16)
+
+
+### Bug Fixes
+
+* stop version checker annotation applying globally ([#184](https://github.com/jamie-stinson/common-helm-library/issues/184)) ([9f29ee6](https://github.com/jamie-stinson/common-helm-library/commit/9f29ee64b5df09abd03354924fce57258db0cb06))
+
 ## [1.30.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.29.2...v1.30.0) (2025-02-16)
 
 
