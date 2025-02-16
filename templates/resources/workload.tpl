@@ -26,6 +26,9 @@ spec:
       labels:
         {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 8 }}
         {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 8 }}
+        {{- if $.Values.versionChecker.imageOverride }}
+        override-url.version-checker.io/{{ $.Release.Name }}: {{ .image.registry }}/{{ .image.repository }}
+        {{- end }}
       annotations:
         {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 8 }}
         {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 8 }}
