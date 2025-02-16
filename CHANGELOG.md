@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.30.3](https://github.com/jamie-stinson/common-helm-library/compare/v1.30.2...v1.30.3) (2025-02-16)
+
+
+### Bug Fixes
+
+* version checker repository value ([#188](https://github.com/jamie-stinson/common-helm-library/issues/188)) ([2291c6a](https://github.com/jamie-stinson/common-helm-library/commit/2291c6abce6213f132de46b294306461a1576e3a))
+
 ## [1.30.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.30.1...v1.30.2) (2025-02-16)
 
 
