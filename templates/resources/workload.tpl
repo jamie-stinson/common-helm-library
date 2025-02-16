@@ -11,9 +11,6 @@ metadata:
   annotations:
     {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 4 }}
     {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
-    {{- if $.Values.versionChecker.imageOverride }}
-    override-url.version-checker.io/{{ $.Release.Name }}: {{ .image.registry }}/{{ .image.repository }}
-    {{- end }}
 spec:
   {{- include "common-helm-library.helpers.workload.replicas" . | indent 2 }}
   {{- include "common-helm-library.helpers.workload.serviceName" $ | indent 2 }}
@@ -26,12 +23,10 @@ spec:
       labels:
         {{- include "common-helm-library.helpers.metadata.commonLabels" $ | indent 8 }}
         {{- include "common-helm-library.helpers.metadata.resourceLabels" . | indent 8 }}
-        {{- if $.Values.versionChecker.imageOverride }}
-        override-url.version-checker.io/{{ $.Release.Name }}: {{ .image.registry }}/{{ .image.repository }}
-        {{- end }}
       annotations:
         {{- include "common-helm-library.helpers.metadata.commonAnnotations" $ | indent 8 }}
         {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 8 }}
+        {{- include "common-helm-library.helpers.metadata.versionChecker" $ | indent 8 }}
     spec:
       {{- include "common-helm-library.helpers.workload.serviceAccountName" $ | indent 6 }}
       {{- include "common-helm-library.helpers.workload.terminationGracePeriodSeconds" . | indent 6 }}
