@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.31.0...v1.31.1) (2025-02-21)
+
+
+### Bug Fixes
+
+* pvctemplate indentation ([#194](https://github.com/jamie-stinson/common-helm-library/issues/194)) ([6a8dfd1](https://github.com/jamie-stinson/common-helm-library/commit/6a8dfd1baa853ded75c1a1801e3c5e98926c8246))
+
 ## [1.31.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.30.4...v1.31.0) (2025-02-21)
 
 
