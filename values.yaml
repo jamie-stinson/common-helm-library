@@ -173,6 +173,15 @@ workload:
     #   mountPath: /path/to/mount/container
     #   claimName: "test"
     #   readOnly: false
+    ## volumeClaimTemplate - StatefulSet Only
+    # - name: my-pvc-template-volume
+    #   type: pvcTemplate
+    #   mountPath: /path/to/mount/container
+    #   accessModes:
+    #     - "ReadWriteOnce"
+    #   storageClass: "example"
+    #   size: "5Gi"
+    #   readOnly: false
 
   # -- Termination grace period seconds for container lifecycle hook
   terminationGracePeriodSeconds: ""

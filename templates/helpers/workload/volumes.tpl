@@ -1,9 +1,17 @@
 {{- define "common-helm-library.helpers.workload.volumes" }}
 {{- with .storage }}
-volumes:
+  {{- $validVolumes := list }}
   {{- range . }}
+    {{- if ne .type "pvcTemplate" }}
+      {{- $validVolumes = append $validVolumes . }}
+    {{- end }}
+  {{- end }}
+
+  {{- if $validVolumes }}
+volumes:
+  {{- range $validVolumes }}
   - name: {{ .name }}
-  {{- if eq .type "configMap" }}
+    {{- if eq .type "configMap" }}
     configMap:
       name: {{ .configMapName }}
       {{- range .items }}
@@ -11,7 +19,7 @@ volumes:
       - key: {{ .key }}
         path: {{ .path }}
       {{- end }}
-  {{- else if eq .type "secret" }}
+    {{- else if eq .type "secret" }}
     secret:
       secretName: {{ .secretName }}
       optional: {{ .optional | default false }}
@@ -20,16 +28,16 @@ volumes:
       - key: {{ .key }}
         path: {{ .path }}
       {{- end }}
-  {{- else if eq .type "emptyDir" }}
+    {{- else if eq .type "emptyDir" }}
     emptyDir:
       {{- if .ramDisk }}
       medium: "Memory"
       {{- end }}
       sizeLimit: {{ .sizeLimit }}
-  {{- else if eq .type "hostPath" }}
+    {{- else if eq .type "hostPath" }}
     hostPath:
       path: {{ .hostPath }}
-  {{- else if eq .type "downwardAPI" }}
+    {{- else if eq .type "downwardAPI" }}
     downwardAPI:
       items:
         {{- range .items }}
@@ -37,9 +45,10 @@ volumes:
           fieldRef:
             fieldPath: {{ .fieldRef.fieldPath }}
         {{- end }}
-  {{- else if eq .type "pvc" }}
+    {{- else if eq .type "pvc" }}
     persistentVolumeClaim:
       claimName: {{ .claimName }}
+    {{- end }}
   {{- end }}
   {{- end }}
 {{- end }}
