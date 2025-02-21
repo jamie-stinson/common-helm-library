@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.30.4...v1.31.0) (2025-02-21)
+
+
+### Features
+
+* add pvctemplates ([#192](https://github.com/jamie-stinson/common-helm-library/issues/192)) ([5d0a2c3](https://github.com/jamie-stinson/common-helm-library/commit/5d0a2c3850345da3242b421290ae8110ee15c583))
+
 ## [1.30.4](https://github.com/jamie-stinson/common-helm-library/compare/v1.30.3...v1.30.4) (2025-02-16)
 
 
