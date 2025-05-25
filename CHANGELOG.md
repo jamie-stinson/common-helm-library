@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.33.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.32.0...v1.33.0) (2025-05-25)
+
+
+### Features
+
+* add initContainers support ([#199](https://github.com/jamie-stinson/common-helm-library/issues/199)) ([916c1e2](https://github.com/jamie-stinson/common-helm-library/commit/916c1e2a0ba8184878cfe6361ea2ced1794bc247))
+
 ## [1.32.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.31.1...v1.32.0) (2025-05-25)
 
 
