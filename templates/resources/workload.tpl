@@ -53,6 +53,10 @@ spec:
         {{- if .extraContainers }}
         {{- toYaml .extraContainers | nindent 8 }}
         {{- end }}
+      initContainers:
+        {{- if .initContainers }}
+        {{- toYaml .initContainers | nindent 8 }}
+        {{- end }}
       {{- include "common-helm-library.helpers.workload.volumes" . | indent 6 }}
   {{- include "common-helm-library.helpers.workload.volumeClaimTemplates" . | indent 2 }}
 ---
