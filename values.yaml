@@ -27,6 +27,9 @@ workload:
     # -- Tag to use for the main workload
     tag: "latest"
 
+    # -- Optional: Digest to use for the main workload
+    digest: ""
+
     # -- Image pull policy for the main workload
     imagePullPolicy: IfNotPresent
 
