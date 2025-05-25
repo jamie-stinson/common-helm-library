@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.32.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.31.1...v1.32.0) (2025-05-25)
+
+
+### Features
+
+* add image digest support ([#197](https://github.com/jamie-stinson/common-helm-library/issues/197)) ([1352864](https://github.com/jamie-stinson/common-helm-library/commit/1352864387e06d1ef6e4995a1f6baef4f345e0c1))
+
 ## [1.31.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.31.0...v1.31.1) (2025-02-21)
 
 
