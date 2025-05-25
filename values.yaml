@@ -219,6 +219,8 @@ workload:
 
   extraContainers: {}
 
+  initContainers: {}
+
 autoscaling:
   enabled: false
 
