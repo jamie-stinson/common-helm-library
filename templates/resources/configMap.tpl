@@ -15,8 +15,13 @@ metadata:
 {{- with .data }}
 data:
   {{- range $key, $value := . }}
-  {{- $key | nindent 2 }}: |
-    {{- $value | nindent 4 }}
+    {{- $stringValue := $value | toString }}
+    {{- if contains "\n" $stringValue }}
+  {{ $key }}: |
+    {{- $stringValue | nindent 4 }}
+    {{- else }}
+  {{ $key }}: {{ $stringValue | quote }}
+    {{- end }}
   {{- end }}
 {{- end }}
 ---
