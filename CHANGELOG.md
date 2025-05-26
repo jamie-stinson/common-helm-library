@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.34.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.33.0...v1.34.0) (2025-05-26)
+
+
+### Features
+
+* add better multi-line configmap support ([#201](https://github.com/jamie-stinson/common-helm-library/issues/201)) ([235f8ab](https://github.com/jamie-stinson/common-helm-library/commit/235f8ab579f6e8faee0286c365a62cf7fc28aa82))
+
 ## [1.33.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.32.0...v1.33.0) (2025-05-25)
 
 
