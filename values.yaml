@@ -358,6 +358,7 @@ storageClass:
   allowVolumeExpansion: {}
   parameters: []
   mountOptions: []
+  volumeBindingMode: {}
 
 persistentVolume:
   enabled: false

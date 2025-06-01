@@ -13,6 +13,9 @@ metadata:
     {{- include "common-helm-library.helpers.metadata.resourceAnnotations" . | indent 4 }}
 provisioner: {{ .provisioner }}
 reclaimPolicy: {{ .reclaimPolicy }}
+{{ if .volumeBindingMode }}
+volumeBindingMode: {{ .volumeBindingMode }}
+{{- end -}}
 {{- if .allowVolumeExpansion }}
 allowVolumeExpansion: {{ .allowVolumeExpansion }}
 {{- end }}
