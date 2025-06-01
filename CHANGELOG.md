@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.35.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.34.0...v1.35.0) (2025-06-01)
+
+
+### Features
+
+* add storageclass volumebinding ([#203](https://github.com/jamie-stinson/common-helm-library/issues/203)) ([8547d8a](https://github.com/jamie-stinson/common-helm-library/commit/8547d8a2b1c331a7d3b7e884dca55350b5d76247))
+
 ## [1.34.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.33.0...v1.34.0) (2025-05-26)
 
 
