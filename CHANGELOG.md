@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.35.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.35.0...v1.35.1) (2025-06-04)
+
+
+### Bug Fixes
+
+* take extraobjects string literal ([#205](https://github.com/jamie-stinson/common-helm-library/issues/205)) ([7ffdb2a](https://github.com/jamie-stinson/common-helm-library/commit/7ffdb2a06c87d46faab77644d9bf72025a2d2d82))
+
 ## [1.35.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.34.0...v1.35.0) (2025-06-01)
 
 
