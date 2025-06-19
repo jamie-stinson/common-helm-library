@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.36.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.36.1...v1.36.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* remove default registry value ([#211](https://github.com/jamie-stinson/common-helm-library/issues/211)) ([aa03218](https://github.com/jamie-stinson/common-helm-library/commit/aa032188c99bdd4d25111ef000855f279877b3af))
+
 ## [1.36.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.36.0...v1.36.1) (2025-06-19)
 
 
