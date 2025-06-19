@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.36.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.36.0...v1.36.1) (2025-06-19)
+
+
+### Bug Fixes
+
+* broken image indentation ([#209](https://github.com/jamie-stinson/common-helm-library/issues/209)) ([1ebc862](https://github.com/jamie-stinson/common-helm-library/commit/1ebc862e710816e067a19a7183dfa8d30f9f6db4))
+
 ## [1.36.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.35.1...v1.36.0) (2025-06-19)
 
 
