@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.36.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.35.1...v1.36.0) (2025-06-19)
+
+
+### Features
+
+* make image registry optional ([#207](https://github.com/jamie-stinson/common-helm-library/issues/207)) ([262dd4f](https://github.com/jamie-stinson/common-helm-library/commit/262dd4fb1514149dc3196cd0d3d0f9201bafd601))
+
 ## [1.35.1](https://github.com/jamie-stinson/common-helm-library/compare/v1.35.0...v1.35.1) (2025-06-04)
 
 
