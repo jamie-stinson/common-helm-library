@@ -19,7 +19,7 @@ workload:
 
   image:
     # -- Registry to use for the main workload
-    registry: "docker.io"
+    # registry: "docker.io"
 
     # -- Repository to use for the main workload
     repository: "nginx"
