@@ -46,7 +46,11 @@ metadata:
 spec:
   type: {{ .type }}
   selector:
+    {{- if not .selector }}
     {{- include "common-helm-library.helpers.metadata.commonSelectorLabels" $ | indent 4 }}
+    {{- else }}
+    {{- toYaml .selector | nindent 4}}
+    {{- end }}  
   {{- include "common-helm-library.helpers.service.loadBalancerIP" . | indent 2 }}
   {{- include "common-helm-library.helpers.service.exposePorts" $ | indent 2 }}
 ---
