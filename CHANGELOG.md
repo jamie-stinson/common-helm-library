@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.37.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.36.2...v1.37.0) (2025-07-26)
+
+
+### Features
+
+* add support for injecting full configmap as env ([#213](https://github.com/jamie-stinson/common-helm-library/issues/213)) ([e5a673a](https://github.com/jamie-stinson/common-helm-library/commit/e5a673a96b08b71be874d2205527457e6b6983f2))
+
 ## [1.36.2](https://github.com/jamie-stinson/common-helm-library/compare/v1.36.1...v1.36.2) (2025-06-19)
 
 
