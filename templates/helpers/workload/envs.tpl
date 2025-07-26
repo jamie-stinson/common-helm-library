@@ -1,4 +1,6 @@
 {{- define "common-helm-library.helpers.workload.envs" }}
+{{- $envFrom := list }}
+
 env:
   {{- $standardVars := list
     (dict "name" "NAME" "fieldPath" "metadata.name")
@@ -34,19 +36,28 @@ env:
   - name: {{ .name }}
     value: {{ .value | quote }}
   {{- end }}
+
   {{- range .envsFromField }}
   - name: {{ .name }}
     valueFrom:
       fieldRef:
         fieldPath: {{ .fieldPath }}
   {{- end }}
+
   {{- range .envsConfigMap }}
-  - name: {{ .name }}
+    {{- if and (hasKey . "configMap") (not (hasKey . "key")) (not (hasKey . "name")) }}
+      {{- $envFrom = append $envFrom (dict "configMapRef" (dict "name" .configMap)) }}
+    {{- else if and (hasKey . "configMap") (hasKey . "key") }}
+  - name: {{ .name | default (upper (replace .key "." "_" )) }}
     valueFrom:
       configMapKeyRef:
         name: {{ .configMap }}
         key: {{ .key }}
+    {{- else }}
+      {{- fail (printf "envsConfigMap entry must be either:\n- { configMap }\n- { configMap, key[, name] }: %#v" .) }}
+    {{- end }}
   {{- end }}
+
   {{- range .envsSecret }}
   - name: {{ .name }}
     valueFrom:
@@ -54,4 +65,9 @@ env:
         name: {{ .secret }}
         key: {{ .key }}
   {{- end }}
+
+{{- if $envFrom }}
+envFrom:
+{{ toYaml $envFrom | indent 2 }}
+{{- end }}
 {{- end }}
