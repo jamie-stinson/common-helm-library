@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.37.0...v2.0.0) (2025-09-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* trial new default values ([#215](https://github.com/jamie-stinson/common-helm-library/issues/215))
+
+### Features
+
+* trial new default values ([#215](https://github.com/jamie-stinson/common-helm-library/issues/215)) ([d60daf9](https://github.com/jamie-stinson/common-helm-library/commit/d60daf975beffdadf098841035a110aded163570))
+
 ## [1.37.0](https://github.com/jamie-stinson/common-helm-library/compare/v1.36.2...v1.37.0) (2025-07-26)
 
 
