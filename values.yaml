@@ -209,7 +209,7 @@ workload:
   # -- Assign custom TopologySpreadConstraints rules to the main workload
   # Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
   topologySpreadConstraints:
-    preset: "spread-across-nodes" # Currently just 'spread-across-nodes'
+    preset: "spread-across-nodes"
     # custom: []
 
   # -- Deployment or StatefulSet strategy to be added to the main workload
