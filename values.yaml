@@ -67,27 +67,32 @@ workload:
   replicaCount: 1
 
   # --  Security Context to pass to the pod
-  securityContext: {}
-    # readOnlyRootFilesystem: true
-    # allowPrivilegeEscalation: true
-    # capabilities:
-    #   drop: []
-    #   add: []
-    # privileged: false
-    # runAsUser: 556
-    # runAsGroup: 556
-    # runAsNonRoot: false
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    privileged: false
+    readOnlyRootFilesystem: false
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
 
-  podSecurityContext: {}
-    # fsGroup: 2000
-    # fsGroupChangePolicy: "OnRootMismatch"
+  podSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    fsGroupChangePolicy: "Always"
 
   # -- Resource configuration for the main workload pod
   resources:
     # -- Defines a preset configuration for resources. Either: `nano`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`.
-    preset: ""
+    preset: "nano"
     # -- Custom Resource Configuration: Define specific requests and limits. Use this when `preset` is not set.
-    custom: {}
+    # custom: {}
       # requests:
       #   cpu: 5m
       #   memory: 50Mi
@@ -190,7 +195,7 @@ workload:
   terminationGracePeriodSeconds: ""
 
   # -- Priority class for the main workload pods
-  priorityClassName: ""
+  priorityClassName: "application-default"
 
   # -- Node selector for the main workload pods
   nodeSelector: {}
@@ -203,19 +208,15 @@ workload:
 
   # -- Assign custom TopologySpreadConstraints rules to the main workload
   # Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
-  topologySpreadConstraints: {}
-    # preset: "" # Currently just 'spread-across-nodes'
+  topologySpreadConstraints:
+    preset: "spread-across-nodes" # Currently just 'spread-across-nodes'
     # custom: []
 
   # -- Deployment or StatefulSet strategy to be added to the main workload
-  strategy: {}
-    # type: RollingUpdate
-
-    # -- Maximum number or percentage of pods that can be created over the desired number of pods
-    # maxSurge: 1
-
-    # -- Maximum number or percentage of pods that can be unavailable during the update process
-    # maxUnavailable: 1
+  strategy:
+    type: RollingUpdate
+    maxSurge: 1
+    maxUnavailable: 1
 
   extraContainers: {}
 
@@ -347,7 +348,7 @@ serviceAccount:
   labels: {}
 
   # -- Automount API credentials for the Service Account into the workload.
-  automountServiceAccountToken: false
+  automountServiceAccountToken: true
 
 storageClass:
   enabled: false
